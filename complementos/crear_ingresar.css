@@ -50,6 +50,18 @@
         filter: alpha(opacity=80);
         -khtml-opacity: 0.8;
     }
+    .ingresar_usuario {
+        padding: 70px 10px;
+        background-color: #ffffff;
+        margin: calc(24% + 100px);
+        margin-top: 50px;
+        padding-top: 28px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        -moz-opacity: 0.8;
+        filter: alpha(opacity=80);
+        -khtml-opacity: 0.8;
+    }
     .login_db {
         padding: 70px 70px;
         background-color: #ffffff;
@@ -68,15 +80,14 @@
         padding: 12px;
         color: rgb(27, 27, 27)
     }
-    
-    input {
-        width: calc(100% - 20px);
-        padding: 9px;
-        margin: auto;
-        margin-top: 12px;
-        font-size: 16px
-        
-    }
+    input{
+      width: calc(100% - 20px);
+      padding: 9px;
+      margin: auto;
+      margin-top: 12px;
+      font-size: 16px
+      
+  }
     input[type="text"], input[type="tel"],input[type="password"] ,input[type="email"]  {
         display: inline-block;
         vertical-align: top;
@@ -350,4 +361,9 @@
         color: #e23670;
         box-shadow: 0 0 15px #E1306C;
         text-shadow: 0 0 15px #E1306C;
+      }
+      /*Alineando iconos de inicio de sesion*/
+      .pos-face{
+        left: 50%;
+        display: inline-block;
       }
