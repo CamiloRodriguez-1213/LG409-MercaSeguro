@@ -12,10 +12,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Volcando estructura de base de datos para ventas_online
-CREATE DATABASE IF NOT EXISTS `ventas_online` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `ventas_online`;
-
 -- Volcando estructura para tabla ventas_online.categorias
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(20) NOT NULL,
