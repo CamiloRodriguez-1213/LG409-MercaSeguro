@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Last-Modified" content="0">
-    <link rel="stylesheet" type="text/css" href="complementos/crear_usuario.css">
+    <link rel="stylesheet" type="text/css" href="complementos/crear_ingresar.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
@@ -21,32 +21,30 @@
     </div><!--Fin Header: Primera parte de la pagina-->
     
     <div class="contenedor">
-    <form class="crear_usuario" action="guardar_nuevo_usuario.php" method="post">
+    <form class="crear_usuario"  method="get" method="post">
     <div >    
         <h1>Crear Nuevo Usuario</h1>
         
             <table>
             <tr>
-                <td><input type="text" name="nombre"  required placeholder="Nombre"></td>
-                <td><input type="text" name="apellido" required placeholder="Apellido"></td>
+                <td><input type="text"  name="nombre"  id="nombre" required placeholder="Nombre"></td>
+                <td><input type="text" name="apellido" id="apellido" required placeholder="Apellido"></td>
             </tr>
             <tr>
-                <td><input type="email" name="email" required placeholder="Email"></td>
+                <td><input type="email" name="email" id="email" required placeholder="Email"></td>
                 <td><input type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br></td>
             </tr>
             
-            <!--<td><input type="checkbox" id="show-password" />Mostrar Contraseña</td>-->
             
             </table>
         
             <br>
-            <input type="submit" id="btn-abrir-popup" class="button" value="Crear">
-            <input type="submit" class="button" value="Regresar" onclick="location='index.php'">
+            
+            <input type="submit" id="btn-abrir-popup" class="button" value="Crear" onclick="validarSoloJs()" >
+            <input type="submit" class="button" onclick="location='index.php'" value="Regresar">
+            
         </div> 
-        
-		
-
-		<div class="overlay" id="overlay">
+        <div class="overlay" id="overlay">
 			<div class="popup" id="popup">
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
 				<h3>Un Momento</h3>
@@ -60,14 +58,19 @@
             <tr>
                 <td><input type="text" name="Ciudad" required placeholder="Ciudad Actual"></td>
                 <td><input type="text" name="direccion" required placeholder="Dirección"></td>
+                
             </tr>
-            <input type="submit" class="btn-submit" value="Crear">
+            
             
             </table>
+            <tr ><input type="submit" class="button" value="Crear" onclick="location='index.php'"></tr>
 			</div>
 		</div>
-	</div>
+	
+		
+    </div>
+    <script src="complementos/popup.js"></script>
     </form>
-    <script src="popup.js"></script>
+    
 </body>
 </html>
