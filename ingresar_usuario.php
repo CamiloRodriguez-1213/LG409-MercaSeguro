@@ -8,7 +8,8 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     
     <title>Inicio</title>
     
@@ -23,13 +24,13 @@
     <div class="contenedor">
     <form class="crear_usuario" action="guardar_nuevo_usuario.php" method="post">
     <div >    
-        <h1>Crear Nuevo Usuario</h1>
+        <h1>Para continuar ingresa tu correo o usuario</h1>
         
             <table>
-            <tr>
+          <!--   <tr>
                 <td><input type="text" name="nombre"  required placeholder="Nombre"></td>
                 <td><input type="text" name="apellido" required placeholder="Apellido"></td>
-            </tr>
+            </tr> -->
             <tr>
                 <td><input type="email" name="email" required placeholder="Email"></td>
                 <td><input type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br></td>
@@ -38,10 +39,23 @@
             <!--<td><input type="checkbox" id="show-password" />Mostrar Contraseña</td>-->
             
             </table>
-        
+       
             <br>
-            <input type="submit" id="btn-abrir-popup" class="button" value="Crear">
-            <input type="submit" class="button" value="Regresar" onclick="location='index.php'">
+            <input type="submit" id="btn-abrir-popup" class="button" value="Continuar">
+            <br><br>
+           <!--  <input type="submit" class="btn btn-crear" value="Crear cuenta" onclick="location='index.php'"> -->
+            <button class="btn btn-outline-primary" onclick="location='index.php'" >Crear cuenta</button>
+            <br><br>
+            <ul>
+                
+            <div class="container">
+                <li><i class="fab fa-facebook-f"></i></li>
+                 <li><i class="fab fa-twitter"></i></li>
+                <li><i class="fab fa-google"></i></li>
+            </div>
+       
+        
+      </ul>
         </div> 
         
 		
@@ -51,19 +65,21 @@
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
 				<h3>Un Momento</h3>
 				<h4>Llena estos datos antes de finalizar</h4>
-				<table>
+		<!-- 		<table>
             
-            <tr>
+           <tr>
                 <td><input type="tel" name="celular" required placeholder="Número de Celular"></td>
                 <td><input type="tel" name="whatsapp" required placeholder="Número de Whatsapp"></td>
             </tr>
             <tr>
                 <td><input type="text" name="Ciudad" required placeholder="Ciudad Actual"></td>
                 <td><input type="text" name="direccion" required placeholder="Dirección"></td>
-            </tr>
+            </tr>  
             <input type="submit" class="btn-submit" value="Crear">
             
-            </table>
+            </table> -->
+     
+
 			</div>
 		</div>
 	</div>
