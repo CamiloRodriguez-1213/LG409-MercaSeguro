@@ -12,8 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> cf652fff52e3b9179f43eb60f7a0451e1b4015b3
 -- Volcando estructura para tabla ventas_online.categorias
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(20) NOT NULL,
