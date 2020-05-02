@@ -1,0 +1,106 @@
+
+
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: century gothic;
+        text-align: center;
+        
+    }
+    body{
+        background-color: #f7f7f7;
+    }
+    /*Quitar borde azul del input*/
+    input:focus {
+        outline: 0;
+    }
+    /*Logo*/
+    .nav-logo {
+        background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png);
+        height: 34px;
+        top: 11px;
+        width: 134px;
+        display: inline-block;
+    }
+    .nav-logo {
+        background-repeat: no-repeat;
+        overflow: hidden;
+        text-indent: -999px;
+        position: absolute;
+        left: 180px;
+        outline: 0;
+    }
+    /*Fin logo*/
+    #header-index {
+        background-color: #ffc107;
+        font-size: 13px;
+        height: 80px;
+        /*font-family: "Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;*/
+        
+    }
+    
+    .login_db {
+        padding: 70px 70px;
+        background-color: #ffffff;
+        margin: calc(22% + 100px);
+        margin-top: 40px;
+        padding-top: 28px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        -moz-opacity: 0.8;
+        filter: alpha(opacity=80);
+        -khtml-opacity: 0.8;
+    }
+    
+    h1 {
+        text-align: center;
+        padding: 12px;
+        color: rgb(27, 27, 27)
+    }
+    
+    input {
+        width: calc(100% - 20px);
+        padding: 9px;
+        margin: auto;
+        margin-top: 12px;
+        font-size: 16px
+        
+    }
+    input[type="text"], input[type="tel"],input[type="password"] ,input[type="email"]  {
+        display: inline-block;
+        vertical-align: top;
+        width: 256px;
+        margin: 0 50px 15px 0;
+        padding: 20px 0px;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #435160;
+        outline: none;
+        color: #6D7781;
+        font-size: 16px;
+      }
+      input:hover{
+        border-bottom: 1.2px solid #474747;
+      }
+      
+      
+    .button {
+        cursor: pointer;
+        background-color: #3483fa;
+        color: #fff;
+        width: calc(35% - 20px);
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 5px #999;
+      }
+     
+      
+      .button:hover {background-color: #105cf4}
+      
+      .button:active {
+        background-color: rgb(32, 101, 204);
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+   
