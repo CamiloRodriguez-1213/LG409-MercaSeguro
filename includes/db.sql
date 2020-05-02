@@ -11,12 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> cf652fff52e3b9179f43eb60f7a0451e1b4015b3
 -- Volcando estructura para tabla ventas_online.categorias
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(20) NOT NULL,
@@ -24,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.categorias: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla ventas_online.categorias: ~10 rows (aproximadamente)
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` (`id`, `nombre`) VALUES
 	(1, 'Arte'),
