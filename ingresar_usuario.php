@@ -22,16 +22,16 @@
     </div><!--Fin Header: Primera parte de la pagina-->
     
     <div class="contenedor">
-    <form class="ingresar_usuario"  action="guardar_nuevo_usuario.php" method="post">
+    <form class="ingresar_usuario"  action="login.php" method="post">
     <div >    
         <h1>Para continuar ingresa tu correo o usuario</h1>
         
-            <input  type="email" name="email" required placeholder="Email">
+            <input  type="text" name="email" required placeholder="Email">
             <input  type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br>
             <br>
             <tr>
                 <td><button class="btn btn-outline-primary" onclick="location='index.php'" >Crear cuenta</button></td>
-                <td><button class="btn btn-primary"  >Crear cuenta</button></td>
+                <td><button class="btn btn-primary"  >Crear</button></td>
                 
             </tr><br><br>
             <h4>O Ingresa con</h4>

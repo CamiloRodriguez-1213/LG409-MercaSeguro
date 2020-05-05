@@ -54,7 +54,7 @@
                 <td><input type="tel" name="whatsapp" required placeholder="Número de Whatsapp"></td>
             </tr>
             <tr>
-                <td><input type="text" name="Ciudad" required placeholder="Ciudad Actual"></td>
+                <td><input type="text" name="ciudad" required placeholder="Ciudad Actual"></td>
                 <td><input type="text" name="direccion" required placeholder="Dirección"></td>
                 
             </tr>

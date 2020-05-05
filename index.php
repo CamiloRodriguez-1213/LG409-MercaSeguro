@@ -1,13 +1,3 @@
-<?php
-    include('includes/verify_install.php');
-    include('includes/db.php');  
-    
-    $sql = "select * from usuarios";
-    
-    $result = DB::query($sql);
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -59,7 +49,7 @@
             <div >
                 <ul class="nav-categs" >
                     <li class="esp"><a href="crear_usuario.php">Crear tu cuenta</a></li>
-                    <li><a href="">Ingresa</a></li>
+                    <li><a href="ingresar_usuario.php">Ingresa</a></li>
                     <li><a href="">Mis compras</a></li>
                 </ul>
             </div>

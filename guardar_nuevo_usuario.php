@@ -11,8 +11,6 @@
         $ciudad = $_POST["ciudad"];
         $direccion = $_POST["direccion"];
         
-        
-
         if(isset($id) == false)
         {
             $sql = "INSERT INTO usuarios(nombre,apellido,email,password,celular,whatsapp,ciudad,direccion) values('$nombre','$apellido','$email','$password','$celular','$whatsapp','$ciudad','$direccion')"; 
