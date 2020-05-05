@@ -24,6 +24,7 @@
     
     <div id="header-index" ><!--Header: Primera parte de la pagina-->
     <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
+    
         <div >
             <form class="form-search" action="" method="GET" role="search" >
 

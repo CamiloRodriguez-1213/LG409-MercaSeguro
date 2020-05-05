@@ -15,14 +15,14 @@
     
 </head>
 <body>
-    
-    <div id="header-index" ><!--Header: Primera parte de la pagina-->
+<div id="header-index" ><!--Header: Primera parte de la pagina-->
     <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
 
     </div><!--Fin Header: Primera parte de la pagina-->
     
     <div class="contenedor">
     <form class="ingresar_usuario"  action="guardar_nuevo_usuario.php" method="post">
+   
     <div >    
         <h1>Para continuar ingresa tu correo o usuario</h1>
         
@@ -30,8 +30,8 @@
             <input  type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br>
             <br>
             <tr>
-                <td><button class="btn btn-outline-primary" onclick="location='index.php'" >Crear cuenta</button></td>
-                <td><button class="btn btn-primary"  >Crear cuenta</button></td>
+                <td><button class="btn btn-outline-primary" onclick="location='crear_usuario.php'" >Crear cuenta</button></td>
+                <td><button class="btn btn-primary"  >Ingresar</button></td>
                 
             </tr><br><br>
             <h4>O Ingresa con</h4>
