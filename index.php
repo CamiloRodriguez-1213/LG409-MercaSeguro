@@ -1,13 +1,3 @@
-<?php
-    include('includes/verify_install.php');
-    include('includes/db.php');  
-    
-    $sql = "select * from usuarios";
-    
-    $result = DB::query($sql);
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

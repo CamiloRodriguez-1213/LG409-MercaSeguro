@@ -22,67 +22,32 @@
     </div><!--Fin Header: Primera parte de la pagina-->
     
     <div class="contenedor">
-    <form class="crear_usuario" action="guardar_nuevo_usuario.php" method="post">
+    <form class="ingresar_usuario"  action="login.php" method="post">
     <div >    
         <h1>Para continuar ingresa tu correo o usuario</h1>
         
-            <table>
-          <!--   <tr>
-                <td><input type="text" name="nombre"  required placeholder="Nombre"></td>
-                <td><input type="text" name="apellido" required placeholder="Apellido"></td>
-            </tr> -->
-            <tr>
-                <td><input type="email" name="email" required placeholder="Email"></td>
-                <td><input type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br></td>
-            </tr>
-            
-            <!--<td><input type="checkbox" id="show-password" />Mostrar Contraseña</td>-->
-            
-            </table>
-       
+            <input  type="text" name="email" required placeholder="Email">
+            <input  type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br>
             <br>
-            <input type="submit" id="btn-abrir-popup" class="button" value="Continuar">
-            <br><br>
-           <!--  <input type="submit" class="btn btn-crear" value="Crear cuenta" onclick="location='index.php'"> -->
-            <button class="btn btn-outline-primary" onclick="location='index.php'" >Crear cuenta</button>
-            <br><br>
+            <tr>
+                <td><button class="btn btn-outline-primary" onclick="location='index.php'" >Crear cuenta</button></td>
+                <td><button class="btn btn-primary"  >Crear</button></td>
+                
+            </tr><br><br>
+            <h4>O Ingresa con</h4>
+            <br>
             <ul>
                 
-            <div class="container">
-                <li><i class="fab fa-facebook-f"></i></li>
-                 <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-google"></i></li>
+            <div class="pos-faces">
+                <li class="pos-face"><i class="fab fa-facebook-f"></i></li>
+                 <li class="pos-face"><i class="fab fa-twitter"></i></li>
+                <li class="pos-face"><i class="fab fa-google"></i></li>
             </div>
        
         
       </ul>
         </div> 
         
-		
-
-		<div class="overlay" id="overlay">
-			<div class="popup" id="popup">
-				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-				<h3>Un Momento</h3>
-				<h4>Llena estos datos antes de finalizar</h4>
-		<!-- 		<table>
-            
-           <tr>
-                <td><input type="tel" name="celular" required placeholder="Número de Celular"></td>
-                <td><input type="tel" name="whatsapp" required placeholder="Número de Whatsapp"></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="Ciudad" required placeholder="Ciudad Actual"></td>
-                <td><input type="text" name="direccion" required placeholder="Dirección"></td>
-            </tr>  
-            <input type="submit" class="btn-submit" value="Crear">
-            
-            </table> -->
-     
-
-			</div>
-		</div>
-	</div>
     </form>
     <script src="popup.js"></script>
 </body>
