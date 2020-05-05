@@ -59,7 +59,7 @@
             <div >
                 <ul class="nav-categs" >
                     <li class="esp"><a href="crear_usuario.php">Crear tu cuenta</a></li>
-                    <li><a href="ingresar_usuario.php">Ingresa</a></li>
+                    <li><a href="">Ingresa</a></li>
                     <li><a href="">Mis compras</a></li>
                 </ul>
             </div>
