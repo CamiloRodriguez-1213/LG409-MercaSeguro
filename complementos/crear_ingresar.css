@@ -367,4 +367,7 @@
         left: 50%;
         display: inline-block;
       }
+      .alert alert-danger{
+        background-color: rgb(207, 225, 48);
+      }
     
