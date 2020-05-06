@@ -32,7 +32,7 @@
     <div id="header-index" ><!--Header: Primera parte de la pagina-->
     <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
     
-    <li class="cerrar-sesion"><a href="logout.php">Cerrar sesión</a></li>
+    
     
 
 
@@ -77,6 +77,7 @@
                     <li class="esp "><a href="crear_usuario.php">Crear tu cuenta</a></li>
                     <li><a href="ingresar_usuario.php">Ingresa</a></li>
                 <li><a href="#">Mis compras</a></li>
+                <li class="cerrar-sesion"><a href="logout.php">Cerrar sesión</a></li>
                 </ul>
             
             </div><!--Fin Menu desplegable-->
