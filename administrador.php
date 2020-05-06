@@ -11,8 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-    <nav class="navbar navbar-expand navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
+    <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
       
       <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
       <ul class="navbar-nav  mr-auto">
@@ -57,10 +57,9 @@
           </li>
         </ul>
         <ul class="navbar-nav mr-auto">
-         
+         <li></li>
         <li class="nav-item dropdown" id='dmenu'>
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuario
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario
         </a>
         <div class="dropdown-menu" style="background-color: #333 ;padding: 22px 0;" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Compras</a>
@@ -74,12 +73,7 @@
         <li class="nav-item">
             <a class="nav-link" href="#">Mis compras</a>
           </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Mis ventas</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Historial</a>
-          </li>
+        
         </ul>
     
   </div>
