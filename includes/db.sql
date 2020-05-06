@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 -- Volcando estructura para tabla ventas_online.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(20) NOT NULL DEFAULT '0',
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla ventas_online.usuarios: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

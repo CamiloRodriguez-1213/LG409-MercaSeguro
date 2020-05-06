@@ -8,18 +8,19 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     
     <title>Inicio</title>
-
     <?php  
 
       
-// SESSION_UNSET();
-  SESSION_START();
-  if(isset($_SESSION['id'])){
-    $ides=$_SESSION['id'];
-  }else{
-    $ides=0;
-  }
-?>
+      // SESSION_UNSET();
+        SESSION_START();
+        if(isset($_SESSION['id'])){
+          $ides=$_SESSION['id'];
+        }else{
+          $ides=0;
+        }
+  ?>
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
     
@@ -31,7 +32,10 @@
     <div id="header-index" ><!--Header: Primera parte de la pagina-->
     <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
     
-    <!-- <li class="cerrar-sesion"><a href="includes/logout.php">Cerrar sesión</a></li> -->
+    <li class="cerrar-sesion"><a href="logout.php">Cerrar sesión</a></li>
+    
+
+
             <form class="form-search" action="" method="GET" role="search" >
 
                 <input type="text" class="search-input-index" aria-label="Ingresa lo que quieras encontrar" name="as_word" placeholder="Buscar productos, marcas y más…" maxlength="120" autofocus="" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" >

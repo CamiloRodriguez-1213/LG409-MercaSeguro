@@ -1,54 +1,89 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Last-Modified" content="0">
-    <link rel="stylesheet" type="text/css" href="complementos/crear_ingresar.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
-    <title>Inicio</title>
-    
-</head>
-<body>
-<div id="header-index" ><!--Header: Primera parte de la pagina-->
-    <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
+<?php
+    include('includes/verify_install.php');
+     include('includes/db.php');
+     $sql="SELECT * FROM usuarios ";
+     $result= DB::query($sql);
+     
+     
+  //  $result= mysqli_query($con,$sql);
+ 
+?>
 
-    </div><!--Fin Header: Primera parte de la pagina-->
+<!-- <link rel="stylesheet" href="css/style_ingresar.css">   -->
+
+<!doctype html>
+<html lang="en">
+<header>
+    <div class="a1 container">
+       <a href="index.php" class="item animated infinite pulse delay"><h1>Inicio</h1></a>
+    </div>
+</header>
+<body>
+
+
+
+<div class="a2 container">
+<div class="row">
     
-    <div class="contenedor">
-    <form class="ingresar_usuario"  action="guardar_nuevo_usuario.php" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+
+<div class="input justify-content-around">
+    <label for="exampleDropdownFormEmail2">Correo</label>    
+     <input type="text" name="email" id="gm"class="form-control" required placeholder="Gmail: ejemplo@gmail.com"  >
+</div>
+<div class="input justify-content-around">
+    <label for="exampleDropdownFormEmail2">Password</label>
+     <input type="password" name="password" id="passwo" class="form-control" required placeholder="Password :"  >
+</div>
+<div class="inici">
+    <input type="submit" name="btn1"  value="ENTRAR" id="ini2" class="btn btn-primary animated infinite pulse delay"  
+    <?php
+    if(isset($_POST['btn1'])){
+        $emaili="";
+        $email= $_POST['email'];
+        $password=$_POST['password'];
+        $ide="";
+        echo "<p>correo: {$email}, contraseña: {$password} </p>";
+        $usu=0;
+        $reg=0;
+        while($mostrar= mysqli_fetch_array($result)){
+           // $nombres=$_POST["id"];
+           
+            if($email==$mostrar['email'] && $password == $mostrar['password'] ){
+                    $reg++;
+                    $ide=$mostrar['id'];
+                   // $nombres = $_POST["nombres"];
+                    //echo "el usuario si existe {$reg}";  
+            }
+            else{     
+                    $usu++;
+                   // echo "sin registrar {$usu}";
+            }
+        }  
+        session_start();
+        $_SESSION['id']=$ide;
+
+        if($reg > 0){
+            echo 
+           //ingreso correcta
+           header('administrador.php') ;
+        
+        }else{
+            echo 
+           //ingreso erroneo
+           header('ingresar_usuario.php');
+            
+        }
+    }
    
-    <div >    
-        <h1>Para continuar ingresa tu correo o usuario</h1>
-        
-            <input  type="email" name="email" required placeholder="Email">
-            <input  type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br>
-            <br>
-            <tr>
-                <td><button class="btn btn-outline-primary" onclick="location='crear_usuario.php'" >Crear cuenta</button></td>
-                <td><button class="btn btn-primary"  >Ingresar</button></td>
-                
-            </tr><br><br>
-            <h4>O Ingresa con</h4>
-            <br>
-            <ul>
-                
-            <div class="pos-faces">
-                <li class="pos-face"><i class="fab fa-facebook-f"></i></li>
-                 <li class="pos-face"><i class="fab fa-twitter"></i></li>
-                <li class="pos-face"><i class="fab fa-google"></i></li>
-            </div>
-       
-        
-      </ul>
-        </div> 
-        
-    </form>
-    <script src="popup.js"></script>
+    ?>
+     >
+ </div>
+
+
+</form>
+</div>
+</div>
+
 </body>
 </html>

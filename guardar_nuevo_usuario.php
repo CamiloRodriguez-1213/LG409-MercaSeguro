@@ -1,5 +1,12 @@
 <?php 
     include('includes/db.php');
+    
+    SESSION_START();
+    if(isset($_SESSION['id'])){
+      $id_user=$_SESSION['id'];
+    }else{
+      $id_user=0;
+    }
    
         $id = $_POST["id"];
         $nombre = $_POST["nombre"];
@@ -11,8 +18,6 @@
         $ciudad = $_POST["ciudad"];
         $direccion = $_POST["direccion"];
         
-        
-
         if(isset($id) == false)
         {
             $sql = "INSERT INTO usuarios(nombre,apellido,email,password,celular,whatsapp,ciudad,direccion) values('$nombre','$apellido','$email','$password','$celular','$whatsapp','$ciudad','$direccion')"; 
