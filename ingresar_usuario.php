@@ -33,13 +33,13 @@
 </div>
 <div class="input justify-content-around">
     <label for="exampleDropdownFormEmail2">Password</label>
-     <input type="password" name="password" id="passwo" class="form-control" required placeholder="Password :"  >
+     <input type="password" name="password" id="passw" class="form-control" required placeholder="Password :"  >
 </div>
 <div class="inici">
     <input type="submit" name="btn1"  value="ENTRAR" id="ini2" class="btn btn-primary animated infinite pulse delay"  
     <?php
     if(isset($_POST['btn1'])){
-        $emaili="";
+       
         $email= $_POST['email'];
         $password=$_POST['password'];
         $ide="";
