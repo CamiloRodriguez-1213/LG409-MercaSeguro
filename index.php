@@ -1,3 +1,7 @@
+<?php
+    include('includes/verify_install.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,6 +71,7 @@
                 <li><a href="">Ofertas de la semana</a></li>
                 <li><a href="">Vender</a></li>
                 <li><a href="">Ayuda/PQR</a></li>
+              
             </ul>
 
             <ul class="nav-categs "  >

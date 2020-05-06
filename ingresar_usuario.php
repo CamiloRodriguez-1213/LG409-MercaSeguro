@@ -32,6 +32,7 @@
     
     <div class="contenedor">
     <form class="ingresar_usuario"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+   
     <div >    
         <h1>Para continuar ingresa tu correo o usuario</h1>
         
@@ -48,7 +49,10 @@
     if(isset($_POST['login'])){
         $emaili="";
         $email= $_POST['email'];
-        $password=$_POST['password'];
+       
+       
+        $password=md5($_POST["password"]);
+   
         $ide="";
         echo "<p>correo: {$email}, contraseña: {$password} </p>";
         $usu=0;
@@ -56,7 +60,7 @@
         while($mostrar= mysqli_fetch_array($result)){
            // $nombres=$_POST["id"];
            
-            if($email==$mostrar['email'] && $password == $mostrar['password'] ){
+            if($email==$mostrar['email'] && $password == $mostrar['password']){
                     $reg++;
                     $ide=$mostrar['id'];
                    
@@ -70,20 +74,22 @@
 
         if($reg > 0){
             
-           //ingreso correcta
-           
+          
            header('Location: administrador.php');
         
         }else{
+        
+            echo '<div class="alert alert-danger">Usuario incorrecto </div>';
            //ingreso erroneo
-           header('Location: ingresar_usuario.php');
+           header('Refresh: 3; Location: ingresar_usuario.php');
            
             
         }
     }
    
     ?>
-                
+              
+</button>  
             </tr><br><br>
             <h4>O Ingresa con</h4>
             <br>
