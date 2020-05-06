@@ -19,8 +19,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-    <nav class="navbar navbar-expand navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
+    <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
       
       <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
       <?php  
@@ -54,7 +54,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categorias
         </a>
-        <div class="dropdown-menu" style="background-color: #333 ;padding: 22px 0;" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" style="padding: 22px 0;" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Vehículos</a>
           <a class="dropdown-item" href="#">Tecnología</a>
           
@@ -71,9 +71,7 @@
         <li class="nav-item">
             <a class="nav-link" href="#">Mis ventas</a>
           </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Historial</a>
-          </li>
+        
         </ul>
         <ul class="navbar-nav mr-auto">
         <?php
@@ -102,7 +100,7 @@
         
         <?php echo $nombre; echo "  ";echo $apellido?>
         </a>
-        <div class="dropdown-menu" style="background-color: #333 ;padding: 22px 0;" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" id="navn" style="background-color: white ;padding: 22px 0;" aria-labelledby="navbarDropdown">
     
        
           <a class="dropdown-item" href="#"><i class='far fa-credit-card'></i> Compras</a>
@@ -117,12 +115,7 @@
        
             <a class="nav-link" href="#">Mis compras</a>
           </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Mis ventas</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Historial</a>
-          </li>
+        
         </ul>
     
   </div>
