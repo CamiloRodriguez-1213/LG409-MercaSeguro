@@ -8,8 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Last-Modified" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="complementos/inicio.css">
@@ -19,32 +17,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
+    
+  <title>Inicio</title>
+   
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
     <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
-      
-      <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
-      <?php 
- 
-      
-      ?>
+      <h1><a class="navbar-brand " href="index.php">MercaSeguro</a></h1>
       <?php  
  
       // SESSION_UNSET();
         SESSION_START();
         if(isset($_SESSION['id'])){
           $ides=$_SESSION['id'];
-          
         }else{      
         $ides=0;
-        header("Location: index.php");
        }
-       
+       $busqueda = strtolower( $_REQUEST['busqueda']);
     ?>
-
+    
       <ul class="navbar-nav  mr-auto">
-      <form class="form-inline my-2 my-lg-0">
-      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" placeholder="Search"></li>
-      <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">buscar</button></li>
+      <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
+      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos" value="<?php echo $busqueda; ?>"></li>
+      <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button></li>
           
         </form>
       </ul>
@@ -73,7 +69,7 @@
             <a class="nav-link" href="#">Historial</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Ofertas de la semana</a>
+            <a class="nav-link" href="#">Oferta Semanal</a>
           </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Mis ventas</a>
@@ -81,60 +77,59 @@
         
         </ul>
         <ul class="navbar-nav mr-auto">
-        <?php
-                   $nombre='';
-                   $apellido='';
-                  if($ides>0){
-                  $sql="SELECT * FROM usuarios ";
-                  $result= DB::query($sql);
-                  while($mostrar= mysqli_fetch_array($result)){
-                  if($ides==$mostrar['id']){
-                    $nombre=$mostrar['nombre'];
-                    $apellido=$mostrar['apellido'];
-                  }
-                  $usuario=$nombre." ".$apellido;
-             }  
-            }
-            else{
-              $usuario = "Crea tu cuenta";
-
-            }
-          ?>
-          
-        <li class="nav-item"></li>
-        <li class="nav-item dropdown" id='dmenu'>
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      
-        <i class="fas fa-user-circle" style='font-size:24px'></i> <?php echo $usuario;?>
+        <li class="nav-item">
+          <a class="nav-link" href="crear_usuario.php">Crea tu cuenta</a>
+        </li>
         
+        <li class="nav-item">
         
-        </a>
-        <div class="dropdown-menu" id="navn" style="background-color: white ;padding: 22px 0;" aria-labelledby="navbarDropdown">
-    
-       
-          <a class="dropdown-item" href="#"><i class='far fa-credit-card'></i> Compras</a>
-          <a class="dropdown-item" href="vender_producto.php">Ventas</a>
-          <a class="dropdown-item" href="#">Mis Datos</a>
-          <a class="dropdown-item" href="#">Seguridad</a>
-          
-          <a class="dropdown-item" href="includes/logout.php">Cerrar Sesion</a>
-        </div>
+          <a class="nav-link" href="ingresar_usuario.php">Iniciar sesión</a>
         </li>
         <li class="nav-item">
-       
-            <a class="nav-link" href="#">Mis compras</a>
-          </li>
-        
+          <a class="nav-link" href="#">Mis compras</a>
+        </li>
         </ul>
     
   </div>
 </nav>
-  <title>Inicio</title>
-   
-</head>
-<body>
-  
-    
+  <table>
+      <tr>
+          <td><th>Resultado</th></td>
+          
+      </tr>
+      <tr>
+          <td>
+      <?php
+        
+        $sql= "SELECT * FROM usuarios WHERE 
+        id LIKE '%$busqueda%' OR
+        nombre LIKE '%$busqueda%' OR
+        apellido LIKE '%$busqueda%' OR
+        email LIKE '%$busqueda%' OR
+        password LIKE '%$busqueda%' OR
+        celular LIKE '%$busqueda%' OR
+        whatsapp LIKE '%$busqueda%' OR
+        direccion LIKE '%$busqueda%' OR
+        ciudad LIKE '%$busqueda%'
+        
+        ";
+        $result= DB::query($sql);
+        while($mostrar= mysqli_fetch_array($result)){
+            ?>
+            <tr><?php echo $mostrar['nombre'] ?> </tr>
+            <tr><?php echo $mostrar['nombre'] ?> </tr>
+            
+            <br>
+            <?php
+        }
+       
+      ?>
+      </td>
+     </tr>
+  </table>
 
+
+    <script src="js/jquery-3.5.0.min.js">  </script>
+    <script src="js/bootstrap.min.js">  </script>
 </body>
 </html>

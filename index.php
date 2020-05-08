@@ -1,6 +1,7 @@
 <?php
     include('includes/verify_install.php');
     include('includes/db.php');
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,25 +18,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top ">
+    
+  <title>Inicio</title>
+   
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
     <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
-      
-      <h1><a class="navbar-brand " href="#top">MercaSeguro</a></h1>
+      <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
       <?php  
  
-      // SESSION_UNSET();
-        SESSION_START();
-        if(isset($_SESSION['id'])){
-          $ides=$_SESSION['id'];
-        }else{      
-        $ides=0;
-       }
+    // SESSION_UNSET();
+    SESSION_START();
+    if(isset($_SESSION['id'])){
+      $ides=$_SESSION['id'];
+      header("Location: administrador.php");
+    }else{      
+    $ides=0;
+  
+   }
     ?>
 
       <ul class="navbar-nav  mr-auto">
       <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
-      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" placeholder="Busca tus productos"></li>
-      <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit"><i style='font-size:20px' class='fas'>&#xf002;</i></button></li>
+      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos" ></li>
+      <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button></li>
           
         </form>
       </ul>
@@ -87,10 +94,6 @@
     
   </div>
 </nav>
-  <title>Inicio</title>
-
-</head>
-<body>
 
 
 <!-- CARUSSEL AUTOMATICO -->
