@@ -44,48 +44,44 @@
 
     </div><!--Fin Header: Primera parte de la pagina-->
     
-    <div class="contenedor ">
-    <form class="container ingresar_usuario"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+    <div class="contenedor">
+    <form class="ingresar_usuario"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
    
+     
         <h1>Para continuar ingresa tu correo o usuario</h1>
-
-<!-- Inicio de campos Email y Contraseña -->
-        <div class="container ">
-            <div class="row">
-              <div class="col"></div>
-
-              <div class="col">
-                    <div class="form-group ">
-                    <label class="col-form-label col-form-label-lg" for="inputLarge"> </label>
-                    <input class="form-control form-control-lg" type="text" name="email" required autocomplete="off" placeholder="Email">
-                    </div>
-              </div>
-
-              <div class="col">
-                     <div class="form-group ">
-                        <label class="col-form-label col-form-label-lg" for="inputLarge"> </label>
-                        <input class="form-control form-control-lg" type="password" id="password" required autocomplete="off" name="password" placeholder="Contraseña" size="40" >
-                    </div>
-              </div>
-              <div class="col"> </div>
+        <table>
+            <tr>
+                <td><input  type="text" name="email" required placeholder="Email"></td>
+                <td><input  type="password" id="password" required name="password" placeholder="Contraseña" size="40"><br></td>
+            </tr>
+            <br>
+            <tr>
+             
+            <td><input type="submit" name="login" class="btn btn-primary btn-sn" onclick="Habilitar();"></td>
+             
+            <td><input  class="btn btn-primary" value="Regresar" onclick="location='index.php'"></td>
+            <tr align="center">
+            <td>
+            
+            <br><br>
+            <h4>O Ingresa con</h4>
+            <br>
+            <ul>
+            <div class="pos-faces">
+                <li class="pos-face"><i class="fab fa-facebook-f"></i></li>
+                 <li class="pos-face"><i class="fab fa-twitter"></i></li>
+                <li class="pos-face"><i class="fab fa-google"></i></li>
             </div>
-        </div>
-
-        <div class="row">
-        <div class="col"> </div>
-        <div class="col">
-        <td><input type="submit" name="login" class="btn btn-primary btn-sn" onclick="Habilitar();"></td>
-        </div>
-
-        <div class="col">
-        <td><input  class="btn btn-primary" value="Regresar" onclick="location='index.php'"></td>
-        </div>
-        <div class="col"> </div>
-  </div>
-<!-- FIN de botones Enviar y Regresar -->
-
-
+            </ul>
+                
+            
+       
         
+            </td>
+             </tr>
+             
+         </tr>
+            
         
     <?php
     if(isset($_POST['login'])){

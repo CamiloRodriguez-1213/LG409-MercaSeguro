@@ -17,7 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top ">
     <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
       
       <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
@@ -45,7 +45,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor02">
+  <div class="collapse navbar-collapse " id="navbarColor02">
   <ul class="navbar-nav  mr-auto">
           
           <li class="nav-item dropdown" id='dmenu'>
