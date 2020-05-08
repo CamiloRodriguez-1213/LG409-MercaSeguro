@@ -18,37 +18,26 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.categorias: ~10 rows (aproximadamente)
-/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` (`id`, `nombre`) VALUES
-	(1, 'Arte'),
-	(2, 'Alimentos'),
-	(3, 'Cuidado Personal'),
-	(4, 'Celulares y telefonos'),
-	(5, 'Computacion'),
-	(6, 'Electrodomesticos'),
-	(7, 'Deportes'),
-	(8, 'Tecnologia'),
-	(9, 'Musica y peliculas'),
-	(10, 'Otras categorias');
-/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla ventas_online.productos
 CREATE TABLE IF NOT EXISTS `productos` (
-  `id` int(20) NOT NULL DEFAULT '0',
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
   `descripcion` varchar(50) DEFAULT NULL,
   `precio` varchar(50) DEFAULT NULL,
-  `categoria` int(20) DEFAULT NULL,
-  `foto` varchar(50) DEFAULT NULL,
+  `id_categoria_producto` int(20) DEFAULT NULL,
+  `imagen` longblob,
+  `id_usuarios` int(11) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_productos_categorias` (`categoria`),
-  CONSTRAINT `FK_productos_categorias` FOREIGN KEY (`categoria`) REFERENCES `categorias` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `FK_productos_categorias` (`id_categoria_producto`),
+  KEY `FK_productos_usuarios` (`id_usuarios`),
+  CONSTRAINT `FK_productos_categorias` FOREIGN KEY (`id_categoria_producto`) REFERENCES `categorias` (`id`),
+  CONSTRAINT `FK_productos_usuarios` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.productos: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla ventas_online.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -62,11 +51,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccion` varchar(100) DEFAULT NULL,
   `ciudad` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.usuarios: ~0 rows (aproximadamente)
-
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

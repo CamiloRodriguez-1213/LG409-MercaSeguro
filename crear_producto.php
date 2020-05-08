@@ -67,7 +67,7 @@
                
               echo "<script>
                           alert('Error al Editar el producto');
-                          window.location= 'mis_productos.php'
+                          window.location= 'editar_producto.php'
                           </script>";
                           die;
             }

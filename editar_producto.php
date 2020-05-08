@@ -11,6 +11,7 @@
     }
     $id = $_GET['id'];
     $sql = "select * from productos where id= $id";
+   
     $producto = DB::query($sql);
     
     $producto = mysqli_fetch_object($producto);
@@ -51,10 +52,9 @@
             <input type="text" name="nombre" required placeholder="Nombre del producto" value="<?= $producto->nombre ?>">
                 <div class="input">
                 <div class="form-group">
-                <label for="exampleFormControlTextarea1">Especificacion Del Producto</label>
-                <textarea type="text" required name="descripcion" class="form-control" id="exampleFormControlTextarea1" >
+                <input type="text" name="descripcion"  class="descrip" placeholder="Descripcion del producto" value=" <?=$producto->descripcion?>">
                 
-                <?echo $producto->descripcion?>
+               
                 </textarea>
                 </div>      
              </div>
@@ -67,9 +67,9 @@
             <div class="input">
             <div class="form-group">
              <label for="exampleFormControlSelect1">Categoria Del Producto</label> <br>
-              <select class="form-control" name="categorias" id="exampleFormControlSelect1">
+              <select class="form-control" name="categorias" id="exampleFormControlSelect1" >
               <option value="">seleccione una categoria</option>
-              <option value="1">Arte</option>
+              <option value="1" >Arte</option>
               <option value="2">Alimentos</option>
               <option value="3">Cuidado Personal</option>
               <option value="4">Celulares y telefonos</option>
@@ -78,7 +78,7 @@
               <option value="7">Deportes</option>
               <option value="8">Tecnologia</option>
               <option value="9">Musica y peliculas</option>
-              <option value="10">Otras categorias</option>
+              <option value="10">Otras categorias</option> 
               
              </select>
              </div>
@@ -86,7 +86,7 @@
             <div class="imge">
                <input type="file" name="imagen" id="exampleDropdownFormEmail2">
 
-     <?php 
+                     <?php 
                    
                      $img= DB::query($sql);
                      while($mostrar= mysqli_fetch_array($img)){?>
@@ -126,13 +126,8 @@
                         <input type="radio" name="estado" value="inactivo" checked>
                     <?php  }  ?>
                       <button type="submit" value="Registrar" id="regt" class="gur btn btn-primary animated infinite pulse delay">Guardar</button>
-    
-
-    
    
-  </form>
-
-
-    </div>
-    </body>
+    </form>
+             </div>
+     </body>
 </html>

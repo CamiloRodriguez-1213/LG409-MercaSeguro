@@ -144,92 +144,14 @@
         transform: translateY(4px);
       }
 
-      
-      /* 
-    Personalizar un boton
-    .btn-crear{background-color:rgba(226, 226, 226, 0.486);color: rgb(236, 226, 226);}
-    .btn-install:hover{color: rgba(82, 82, 82, 0.623);} 
-    */
-
-    /* iconos ingreso de sesion */
-    ul{
-        display: flex;
-      }
-      ul li{
-        position: relative;
-        display: block;
-        color: #666;
-        font-size: 30px;
-        height: 60px;
-        width: 60px;
-        background: #171515;
-        line-height: 60px;
-        border-radius: 50%;
-        margin: 0 15px;
-        cursor: pointer;
-        transition: .5s;
-      }
-      ul li:before{
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        height: inherit;
-        width: inherit;
-        /* background: #d35400; */
-        border-radius: 50%;
-        transform: scale(.9);
-        z-index: -1;
-        transition: .6s;
-      }
-      ul li:nth-child(1):before{
-        background: rgb(4, 4, 126);
-      }
-      ul li:nth-child(2):before{
-        background: rgb(24, 167, 79);
-      }
-      ul li:nth-child(3):before{
-        background: rgb(48, 225, 57);
-      }
-      
-      
-      ul li:hover:before{
-        filter: blur(3px);
-        transform: scale(1.2);
-        /* box-shadow: 0 0 15px #d35400; */
-      }
-      ul li:nth-child(1):hover:before{
-        box-shadow: 0 0 15px #4267B2;
-      }
-      ul li:nth-child(2):hover:before{
-        box-shadow: 0 0 15px rgb(29, 86, 242);
-      }
-      ul li:nth-child(3):hover:before{
-        box-shadow: 0 0 15px rgb(31, 167, 38);
-      }
-      
-      
-      ul li:nth-child(1):hover{
-        color: #e6e9ee;
-        box-shadow: 0 0 15px rgb(245, 245, 245);
-        text-shadow: 0 0 15px rgb(246, 247, 248);
-      }
-      ul li:nth-child(2):hover{
-        color: #26a4f2;
-        box-shadow: 0 0 15px rgb(228, 242, 29);
-        text-shadow: 0 0 15px #1DA1F2;
-      }
-      ul li:nth-child(3):hover{
-        color: #e23670;
-        box-shadow: 0 0 15px #E1306C;
-        text-shadow: 0 0 15px #E1306C;
-      }
-      /*Alineando iconos de inicio de sesion*/
-      .pos-face{
-        left: 50%;
-        display: inline-block;
-      }
-      .alert alert-danger{
-        background-color: rgb(207, 225, 48);
-      }
-    
+  .descrip{
+        
+        vertical-align: top;
+        margin: 0 50px 15px 0;
+        padding: 20px 0px;
+        background: transparent;
+        border: 2px;
+        border-bottom: 2px solid #435160;
+        color: #6D7781;
+        font-size: 16px;
+  }
