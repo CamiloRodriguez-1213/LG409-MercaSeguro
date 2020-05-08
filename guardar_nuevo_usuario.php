@@ -21,10 +21,11 @@
         if(isset($id) == false)
         {
             $sql = "INSERT INTO usuarios(nombre,apellido,email,password,celular,whatsapp,ciudad,direccion) values('$nombre','$apellido','$email','$password','$celular','$whatsapp','$ciudad','$direccion')"; 
+            
         
         }else
         {
-            echo("Ingrese una contraseña correcta");
+            echo("Ingrese una id correcto");
         }
     
     DB::query($sql);

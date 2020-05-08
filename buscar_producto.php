@@ -1,7 +1,6 @@
 <?php
     include('includes/verify_install.php');
     include('includes/db.php');
-    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +24,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
     <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
-      <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
+      <h1><a class="navbar-brand " href="index.php">MercaSeguro</a></h1>
       <?php  
  
       // SESSION_UNSET();
@@ -35,11 +34,12 @@
         }else{      
         $ides=0;
        }
+       $busqueda = strtolower( $_REQUEST['busqueda']);
     ?>
-
+    
       <ul class="navbar-nav  mr-auto">
       <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
-      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos" ></li>
+      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos" value="<?php echo $busqueda; ?>"></li>
       <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button></li>
           
         </form>
@@ -92,6 +92,41 @@
     
   </div>
 </nav>
+  <table>
+      <tr>
+          <td><th>Resultado</th></td>
+          
+      </tr>
+      <tr>
+          <td>
+      <?php
+        
+        $sql= "SELECT * FROM usuarios WHERE 
+        id LIKE '%$busqueda%' OR
+        nombre LIKE '%$busqueda%' OR
+        apellido LIKE '%$busqueda%' OR
+        email LIKE '%$busqueda%' OR
+        password LIKE '%$busqueda%' OR
+        celular LIKE '%$busqueda%' OR
+        whatsapp LIKE '%$busqueda%' OR
+        direccion LIKE '%$busqueda%' OR
+        ciudad LIKE '%$busqueda%'
+        
+        ";
+        $result= DB::query($sql);
+        while($mostrar= mysqli_fetch_array($result)){
+            ?>
+            <tr><?php echo $mostrar['nombre'] ?> </tr>
+            <tr><?php echo $mostrar['nombre'] ?> </tr>
+            
+            <br>
+            <?php
+        }
+       
+      ?>
+      </td>
+     </tr>
+  </table>
 
 
     <script src="js/jquery-3.5.0.min.js">  </script>

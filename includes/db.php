@@ -5,7 +5,7 @@ class DB{
    static $host = HOST;
    static $user = USER;
    static $password = PASSWORD;
-   static $db = DB;   
+   static $db = DB;
 
    public static function init(){
        echo "Iniciando base de datos";
