@@ -29,7 +29,9 @@
 
 /*Fin Barra de busqueda*/
 /* Asignamos al header principal el color de fondo, junto a sus correspndientes medidas y estilos */
-    
+    .navn a{
+        color: #333;
+    }
 
      .collapse:hover
      {
@@ -77,7 +79,7 @@
         /*Color letra Menu desplegable*/
         .dropdown-menu a {
             
-            color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
         }
         .dropdown-menu a:hover {background-color: #3483fa;}
         
