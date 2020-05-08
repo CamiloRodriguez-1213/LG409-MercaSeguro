@@ -1,3 +1,7 @@
+<?php
+    include('includes/verify_install.php');
+    
+?>
 <html>
 <head>
     <meta charset="UTF-8">

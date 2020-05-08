@@ -8,7 +8,7 @@
 <?php 
     if(isset($_POST["host"])){
         //Escribir en el archivo config las variables de conexión
-        $file = fopen("includes/config.php", "w");
+        $file = fopen("config.php", "w");
 
         fwrite($file, "<?php" . PHP_EOL);
         fwrite($file, "define('HOST', '" . $_POST['host'] ."');" . PHP_EOL);
@@ -22,9 +22,9 @@
         echo "Creando archivo de conexión";
 
         //Importando la base de datos
-        $sql = file_get_contents('includes/db.sql');
+        $sql = file_get_contents('db.sql');
 
-        include('includes/db.php');
+        include('db.php');
 
         if(DB::getConnection()->multi_query($sql)){?>
            <h1 class="ok">Se ejecuto la importación correctamente</h1>

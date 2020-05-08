@@ -1,6 +1,6 @@
 <?php
     include('includes/verify_install.php');
-    include('includes/db.php');
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -108,7 +108,7 @@
           <a class="dropdown-item" href="#">Mis Datos</a>
           <a class="dropdown-item" href="#">Seguridad</a>
           
-          <a class="dropdown-item" href="logout.php">Cerrar Sesion</a>
+          <a class="dropdown-item" href="includes/logout.php">Cerrar Sesion</a>
         </div>
         </li>
         <li class="nav-item">
