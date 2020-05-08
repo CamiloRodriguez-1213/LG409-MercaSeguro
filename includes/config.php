@@ -2,5 +2,5 @@
 define('HOST', 'localhost');
 define('USER', 'root');
 define('PASSWORD', '');
-define('DB', 'prueba_bdprofe');
+define('DB', 'ventas_online');
 ?>

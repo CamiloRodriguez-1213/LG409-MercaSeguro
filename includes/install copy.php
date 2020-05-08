@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="complementos/crear_ingresar.css">
+    <link rel="stylesheet" type="text/css" href="../complementos/crear_ingresar.css">
     <title>Iniciar Sesion</title>
 <?php 
     if(isset($_POST["host"])){
@@ -30,7 +30,7 @@
            <h1 class="ok">Se ejecuto la importación correctamente</h1>
            <?php
            unlink('install.php');
-           header('Location: index.php');
+           header('Location:../index.php');
            //header( "Refresh:3; url=install.php", true, 303);
         }else{?>
             <h1 class="bad">No se ha podido importar la base de datos, verifique los errores</h1>

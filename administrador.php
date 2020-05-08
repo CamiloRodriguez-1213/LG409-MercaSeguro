@@ -1,5 +1,6 @@
 <?php
     include('includes/verify_install.php');
+    include('includes/db.php');
     
 ?>
 <!DOCTYPE html>
@@ -85,6 +86,7 @@
                     $nombre=$mostrar['nombre'];
                     $apellido=$mostrar['apellido'];
                   }
+                  
              }  
             }
             else{
