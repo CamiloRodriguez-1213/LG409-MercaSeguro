@@ -33,16 +33,9 @@
     ?>
 
       <ul class="navbar-nav  mr-auto">
-<<<<<<< HEAD
       <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
       <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" placeholder="Busca tus productos"></li>
       <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button></li>
-=======
-      <form class="form-inline my-2 my-lg-0">
-      <li class="nav-item dropdown"><input class="form-control mr" type="text" placeholder="Search"></li>
-
-      <li class="nav-item dropdown"><button class="btn btn-dark-dark btn-sm" type="submit"> <i style="font-size:24px" class="fa"></i> </button></li>
->>>>>>> e262dda86dbc1861fe91063083980644f0e2c4b2
           
         </form>
       </ul>
@@ -71,11 +64,7 @@
             <a class="nav-link" href="#">Historial</a>
           </li>
         <li class="nav-item">
-<<<<<<< HEAD
             <a class="nav-link" href="#">Oferta Semanal</a>
-=======
-            <a class="nav-link" href="#">Oferta semanal</a>
->>>>>>> e262dda86dbc1861fe91063083980644f0e2c4b2
           </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Mis ventas</a>
@@ -84,11 +73,7 @@
         </ul>
         <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-<<<<<<< HEAD
           <a class="nav-link" href="crear_usuario.php">Crea tu cuenta</a>
-=======
-          <a class="nav-link" href="#">Crear cuenta</a>
->>>>>>> e262dda86dbc1861fe91063083980644f0e2c4b2
         </li>
         
         <li class="nav-item">

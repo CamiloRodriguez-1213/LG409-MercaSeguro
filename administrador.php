@@ -1,6 +1,6 @@
 <?php
     include('includes/verify_install.php');
-    
+    include('includes/db.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,12 +85,11 @@
                     $nombre=$mostrar['nombre'];
                     $apellido=$mostrar['apellido'];
                   }
+                  $usuario=$nombre." ".$apellido;
              }  
             }
             else{
-              $nombre='Crea tu cuenta';
-              
-              $apellido='Crea tu cuenta';
+              $usuario = "Crea tu cuenta";
 
             }
           ?>
@@ -98,7 +97,7 @@
         <li class="nav-item dropdown" id='dmenu'>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         
-        <?php echo $nombre; echo "  ";echo $apellido?>
+        <?php echo $usuario;?>
         </a>
         <div class="dropdown-menu" id="navn" style="background-color: white ;padding: 22px 0;" aria-labelledby="navbarDropdown">
     
