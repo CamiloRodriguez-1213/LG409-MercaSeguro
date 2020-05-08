@@ -50,7 +50,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor02">
+  <div class="collapse navbar-collapse " id="navbarColor02">
   <ul class="navbar-nav  mr-auto">
           
           <li class="nav-item dropdown" id='dmenu'>

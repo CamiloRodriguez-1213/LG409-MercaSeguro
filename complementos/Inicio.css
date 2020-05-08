@@ -58,7 +58,7 @@
             -moz-box-shadow: none;
             -webkit-box-shadow: none;
         }
-        /*Fin uitar borde azul del input*/
+        /*Fin quitar borde azul del input*/
         .search-input-index{
             padding: 7px 60px 9px 15px;
             background-color: #fff;
