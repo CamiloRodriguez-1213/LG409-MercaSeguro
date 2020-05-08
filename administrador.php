@@ -1,7 +1,6 @@
 <?php
     include('includes/verify_install.php');
     include('includes/db.php');
-    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,15 +23,22 @@
     <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
       
       <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
+      <?php 
+ 
+      
+      ?>
       <?php  
  
       // SESSION_UNSET();
         SESSION_START();
         if(isset($_SESSION['id'])){
           $ides=$_SESSION['id'];
+          
         }else{      
         $ides=0;
+        header("Location: index.php");
        }
+       
     ?>
 
       <ul class="navbar-nav  mr-auto">
@@ -86,27 +92,28 @@
                     $nombre=$mostrar['nombre'];
                     $apellido=$mostrar['apellido'];
                   }
-                  
+                  $usuario=$nombre." ".$apellido;
              }  
             }
             else{
-              $nombre='Crea tu cuenta';
-              
-              $apellido='Crea tu cuenta';
+              $usuario = "Crea tu cuenta";
 
             }
           ?>
-        <li class="nav-item"><i class="material-icons mt-2">person</i></li>
+          
+        <li class="nav-item"></li>
         <li class="nav-item dropdown" id='dmenu'>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        <i class="fas fa-user-circle" style='font-size:24px'></i> <?php echo $usuario;?>
         
-        <?php echo $nombre; echo "  ";echo $apellido?>
+        
         </a>
         <div class="dropdown-menu" id="navn" style="background-color: white ;padding: 22px 0;" aria-labelledby="navbarDropdown">
     
        
           <a class="dropdown-item" href="#"><i class='far fa-credit-card'></i> Compras</a>
-          <a class="dropdown-item" href="#">Ventas</a>
+          <a class="dropdown-item" href="vender_producto.php">Ventas</a>
           <a class="dropdown-item" href="#">Mis Datos</a>
           <a class="dropdown-item" href="#">Seguridad</a>
           

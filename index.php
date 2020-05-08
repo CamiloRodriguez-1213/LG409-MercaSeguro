@@ -23,13 +23,15 @@
       <h1><a class="navbar-brand " href="#">MercaSeguro</a></h1>
       <?php  
  
-      // SESSION_UNSET();
-        SESSION_START();
-        if(isset($_SESSION['id'])){
-          $ides=$_SESSION['id'];
-        }else{      
-        $ides=0;
-       }
+    // SESSION_UNSET();
+    SESSION_START();
+    if(isset($_SESSION['id'])){
+      $ides=$_SESSION['id'];
+      header("Location: administrador.php");
+    }else{      
+    $ides=0;
+  
+   }
     ?>
 
       <ul class="navbar-nav  mr-auto">
