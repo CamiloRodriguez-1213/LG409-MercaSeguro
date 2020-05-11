@@ -37,67 +37,51 @@ include('includes/verify_install.php');
   <!--Fin Header: Primera parte de la pagina-->
 
   <!-- Inicio formulario Crear usuario -->
+  <div class="container">
   <form class="crear_usuario " action="guardar_nuevo_usuario.php" method="post">
 
-    <h1>Crear Nuevo Usuario</h1>
+<h1>Crear Nuevo Usuario</h1>
 
-    <div class="container ">
-      <div class="row">
-
-        <div class="col">
-          <div class="form-group ">
-
-            <input class="form-input" type="text" name="nombre"  autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="40">
-          </div>
-
-          <div class="form-group ">
-
-            <input class="form-input" type="email" name="email" id="email" required autocomplete="on" placeholder="Email" tabindex="3" size="40">
-          </div>
-
-          <div class="form-group ">
-
-            <input class="form-input" type="tel" name="celular" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="40">
-          </div>
-
-          <div class="form-group ">
-
-            <input class="form-input" type="text" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="40">
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="form-group ">
-
-            <input class="form-input" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="40">
-          </div>
-
-          <div class="form-group ">
-
-            <input class="form-input" type="password" id="password" name="password" required autocomplete="on" tabindex="4" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="El campo contraseña debe contener un mínimo 
-      de 8 caracteres, un máximo de 20, letras, (minúsculas y MAYÚSCULAS) y Números " placeholder="Contraseña"  size="40">
-          </div>
-
-          <div class="form-group ">
-
-            <input class="form-input" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="40">
-          </div>
-
-          <div class="form-group ">
-
-            <input class="form-input" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="40">
-          </div>
-        </div>
-      </div>
-
-      <br>
-      <button class="btn btn-primary btn-lg" name="login" type="submit" onclick="Habilitar()" tabindex="9" ;>Ingresar</button>
-
-    </div>
-
-  </form>
+<div class="container  ">
+<ul class="list-group list-group-horizontal-sm">
+  
+</ul>
+  <li class="list-group-item">
+  <input class="form-input" type="text" name="nombre" autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="40">
+  <input class="form-input" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="40">
 
 
+
+  </li>
+  <li class="list-group-item">
+    
+    <input class="form-input" type="email" name="email" id="email" required autocomplete="on" placeholder="Email" tabindex="3" size="40">
+    <input class="form-input" type="password" id="password" name="password" required autocomplete="on" tabindex="4" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="El campo contraseña debe contener un mínimo 
+  de 8 caracteres, un máximo de 20, letras, (minúsculas y MAYÚSCULAS) y Números " placeholder="Contraseña" size="40">
+
+  </li>
+  <li class="list-group-item">
+  <input class="form-input" type="tel" name="celular" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="40">
+  <input class="form-input" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="40">
+  
+
+  </li>
+  <li class="list-group-item">
+  <input class="form-input" type="text" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="40">
+<input class="form-input" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="40">
+
+  </li>
+</ul>
+
+  <br>
+  <button class="btn btn-primary btn-lg" name="login" type="submit" onclick="Habilitar()" tabindex="" ;>Ingresar</button>
+
+</div>
+
+</form>
+  </div>
+
+  
 
 </body>
 

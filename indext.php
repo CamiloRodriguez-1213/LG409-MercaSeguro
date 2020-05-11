@@ -82,7 +82,7 @@
             <a class="nav-link" href="#">Oferta Semanal</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Mis ventas</a>
+            <a class="nav-link" href="#">Vender</a>
           </li>
         
         </ul>
