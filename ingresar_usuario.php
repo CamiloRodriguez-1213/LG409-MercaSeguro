@@ -11,16 +11,14 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Last-Modified" content="0">
     <link rel="stylesheet" type="text/css" href="complementos/crear_ingresar.css">
-    <link rel="stylesheet" type="text/css" href="complementos/crear_ingresar.css">
+  
    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
     <title>Inicio</title>
     <script type="text/javascript">
    
@@ -42,46 +40,36 @@
 <div id="header-index" ><!--Header: Primera parte de la pagina-->
     <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
 
-    </div><!--Fin Header: Primera parte de la pagina-->
+</div><!--Fin Header: Primera parte de la pagina-->
     
     <div class="contenedor ">
-    <form class="container ingresar_usuario"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+    <form class="ingresar_usuario"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
    
         <h1>Para continuar ingresa tu correo o usuario</h1>
 
 <!-- Inicio de campos Email y Contraseña -->
         <div class="container ">
             <div class="row">
-              <div class="col"></div>
-
-              <div class="col">
-                    <div class="form-group ">
-                    <label class="col-form-label col-form-label-lg" for="inputLarge"> </label>
-                    <input class="form-control form-control-lg" type="text" name="email" required autocomplete="off" placeholder="Email">
-                    </div>
-              </div>
-
-              <div class="col">
-                     <div class="form-group ">
+                
+                <div class="col">
+                        <div class="form-group ">
                         <label class="col-form-label col-form-label-lg" for="inputLarge"> </label>
-                        <input class="form-control form-control-lg" type="password" id="password" required autocomplete="off" name="password" placeholder="Contraseña" size="40" >
-                    </div>
-              </div>
-              <div class="col"> </div>
+                        <input class="form-input" type="text" name="email" required autocomplete="on" placeholder="Email" size="40">
+                        </div>
+                </div>
+
+                <div class="col">
+                        <div class="form-group ">
+                            <label class="col-form-label col-form-label-lg" for="inputLarge"> </label>
+                            <input class="form-input" type="password" id="password" required autocomplete="on" name="password" placeholder="Contraseña" size="40" >
+                        </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-        <div class="col"> </div>
-        <div class="col">
-        <td><input type="submit" name="login" class="btn btn-primary btn-sn" onclick="Habilitar();"></td>
-        </div>
+            
+            <button class="btn btn-primary btn-lg" name="login" type="submit" onclick="Habilitar()";>Ingresar</button>
 
-        <div class="col">
-        <td><input  class="btn btn-primary" value="Regresar" onclick="location='index.php'"></td>
         </div>
-        <div class="col"> </div>
-  </div>
 <!-- FIN de botones Enviar y Regresar -->
 
 

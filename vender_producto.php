@@ -1,78 +1,92 @@
 <?php
-    include('includes/verify_install.php');
-     include('includes/db.php');
-     $sql="SELECT * FROM producto ";
-     $result= DB::query($sql);
-     
-  //  $result= mysqli_query($con,$sql);
- 
+include('includes/verify_install.php');
+include('includes/db.php');
+$sql = "SELECT * FROM producto ";
+$result = DB::query($sql);
+
+//  $result= mysqli_query($con,$sql);
+
 ?>
 
 
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Last-Modified" content="0">
     <link rel="stylesheet" type="text/css" href="complementos/crear_ingresar.css">
-  
-   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-        
-        <form class="login_db" action="crear_producto.php" method="post"enctype="multipart/form-data">
-            
-            
-          
-               
-                <input type="text" name="nombre" required placeholder="Nombre del producto">
-                    <div class="input">
-                    <div class="form-group">
-                  
-                   <input type="text" name="descripcion" class="descrip" placeholder="Especificacion">
-                    </div>      
-                 </div>
+    <div id="header-index">
+        <!--Header: Primera parte de la pagina-->
+        <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
 
-                    
-                    </div>
-             
-                <input type="text" name="precio"  placeholder="Valor del producto"><br><br>
-               
-                <div class="input">
-                <div class="form-group">
-                 <label for="exampleFormControlSelect1">Categoria Del Producto</label> <br>
-                  <select class="form-control" name="categorias" id="exampleFormControlSelect1">
-                  <option value="">seleccione una categoria</option>
-                  <option value="1">Arte</option>
-                  <option value="2">Alimentos</option>
-                  <option value="3">Cuidado Personal</option>
-                  <option value="4">Celulares y telefonos</option>
-                  <option value="5">Computacion</option>
-                  <option value="6">Electrodomesticos</option>
-                  <option value="7">Deportes</option>
-                  <option value="8">Tecnologia</option>
-                  <option value="9">Musica y peliculas</option>
-                  <option value="10">Otras categorias</option>
-                  
-                 </select>
-                 </div>
-                </div>
-                <div class="imge">
-                   <input type="file" name="imagen" id="exampleDropdownFormEmail2" accept="image/*">
-                 </div>
-                 <button type="submit" value="Registrar" id="regt" class="gur btn btn-primary animated infinite pulse delay">Guardar</button>
-         </div>
-        <br>
-        
+    </div>
+    <!--Fin Header: Primera parte de la pagina-->
+    <div>
     
-        
-       
-      </form>
+        <div class="container d-block" >
+        <br><br>
+            <h1>Seleccione Categoria</h1>
+            <br><br><br><br>
+            <div class="row justify-content-center" >
 
-    </body>
+                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
+
+                    <div class="card-body ml-2">
+                    
+                    <i class='fas fa-tshirt' style='font-size:120px'></i>
+                    <br><br><h6 class="card-title "><b>PRODUCTOS</b></h6>
+                    </div>
+                    
+                </button>
+
+                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
+
+                    <div class="card-body ml-1">
+                    <i class="fa fa-handshake-o" style="font-size:120px"></i>
+                    <br><br>
+                        <h6 class="card-title "><b>SERVICIOS</b></h6>
+
+                    </div>
+                    
+                </button>
+                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
+
+                    <div class="card-body ml-4">
+                    
+                    <i class='fas fa-car' style='font-size:120px'></i>
+                    <br><br><h6 class="card-title "><b>VEHICULOS</b></h6>
+                    </div>
+                    
+                </button>
+
+                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
+
+                    <div class="card-body ml-4">
+                    <i class='far fa-building' style='font-size:120px'></i>
+                    <br><br>
+                        <h6 class="card-title "><b>INMUEBLES</b></h6>
+
+                    </div>
+                    
+                </button>
+
+
+            </div>
+        </div>
+
+
+        </form>
+</body>
+
 </html>

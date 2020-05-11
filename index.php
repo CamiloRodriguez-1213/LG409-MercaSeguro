@@ -40,9 +40,17 @@
     ?>
 
       <ul class="navbar-nav  mr-auto">
-      <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
-      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos" ></li>
-      <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button></li>
+        <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control py-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
+        </div>
           
         </form>
       </ul>

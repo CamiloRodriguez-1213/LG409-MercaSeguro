@@ -38,9 +38,17 @@
     ?>
     
       <ul class="navbar-nav  mr-auto">
-      <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
-      <li class="nav-item dropdown"><input class="form-control mr-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos" value="<?php echo $busqueda; ?>"></li>
-      <li class="nav-item dropdown"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button></li>
+        <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control py-2" type="text" name="busqueda" id="busqueda" value="<?php echo $busqueda; ?>" placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
+        </div>
           
         </form>
       </ul>
@@ -93,35 +101,40 @@
   </div>
 </nav>
   <table>
+    <?php
+    if ($busqueda!= null || $busqueda!='') {?>
       <tr>
-          <td><th>Resultado</th></td>
+          <td><h3>Resultado</th></h3>
           
       </tr>
       <tr>
           <td>
       <?php
         
-        $sql= "SELECT * FROM usuarios WHERE 
-        id LIKE '%$busqueda%' OR
-        nombre LIKE '%$busqueda%' OR
-        apellido LIKE '%$busqueda%' OR
-        email LIKE '%$busqueda%' OR
-        password LIKE '%$busqueda%' OR
-        celular LIKE '%$busqueda%' OR
-        whatsapp LIKE '%$busqueda%' OR
-        direccion LIKE '%$busqueda%' OR
-        ciudad LIKE '%$busqueda%'
-        
-        ";
+          $sql= "SELECT * FROM productos WHERE
+          nombre LIKE '%$busqueda%' OR
+          descripcion LIKE '%$busqueda%' 
+          
+          ";
         $result= DB::query($sql);
         while($mostrar= mysqli_fetch_array($result)){
             ?>
-            <tr><?php echo $mostrar['nombre'] ?> </tr>
-            <tr><?php echo $mostrar['nombre'] ?> </tr>
-            
             <br>
+            <div class="media">
+            <img src="<?php echo $mostrar['imagen_producto'] ?>" class="mr-3" alt="...">
+            <div class="media-body">
+              <h1 class="mt-0"><?php echo $mostrar['nombre'] ?></h1>
+              
+              <h4>$ <?php echo $mostrar['precio'] ?></h4>
+            </div>
+          </div>
             <?php
         }
+        }else
+        {
+          echo "<h4>No se ha encontrado ningún resultado</h4>";
+        }
+        
        
       ?>
       </td>
