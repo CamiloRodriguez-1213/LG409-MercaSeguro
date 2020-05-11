@@ -40,43 +40,33 @@ $result = DB::query($sql);
             <br><br><br><br>
             <div class="row justify-content-center" >
 
-                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
-
+                <button class="card btn-light justify-content-center" onclick="location='productos/form_productos.php'" style="width: 13rem; height:220px">
                     <div class="card-body ml-2">
-                    
                     <i class='fas fa-tshirt' style='font-size:120px'></i>
                     <br><br><h6 class="card-title "><b>PRODUCTOS</b></h6>
                     </div>
-                    
                 </button>
 
-                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
-
+                <button class="card btn-light justify-content-center" onclick="location='productos/form_servicios.php'" style="width: 13rem; height:220px">
                     <div class="card-body ml-1">
                     <i class="fa fa-handshake-o" style="font-size:120px"></i>
                     <br><br>
                         <h6 class="card-title "><b>SERVICIOS</b></h6>
-
                     </div>
-                    
                 </button>
-                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
 
+                <button class="card btn-light justify-content-center" onclick="location='productos/form_veiculos.php'" style="width: 13rem; height:220px">
                     <div class="card-body ml-4">
-                    
                     <i class='fas fa-car' style='font-size:120px'></i>
                     <br><br><h6 class="card-title "><b>VEHICULOS</b></h6>
                     </div>
-                    
                 </button>
 
-                <button class="card btn-light justify-content-center" onclick="location='adminstrador.php'" style="width: 13rem; height:220px">
-
+                <button class="card btn-light justify-content-center" onclick="location='productos/form_inmuebles.php'" style="width: 13rem; height:220px">
                     <div class="card-body ml-4">
                     <i class='far fa-building' style='font-size:120px'></i>
                     <br><br>
                         <h6 class="card-title "><b>INMUEBLES</b></h6>
-
                     </div>
                     
                 </button>
