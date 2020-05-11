@@ -30,15 +30,14 @@
 
 </head>
 <body>
-<ul class="navigation">
-    <div class="a1 container">
-       <li><a href="administrador.php" class="item animated infinite pulse delay"><h1>Inicio</h1></a></li>
-       <a class="btn btn-dark" href="vender_producto.php" >Crear Producto</a>
-    </div>
-</ul>
+<div id="header-index" ><!--Header: Primera parte de la pagina-->
+    <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
+
+</div><!--Fin Header: Primera parte de la pagina-->
+
 
 <div class="a2 container">     
-        <h2 class="animated infinite pulse delay">Poductos Agregados </h2> <br>
+        <h2 class="animated infinite pulse delay">Mis productos</h2> <br>
        
     <div class="container">
             <?php       

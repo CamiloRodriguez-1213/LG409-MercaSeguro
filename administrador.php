@@ -120,7 +120,7 @@ include('includes/db.php');
 
 
             <a class="dropdown-item" href="#"><i class='far fa-credit-card'></i> Compras</a>
-            <a class="dropdown-item" href="#">Mis Ventas</a>
+            <a class="dropdown-item" href="mis_productos.php">Mis Ventas</a>
             <a class="dropdown-item" href="#">Mis Datos</a>
             <a class="dropdown-item" href="#">Seguridad</a>
 

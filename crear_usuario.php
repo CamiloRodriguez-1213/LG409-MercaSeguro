@@ -31,7 +31,7 @@ include('includes/verify_install.php');
 <body>
   <div id="header-index">
     <!--Header: Primera parte de la pagina-->
-    <div><a class="nav-logo" href="index.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
+    <div><a class="nav-logo" href="index.php">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
 
   </div>
   <!--Fin Header: Primera parte de la pagina-->
