@@ -78,8 +78,9 @@
       padding-top: 28px;
       margin-bottom: 30px;
   }
-  
-  
+  ul, li{
+    list-style: none !important;
+   }
   h1 {
       text-align: center;
       padding: 12px;
