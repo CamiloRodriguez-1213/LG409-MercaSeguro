@@ -41,10 +41,6 @@ $result = DB::query($sql);
             <div class="row justify-content-center" >
 
                 <button class="card btn-light justify-content-center" onclick="location='productos/form_productos.php'" style="width: 13rem; height:220px">
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a4fd21952661e06be7d865e6b24cbf274a196e9
                     <div class="card-body ml-2">
                     <i class='fas fa-tshirt' style='font-size:120px'></i>
                     <br><br><h6 class="card-title "><b>PRODUCTOS</b></h6>

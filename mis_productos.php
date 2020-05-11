@@ -73,7 +73,7 @@
                     <div class="prin card border-primary" >
                       <div class="row no-gutters">
                         <div class="con">
-                         <img class="img" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen']) ?>"/><br>
+                         <img class="img" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" width="80%" height="80%"/><br>
                         </div>
                        <div class="tex ">
                           <div class="card-body">
