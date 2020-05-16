@@ -1,5 +1,5 @@
 <?php
-include ('config.php');
+include('config.php');
 class DB{
    //Datos de conexión
    static $host = HOST;
@@ -18,7 +18,7 @@ class DB{
    public static function query($sql){
        //Crear la conexión
        $con = new mysqli(self::$host, self::$user, self::$password, self::$db);
-       
+       $con -> set_charset("utf8");
        $result = $con->query($sql); 
        
        $con->close();

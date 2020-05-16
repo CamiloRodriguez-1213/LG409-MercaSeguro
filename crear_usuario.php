@@ -47,28 +47,28 @@ include('includes/verify_install.php');
   
 </ul>
   <li class="list-group-item">
-  <input class="form-input" type="text" name="nombre" autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="40">
-  <input class="form-input" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="40">
+  <input class="form-input2" type="text" name="nombre" autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="40">
+  <input class="form-input2" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="40">
 
 
 
   </li>
   <li class="list-group-item">
     
-    <input class="form-input" type="email" name="email" id="email" required autocomplete="on" placeholder="Email" tabindex="3" size="40">
-    <input class="form-input" type="password" id="password" name="password" required autocomplete="on" tabindex="4" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="El campo contraseña debe contener un mínimo 
+    <input class="form-input2" type="email" name="email" id="email" required autocomplete="on" placeholder="Email" tabindex="3" size="40">
+    <input class="form-input2" type="password" id="password" name="password" required autocomplete="on" tabindex="4" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="El campo contraseña debe contener un mínimo 
   de 8 caracteres, un máximo de 20, letras, (minúsculas y MAYÚSCULAS) y Números " placeholder="Contraseña" size="40">
 
   </li>
   <li class="list-group-item">
-  <input class="form-input" type="tel" name="celular" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="40">
-  <input class="form-input" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="40">
+  <input class="form-input2" type="tel" name="celular" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="40">
+  <input class="form-input2" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="40">
   
 
   </li>
   <li class="list-group-item">
-  <input class="form-input" type="text" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="40">
-<input class="form-input" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="40">
+  <input class="form-input2" type="text" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="40">
+<input class="form-input2" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="40">
 
   </li>
 </ul>

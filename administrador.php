@@ -1,17 +1,17 @@
 <?php
 include('includes/verify_install.php');
 include('includes/db.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Last-Modified" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="complementos/inicio.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,8 +19,8 @@ include('includes/db.php');
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
- <script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflcv97xo/www-widgetapi.js" async=""></script>
-    
+  <script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflcv97xo/www-widgetapi.js" async=""></script>
+  
   <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
     <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
 
@@ -34,27 +34,25 @@ include('includes/db.php');
       // SESSION_UNSET();
       SESSION_START();
       if (isset($_SESSION['id'])) {
-        $ides = $_SESSION['id'];
+        $id_sesion = $_SESSION['id'];
       } else {
-        $ides = 0;
+        $id_sesion = 0;
         header("Location: index.php");
       }
-
       ?>
 
       <ul class="navbar-nav  mr-auto">
         <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
-        <div class="row">
-          <div class="input-group">
-              <input class="form-control py-2" type="text" name="busqueda" id="busqueda"  placeholder="Busca tus productos">
+          <div class="row">
+            <div class="input-group">
+              <input class="form-control py-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos">
               <span class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit" >
-                      <i class="fa fa-search"></i>
-                  </button>
+                <button class="btn btn-outline-secondary" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
               </span>
+            </div>
           </div>
-        </div>
-          
         </form>
       </ul>
     </nav>
@@ -93,13 +91,13 @@ include('includes/db.php');
         <?php
         $nombre = '';
         $apellido = '';
-        if ($ides > 0) {
+        if ($id_sesion > 0) {
           $sql = "SELECT * FROM usuarios ";
           $result = DB::query($sql);
           while ($mostrar = mysqli_fetch_array($result)) {
-            if ($ides == $mostrar['id']) {
-              $nombre = $mostrar['nombre'];
-              $apellido = $mostrar['apellido'];
+            if ($id_sesion == $mostrar['id']) {
+              $nombre = $mostrar['nombre_usuario'];
+              $apellido = $mostrar['apellido_usuario'];
             }
             $usuario = $nombre . " " . $apellido;
           }
@@ -141,16 +139,43 @@ include('includes/db.php');
   <title>Inicio</title>
 
 </head>
-<body><!--------------------- BODY ----------------------------->
+
+<body>
+<br><br><br><br><br>
+  <div class="container">
+    <div class="row ">
+      
+      <?php
 
 
-<!---  -->
+      $sql = "SELECT * FROM productos ";
+      $result = DB::query($sql);
+      while ($mostrar = mysqli_fetch_array($result)) {
+      ?>
+
+
+        <div class="card btn-light ml-4" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem;">
+        <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="135px" class="card-img-top" alt="OO">
+          <div class="card-body">
+            <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>
+            
+            <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
+            <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
+          </div>
+        </div>
+
+
+
+      <?php
+      }
+
+      ?>
 
 
 
 
-
+    </div>
+  </div>
 </body>
+
 </html>
-
-
