@@ -112,22 +112,25 @@
       <?php
         
           $sql= "SELECT * FROM productos WHERE
-          nombre LIKE '%$busqueda%' OR
-          descripcion LIKE '%$busqueda%' 
+          nombre_producto LIKE '%$busqueda%' OR
+          descripcion_producto  LIKE '%$busqueda%' 
           
           ";
         $result= DB::query($sql);
         while($mostrar= mysqli_fetch_array($result)){
             ?>
             <br>
-            <div class="media">
-            <img src="<?php echo $mostrar['imagen_producto'] ?>" class="mr-3" alt="...">
-            <div class="media-body">
-              <h1 class="mt-0"><?php echo $mostrar['nombre'] ?></h1>
-              
-              <h4>$ <?php echo $mostrar['precio'] ?></h4>
-            </div>
-          </div>
+            
+            <div class="container-sm-12 mb-4">
+            <div class="card btn-light ml-4" style="width: 14.3rem; ">
+            <div class="card-body">
+            <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="135px" class="card-img-top" alt="OO">
+            <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
+         <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
+        
+      </div>
+    </div>
+  </div>
             <?php
         }
         }else

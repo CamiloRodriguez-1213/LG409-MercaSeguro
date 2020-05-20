@@ -139,80 +139,40 @@
 
 <!-- Fila 1 de PRODUCTOS  -->
 <div class="container">
-      <div class="row " >
-                <div class="card btn-light ml-4" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem;">
-                  <img src="https://www.muycanal.com/wp-content/uploads/2018/10/Apple.jpg"   height="135px" class="card-img-top" alt="OO">
-                  <div class="card-body">
-                    <h6 class="card-title ">LIMPIEZA PARA TU HOGAR SI O SI Y NO TENER MASPROBLMAS </h6>
-                  <p class="card-text-success">$ 120.000 </p>
-                    <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
-                  </div>
-                </div>
+    <div class="row sm-12 ">
+      
+      <?php
 
-                <div class="card btn-light ml-4" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem;">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOU8C5yL6ADcDo0tXk4TkaE755FTwhPsGl4fhFHd7voKSpMq4X&usqp=CAU" height="135px" class="card-img-top" alt="OO">
-                  <div class="card-body">
-                    <h6 class="card-title "> COMPUTADOR ACER NITRO 5 16RAM 1TB 128GB SOLIDO Y GTX1060 4GB</h6>
-                  <p class="card-text">$ 120.000</p>
-                    <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
-                  </div>
-                </div>
 
-                <div class="card btn-light ml-4" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem;">
-                  <img src="https://ep00.epimg.net/tecnologia/imagenes/2013/02/27/actualidad/1361997174_154923_1361997392_noticia_normal.jpg" height="135px" class="card-img-top" alt="OO">
-                  <div class="card-body">
-                    <h6 class="card-title ">LIMPIEZA PARA TU HOGAR SI O SI</h6>
-                  <p class="card-text">$ 120.000</p>
-                    <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
-                  </div>
-                </div>
+      $sql = "SELECT * FROM productos ";
+      $result = DB::query($sql);
+      while ($mostrar = mysqli_fetch_array($result)) {
+      ?>
 
-                <div class="card btn-light ml-4" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem;">
-                  <img src="https://static.turbosquid.com/Preview/2019/05/01__01_52_22/TS_ORS_Preview.jpgA8C07399-402B-45C9-B3C8-625B5AB7FA2AZoom.jpg" height="135px" class="card-img-top" alt="OO">
-                  <div class="card-body">
-                    <h6 class="card-title ">LIMPIEZA PARA TU HOGAR SI O SI </h6>
-                  <p class="card-text">$ 120.000</p>
-                    <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
-                  </div>
-                </div>
 
-                <div class="card btn-light ml-4" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem;">
-                  <img src="https://www.consumer.es/wp-content/uploads/2019/07/img_novedades-ipad3-1.jpg" height="135px" class="card-img-top" alt="OO">
-                  <div class="card-body">
-                    <h6 class="card-title ">LIMPIEZA PARA TU HOGAR SI O SI</h6>
-                  <p class="card-text">$ 120.000</p>
-                    <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
-                  </div>
-                </div>
+<div class="container-sm-12 mb-4">
+    <div class="card btn-light ml-4" style="width: 14.3rem; ">
+      <div class="card-body">
+      <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="170px" class="card-img-top" alt="OO">
+      <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
+      <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
+        
       </div>
     </div>
+  </div>
 
 
 
-    
+      <?php
+      }
 
-
-
-
-
-
-
-
+      ?>
 
 
 
 
-
-
-
-
-
-
-
-    
-
-
-  
+    </div>
+  </div>
 
 <!--- Lins Bootstrap --->
     <script src="js/jquery-3.5.0.min.js">  </script>
