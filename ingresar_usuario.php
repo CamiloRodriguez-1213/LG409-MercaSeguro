@@ -77,7 +77,7 @@
         
     <?php
     if(isset($_POST['login'])){
-        $emaili="";
+        $email="";
         $email= $_POST['email'];
        
        

@@ -143,33 +143,33 @@ include('includes/db.php');
 <br><br><br><br><br>
 
   <div class="container">
-    <div class="row sm-12 ">
+     
+    <div class="row ">
       
       <?php
 
 
       $sql = "SELECT * FROM productos ";
       $result = DB::query($sql);
+      
       while ($mostrar = mysqli_fetch_array($result)) {
       ?>
-
-
-<div class="container-sm-12 mb-4">
-    <div class="card btn-light ml-4" style="width: 14.3rem; ">
-      <div class="card-body">
-      <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="170px" class="card-img-top" alt="OO">
-      <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
-      <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
-        
-      </div>
-    </div>
-  </div>
+        <div class="card btn-light ml-6" data-toggle="modal" data-target="#exampleModalCenter" style="width: 12.3rem; heigth:12.4rem">
+        <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="170px" class="card-img-top" alt="OO">
+          <div class="card-body">
+            <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>
+            
+            <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
+            <!-- <a href="#" class="btn btn-primary ">Comprar</a> -->
+          </div>
+          
+        </div>
 
 
 
       <?php
       }
-
+    
       ?>
 
 

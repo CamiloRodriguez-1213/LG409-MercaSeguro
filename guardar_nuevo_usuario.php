@@ -20,7 +20,7 @@
         
         if(isset($id) == false)
         {
-            $sql = "INSERT INTO usuarios(nombre,apellido,email,password,celular,whatsapp,ciudad,direccion) values('$nombre','$apellido','$email','$password','$celular','$whatsapp','$ciudad','$direccion')"; 
+            $sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,email,password,celular,whatsapp,ciudad,direccion) values('$nombre','$apellido','$email','$password','$celular','$whatsapp','$ciudad','$direccion')"; 
             
         
         }else
