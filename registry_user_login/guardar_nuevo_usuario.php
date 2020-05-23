@@ -1,5 +1,5 @@
 <?php 
-    include('includes/db.php');
+    include('../includes/db.php');
     
     SESSION_START();
     if(isset($_SESSION['id'])){
@@ -29,5 +29,5 @@
         }
     
     DB::query($sql);
-    header('Location: index.php');
+    header('Location: ../index.php');
     ?>
