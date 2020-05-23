@@ -1,0 +1,147 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	font-family: century gothic;
+      
+}
+body{
+    background-color: #e4e4e4;
+}
+.dropdown-item{
+    display: flexbox;  
+}
+/*Inicio Header*/
+/*Logo*/
+.nav-logo {
+    
+    height: 34px;
+    top: 11px;
+    width: 134px;
+    display: inline-block;
+}
+.nav-logo {
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-indent: -999px;
+    
+    left: 10px;
+    outline: 0;
+}
+/*Fin logo*/
+/*Barra de busqueda*/
+
+
+/*Fin Barra de busqueda*/
+/* Asignamos al header principal el color de fondo, junto a sus correspndientes medidas y estilos */
+    .navn a{
+        color: #333;
+    }
+
+     .collapse:hover
+     {
+        display: block;
+     }
+    .dropdown:hover>.dropdown-menu{
+        display: inline-table;
+    }
+    /*Cuadro de busqueda*/
+        .form-inline{
+            
+            max-width: 600px;
+            padding: 8px 1px;
+            position: relative;
+
+            
+        }
+        /*Quitar borde azul del input*/
+        input:focus, input.form-control:focus {
+
+            outline:none !important;
+            outline-width: 0 !important;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+        /*Fin quitar borde azul del input*/
+        .search-input-index{
+            padding: 7px 60px 9px 15px;
+            background-color: #fff;
+            border: 0 rgba(0,0,0,.2);
+            width: 480px;
+            color: #333;
+            font-size: 16px;
+            
+            margin: 0;
+            font-family: inherit;
+            
+        }
+    /*Fin cuadro de busqueda*/
+    /* Menu desplegable */
+        
+        /*Color menu desplegable y ajuste de posición*/
+        
+        /*Color letra Menu desplegable*/
+        .dropdown-menu a {
+            
+            color: rgb(0, 0, 0);
+        }
+        .dropdown-menu a:hover {background-color: #3483fa;}
+        
+        
+        
+    /*Fin menu desplegable*/
+
+    
+/*Fin Header*/
+/* Mostrando los productos enfoque */
+
+.contenedor figure{
+    text-align: center;
+   position:relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 6px;
+    
+    
+   
+}
+.zoom:hover{
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transition: all 500ms ease-out;
+}
+
+
+
+.contenedor figure .color:hover{
+    
+    width: 100%;
+    height: 100%;
+    opacity: 8;
+    visibility: visible;
+    background: rgba(51, 47, 47, 0.11);
+    filter: blur(0.5px);
+    transition: all 500ms ease-out;
+    
+    
+}
+ .capa{
+    
+    top: 50%;
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.2);
+    
+
+}
+
+
+.contenedor :hover > .capa {
+    
+    top: 50%;
+    opacity: 1;
+    visibility: visible;
+    transition: all 800ms ease-out;
+    
+}
+
