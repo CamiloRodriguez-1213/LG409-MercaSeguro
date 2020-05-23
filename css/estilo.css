@@ -1,0 +1,277 @@
+
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: century gothic;
+        text-align: center;
+        
+    }
+    body{
+        background-color: #e4e4e4;
+    }
+    .navn a{
+      color: #333;
+  }
+  
+   .collapse:hover
+   {
+      display: block;
+   }
+  .dropdown:hover>.dropdown-menu{
+      display: inline-table;
+  }
+    /*Quitar borde azul del input*/
+    input:focus, input.form-control:focus {
+      outline:none !important;
+      outline-width: 0 !important;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+  }
+    /*Cuadro de busqueda*/
+    .form-inline{
+            
+      max-width: 600px;
+      padding: 8px 1px;
+      position: relative;
+  
+      
+  }
+  
+  /*Fin quitar borde azul del input*/
+  .search-input-index{
+      padding: 7px 60px 9px 15px;
+      background-color: #fff;
+      border: 0 rgba(0,0,0,.2);
+      width: 480px;
+      color: #333;
+      font-size: 16px;
+      
+      margin: 0;
+      font-family: inherit;
+      
+  }
+  /*Fin cuadro de busqueda*/
+  
+  /* Ancho de botones fijo */
+  .custom {
+    width: 100px !important;
+  }
+  
+  /* Diseño de input subir archivo */
+  input[type="file"] {
+    display: none;
+  }
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  #img-prev{
+    max-width: 20px;
+    
+  }
+  
+    
+  
+    /*Logo*/
+    .nav-logo {
+        background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png);
+        height: 34px;
+        top: 11px;
+        width: 134px;
+        display: inline-block;
+    }
+    .nav-logo {
+        background-repeat: no-repeat;
+        overflow: hidden;
+        text-indent: -999px;
+        position: absolute;
+        left: 180px;
+        outline: 0;
+    }
+    /*Fin logo*/
+    #header-index {
+        background-color: #ffc107;
+        font-size: 13px;
+        height: 80px;
+        /*font-family: "Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;*/
+        
+    }
+    .crear_usuario {
+      padding: 70px 10px;
+      background-color: #ffffff;
+      margin-top: 50px;
+        padding-top: 28px;
+        margin-bottom: 30px;
+    }
+    .ingresar_usuario {
+      padding: 70px 10px;
+      background-color: #ffffff;
+      margin-top: 50px;
+        padding-top: 28px;
+        margin-bottom: 30px;
+    }
+    .login_db {
+        padding: 70px 70px;
+        background-color: #ffffff;
+        margin: calc(22% + 100px);
+        margin-top: 40px;
+        padding-top: 28px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        -moz-opacity: 0.8;
+        filter: alpha(opacity=80);
+        -khtml-opacity: 0.8;
+    }
+   
+    .vender_producto {
+      
+      
+      padding: 70px 10px;
+      background-color: #ffffff !important;
+      margin-top: 50px;
+        padding-top: 28px;
+        margin-bottom: 30px;
+    }
+    .list-group-item{
+      list-style: none !important;
+      
+      
+     }
+    h1 {
+        text-align: center;
+        padding: 12px;
+        color: rgb(27, 27, 27)
+    }
+    
+   
+    .form-input2 {
+       padding: 15px 0px;
+        background: transparent;
+        border: 2px;
+        border-bottom: 1.2px solid #435160;
+        outline: none;
+        color: #6D7781;
+        font-size: 16px;
+      }
+      
+      .infor:hover{
+        border-bottom: 2px solid #0a0a0a;
+      }
+      .infor:focus{
+        border-bottom: 1.5px solid #ff0000a8;
+      }
+      .select-cat{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        max-width: 400px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #cbd1d8;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgb(0, 0, 0) no-repeat center right 12px / 18px 18px;
+        transition: all .2s ease-in-out;
+       
+      }
+      
+      .select-cat:hover{
+        background: #3483fa;
+      }
+      
+      option{
+          background-color: white;
+      }
+      
+         
+        /*IE*/
+        select::-ms-expand {
+          display: none;
+        }
+         
+        select:focus {
+          outline: 0;
+          border-color: #7bbaff;
+          box-shadow: 0 0 0 3px rgba(0, 121, 250, .3);
+        }
+  
+  
+  /* /------------------------------------------------------/ */
+  
+  /* Mostrando los productos enfoque */
+  .contenedor{
+              
+          
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .contenedor figure{
+   position:relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+  .zoom:hover{
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .contenedor figure img{
+   
+    transition: all 500ms ease-out;
+  }
+  
+  
+  .contenedor figure .color:hover{
+    
+    width: 100%;
+    height: 100%;
+    opacity: 8;
+    visibility: visible;
+    background: rgba(51, 47, 47, 0.11);
+    filter: blur(0.5px);
+    transition: all 500ms ease-out;
+  }
+  .capa {
+    position: initial;
+    top: 50%;
+    
+    opacity: 0;
+    visibility: hidden;
+    
+  
+  }
+  
+  .contenedor :hover > .capa {
+    top: 50%;
+    opacity: 1;
+    visibility: visible;
+    
+    
+  }
+  
+  
+  .contenedor figure:hover > img{
+    transform: scale(1.3);
+  }
+  .contenedor figure .capa h3{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    
+    
+     
+  }
+  .contenedor figure .capa p{
+    color: #fff;
+    
+    
+    
+    
+  }
+  
+  
+  /* Fin mostrando los productos enfoque */
+  

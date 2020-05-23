@@ -1,7 +1,16 @@
 <?php
 include('includes/verify_install.php');
 include('includes/db.php');
-
+include('procedimientos_externos/paginacion.php');
+if (!$_GET) {
+  header('Location:index.php?pagina=1');
+}
+if ($_GET['pagina'] > $mostrar_paginas || $_GET['pagina'] <= 0) {
+  header('Location:index.php?pagina=1');
+}
+if ($_GET['pagina'] == null) {
+  header('Location:index.php?pagina=1');
+}
 
 ?>
 <!DOCTYPE html>
@@ -31,43 +40,73 @@ include('includes/db.php');
     
 
 
-<!-- Fila 1 de PRODUCTOS  -->
-<div class="container">
-    <div class="row sm-12 ">
+
+    <div class="container ">
+    <h1 class="my-5">Paginacion</h1>
+
+    <div class="row sm-12">
+      <?php
+
       
+
+      while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
+
+        <div class="contenedor sm-8 mb-4">
+          <figure>
+
+            <div class="card btn-light ml-4" style="width: 14rem; ">
+              <div class="color">
+                <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="110px" class="card-img-top" alt="OO">
+                <br><br>
+                <small>39% descuento</small>
+                <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
+
+
+
+                <div class="capa">
+                  <p> <?php echo $mostrar['nombre_producto']; ?> </p>
+
+
+                </div>
+
+              </div>
+
+            </div>
+          </figure>
+        </div>
+
+
       <?php
-
-
-      $sql = "SELECT * FROM productos ";
-      $result = DB::query($sql);
-      while ($mostrar = mysqli_fetch_array($result)) {
+      endwhile
       ?>
-
-
-<div class="container-sm-12 mb-4">
-    <div class="card btn-light ml-4" style="width: 14.3rem; ">
-      <div class="card-body">
-      <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="170px" class="card-img-top" alt="OO">
-      <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
-      <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
-        
-      </div>
     </div>
   </div>
 
-
-
-      <?php
-      }
-
-      ?>
-
-
-
-
-    </div>
-  </div>
-
-
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <!-- Cuando el numero de pagina sea menor a 1 se desactivara la opcion de anterior -->
+      <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
+        <!-- Cuando seleccione el boton de siguiente se restara uno al numero de pagina -->
+        <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" tabindex="-1" aria-disabled="true">
+          Anterior
+        </a>
+      </li>
+      <!-- Imprimimos el numero de paginas -->
+      <?php for ($i = 0; $i < $mostrar_paginas; $i++) : ?>
+        <!-- Dependiendo de la pagina que seleccione se marcara como activado -->
+        <li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?>">
+          <!-- Mostramos el numero de paginas -->
+          <a class="page-link" href="index.php?pagina=<?php echo $i + 1 ?>">
+            <?php echo $i + 1 ?>
+          </a>
+        </li>
+      <?php endfor ?>
+      <!-- Cuando el numero de pagina sea mayor a el numero de paginas se desactivara la opcion de siguiente -->
+      <li class="page-item <?php echo $_GET['pagina'] >= $mostrar_paginas ? 'disabled' : '' ?>">
+        <!-- Cuando seleccione el boton de siguiente se sumara uno al numero de pagina -->
+        <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
 </body>
 </html>
