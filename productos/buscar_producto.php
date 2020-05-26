@@ -1,42 +1,63 @@
 <?php
-include('includes/db.php');
-include('includes/verify_install.php');
-include('login_logout/login.php');
+include('../includes/verify_install.php');
+include('../includes/db.php');
 
-include('procedimientos_externos/paginacion.php');
-if (!$_GET) {
-  header('Location:index.php?pagina=1');
-}
-if ($_GET['pagina'] > $mostrar_paginas || $_GET['pagina'] <= 0) {
-  header('Location:index.php?pagina=1');
-}
-if ($_GET['pagina'] == null) {
-  header('Location:index.php?pagina=1');
-}
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Last-Modified" content="0">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/estilo_inicio.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-  <title>MercaSeguro</title>
+  <title>Inicio</title>
+  <?php
 
-  <?php 
+  $busqueda = '';
+  include '../accesorios/navbar_buscar.php';
+  
 
-  include 'accesorios/navbar.php' ?>
-</head>
-<body>
-  <?php include 'accesorios/carrusel.php' 
   ?>
-  <div class="container ">
+</head>
+
+<body>
+
+
+  <?php
+  $busqueda = strtolower($_REQUEST['busqueda']);
+  if ($busqueda != null || $busqueda != '') { ?>
+
+    <h3>Resultado
+    </h3>
+
+
+    <?php
+
+    $sql = "SELECT * FROM productos";
+    $result = DB::query($sql);
+    $result_consulta = $result->num_rows;
+    $num_x_pag = 8;
+    $mostrar_paginas = ($result_consulta / $num_x_pag);
+    $mostrar_paginas = $result_consulta = ceil($mostrar_paginas);
+    
+    $sql_paginas = "SELECT * FROM productos WHERE
+    nombre_producto LIKE '%$busqueda%' OR
+    descripcion_producto LIKE '%$busqueda% LIMIT 1,4";
+    $result_paginas = DB::query($sql_paginas);
+    ?>
+    <div class="container ">
     <h1 class="my-5">Paginacion</h1>
 
     <div class="row justify-content-around">
@@ -65,7 +86,13 @@ if ($_GET['pagina'] == null) {
       ?>
     </div>
   </div>
-  <br><br>
+  <?php
+  }else {
+    echo "No se encontraron resultados";
+  }
+
+
+  ?>
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
@@ -93,10 +120,6 @@ if ($_GET['pagina'] == null) {
       </li>
     </ul>
   </nav>
-
-  <div style="float: right">
-    <p>© <?php echo date("Y"); ?> <a href="" target="_blank">MercaSeguro</a> Todos los derechos reservados | Diseñado por <a href="" target="_blank">MercaSeguro</a> </p>
-  </div>
 </body>
 
 </html>

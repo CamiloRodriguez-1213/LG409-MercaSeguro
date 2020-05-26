@@ -11,14 +11,51 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Volcando estructura para tabla ventas_online.categorias_productos
+
+CREATE TABLE IF NOT EXISTS `auditoria_productos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_producto` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `precio` varchar(50) NOT NULL,
+  `id_categoria_producto` int(11) NOT NULL,
+  `imagen_producto` varchar(50) NOT NULL,
+  `id_usuarios` int(11) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `proceso` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `auditoria_usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `celular` varchar(50) NOT NULL,
+  `whatsapp` varchar(50) NOT NULL,
+  `ciudad` varchar(50) NOT NULL,
+  `direccion` varchar(50) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `proceso` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
 CREATE TABLE IF NOT EXISTS `categorias_productos` (
-  `id` int(20) NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `nombre_cat_producto` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.categorias_productos: ~28 rows (aproximadamente)
+
 /*!40000 ALTER TABLE `categorias_productos` DISABLE KEYS */;
 INSERT INTO `categorias_productos` (`id`, `nombre_cat_producto`) VALUES
 	(1, 'Accesorios para Vehículos'),
@@ -51,7 +88,6 @@ INSERT INTO `categorias_productos` (`id`, `nombre_cat_producto`) VALUES
 	(28, 'Otras categorías');
 /*!40000 ALTER TABLE `categorias_productos` ENABLE KEYS */;
 
--- Volcando estructura para tabla ventas_online.productos
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `nombre_producto` varchar(50) DEFAULT NULL,
@@ -66,13 +102,9 @@ CREATE TABLE IF NOT EXISTS `productos` (
   KEY `FK_productos_usuarios` (`id_usuarios`),
   CONSTRAINT `FK_productos_categorias` FOREIGN KEY (`id_categoria_producto`) REFERENCES `subcategoria` (`id`),
   CONSTRAINT `FK_usuarios_productos` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.productos: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
--- Volcando estructura para tabla ventas_online.subcategoria
 CREATE TABLE IF NOT EXISTS `subcategoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_categoria` int(11) NOT NULL DEFAULT '0',
@@ -82,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `subcategoria` (
   CONSTRAINT `id_categoria_prod` FOREIGN KEY (`id_categoria`) REFERENCES `categorias_productos` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=351 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.subcategoria: ~350 rows (aproximadamente)
+
 /*!40000 ALTER TABLE `subcategoria` DISABLE KEYS */;
 INSERT INTO `subcategoria` (`id`, `id_categoria`, `nombre_sub_categoria`) VALUES
 	(1, 1, 'Acc. para Motos y Cuatrimotos'),
@@ -437,7 +469,7 @@ INSERT INTO `subcategoria` (`id`, `id_categoria`, `nombre_sub_categoria`) VALUES
 	(350, 28, 'Otros');
 /*!40000 ALTER TABLE `subcategoria` ENABLE KEYS */;
 
--- Volcando estructura para tabla ventas_online.usuarios
+
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `nombre_usuario` varchar(100) DEFAULT NULL,
@@ -449,14 +481,28 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `ciudad` varchar(100) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla ventas_online.usuarios: ~1 rows (aproximadamente)
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id`, `nombre_usuario`, `apellido_usuario`, `email`, `password`, `celular`, `whatsapp`, `ciudad`, `direccion`) VALUES
-	(1, 'Camilo', 'Rodriguez', 'andrescamilocr482@gmail.com', '94f263f5c21c5ac3150672363fc70c79', '3136997711', '3136997711', 'Mocoa, Ptyo', 'Barrio la Esmeralda');
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+CREATE DEFINER=`root`@`localhost` TRIGGER `productos_after_insert` AFTER INSERT ON `productos` FOR EACH ROW BEGIN			
+		insert into auditoria_productos (id_producto,nombre,descripcion,precio,id_categoria_producto,imagen_producto,id_usuarios,estado,usuario,proceso)
+		values (new.id,new.nombre_producto,new.descripcion_producto,new.precio,new.id_categoria_producto,new.imagen_producto,new.id_usuarios,new.estado,user(),'INSERT');
+END;
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `productos_before_delete` BEFORE DELETE ON `productos` FOR EACH ROW BEGIN			
+		insert into auditoria_productos (id_producto,nombre,descripcion,precio,id_categoria_producto,imagen_producto,id_usuarios,estado,usuario,proceso)
+		values (old.id,old.nombre_producto,old.descripcion_producto,old.precio,old.id_categoria_producto,old.imagen_producto,old.id_usuarios,old.estado,user(),'DELETE');
+END;
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `productos_before_update` BEFORE UPDATE ON `productos` FOR EACH ROW BEGIN			
+		insert into auditoria_productos (id_producto,nombre,descripcion,precio,id_categoria_producto,imagen_producto,id_usuarios,estado,usuario,proceso)
+		values (new.id,new.nombre_producto,new.descripcion_producto,new.precio,new.id_categoria_producto,new.imagen_producto,new.id_usuarios,new.estado,user(),'UPDATE');
+END;
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `usuarios_after_insert` AFTER INSERT ON `usuarios` FOR EACH ROW BEGIN			
+			insert into auditoria_usuario (id_usuario,nombre,apellido,email,password,celular,whatsapp,ciudad,direccion,usuario,proceso)
+			values (new.id,new.nombre_usuario,new.apellido_usuario,new.email,new.password,new.celular,new.whatsapp,new.ciudad,new.direccion,user(),'INSERT');
+END;
