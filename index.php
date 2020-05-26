@@ -2,7 +2,6 @@
 include('includes/db.php');
 include('includes/verify_install.php');
 include('login_logout/login.php');
-
 include('procedimientos_externos/paginacion.php');
 if (!$_GET) {
   header('Location:index.php?pagina=1');
@@ -26,7 +25,6 @@ if ($_GET['pagina'] == null) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
   <title>MercaSeguro</title>
 
   <?php 
@@ -66,7 +64,6 @@ if ($_GET['pagina'] == null) {
     </div>
   </div>
   <br><br>
-
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
       <!-- Cuando el numero de pagina sea menor a 1 se desactivara la opcion de anterior -->

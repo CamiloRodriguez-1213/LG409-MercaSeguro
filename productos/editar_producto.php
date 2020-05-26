@@ -1,7 +1,6 @@
 <?php
 include "../includes/verify_install.php";
 include "../includes/db.php";
-$id_producto_form = $_REQUEST['id_form_editar'];
 ?>
 
 
@@ -71,7 +70,7 @@ $id_producto_form = $_REQUEST['id_form_editar'];
     WHERE
     subcategoria.id=productos.id_categoria_producto
     and subcategoria.id_categoria=categorias_productos.id
-    AND productos.id='$id_producto_form'";
+    AND productos.nombre_producto='dtrobixt'";
 
     $result = DB::query($sql);
     while ($mostrar = mysqli_fetch_array($result)) {
