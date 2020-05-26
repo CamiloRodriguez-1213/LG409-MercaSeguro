@@ -41,7 +41,7 @@ body{
      {
         display: block;
      }
-    .dropdown:hover>.dropdown-menu{
+     .dropdown:hover>.dropdown-menu{
         display: inline-table;
     }
     /*Cuadro de busqueda*/

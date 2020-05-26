@@ -9,7 +9,7 @@ $result = DB::query($sql);
 $result_consulta = $result->num_rows;
 /* echo $result_consulta; */
 /* Elegiremos cuantos resultados mostraremos */
-$num_x_pag = 12;
+$num_x_pag = 8;
 /* Divimos el numero de registros entre el numero que queremos mostrar */
 $mostrar_paginas = ($result_consulta / $num_x_pag);
 /* El resultado de esta division será el numero de paginas que se mostrarán y lo redondeamos al numero mayor con ceil */

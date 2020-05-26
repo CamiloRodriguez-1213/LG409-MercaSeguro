@@ -113,7 +113,7 @@
         
           $sql= "SELECT * FROM productos WHERE
           nombre_producto LIKE '%$busqueda%' OR
-          descripcion_producto  LIKE '%$busqueda%' 
+          descripcion_producto LIKE '%$busqueda%' 
           
           ";
         $result= DB::query($sql);
@@ -121,12 +121,13 @@
             ?>
             <br>
             
-            <div class="container-sm-12 mb-4">
-            <div class="card btn-light ml-4" style="width: 14.3rem; ">
-            <div class="card-body">
-            <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="135px" class="card-img-top" alt="OO">
-            <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
-         <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
+
+          <div class="container-sm-12 mb-4">
+    <div class="card btn-light ml-4" style="width: 14.3rem; ">
+      <div class="card-body">
+      <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="135px" class="card-img-top" alt="OO">
+      <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
+      <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
         
       </div>
     </div>
@@ -140,6 +141,7 @@
         
        
       ?>
+      
       </td>
      </tr>
   </table>

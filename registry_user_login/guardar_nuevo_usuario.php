@@ -1,18 +1,13 @@
 <?php 
     include('../includes/db.php');
     
-    SESSION_START();
-    if(isset($_SESSION['id'])){
-      $id_user=$_SESSION['id'];
-    }else{
-      $id_user=0;
-    }
+   
    
         $id = $_POST["id"];
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $email = $_POST["email"];
-        $password=md5($_POST["password"]);
+        $password=sha1($_POST["password"]);
         $celular = $_POST["celular"];
         $whatsapp = $_POST["whatsapp"];
         $ciudad = $_POST["ciudad"];

@@ -16,7 +16,7 @@ $result = DB::query($sql);
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Last-Modified" content="0">
-	<link rel="stylesheet" type="text/css" href="../complementos/crear_ingresar.css">
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -54,13 +54,8 @@ $result = DB::query($sql);
 
 </head>
 
-<body style="background-color: #ebebeb;" >
-	<div id="header-index">
-		<!--Header: Primera parte de la pagina-->
-		<div><a class="nav-logo" href="../administrador.php" tabindex="2">Mercado Libre Colombia - Donde comprar y vender de todo</a></div>
-
-	</div>
-	<!--Fin Header: Primera parte de la pagina-->
+<body>
+	<?php include('../accesorios/navbar.php')?>
 
 
 
@@ -150,7 +145,7 @@ $result = DB::query($sql);
 </body>
 
 </html>
-ul.li>list*4>lipsum4
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

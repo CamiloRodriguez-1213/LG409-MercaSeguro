@@ -1,6 +1,6 @@
 <?php
 include('../includes/verify_install.php');
-
+include('../includes/db.php');
 ?>
 <html>
 
@@ -38,10 +38,10 @@ include('../includes/verify_install.php');
 
 <body>
 
-  <div class="my-1"></div>
+  
 
   <!-- Inicio formulario Crear usuario -->
-  <div class="container" style="max-width: 700px; position:relative;">
+  <div class="container" style="max-width: 700px;">
     <form class="crear_usuario " action="guardar_nuevo_usuario.php" method="post">
       <?php
       ?>
