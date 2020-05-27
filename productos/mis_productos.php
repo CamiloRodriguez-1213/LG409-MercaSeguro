@@ -14,9 +14,9 @@ if (isset($_SESSION['id'])) {
 <html lang="es">
 
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -31,131 +31,60 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <body>
+<div class="container ">
+    
+    <h2 class="animated infinite pulse delay my-5">Mis productos</h2> <br>
 
 
-  <!--Fin Header: Primera parte de la pagina-->
+<?php
+  $sql = "SELECT productos.id AS id_producto,nombre_producto,descripcion_producto,precio,id_categoria_producto
+    ,imagen_producto,id_usuarios,estado,subcategoria.id AS id_subcategoria,nombre_sub_categoria,categorias_productos.id 
+    AS id_categoria,nombre_cat_producto
+    FROM productos 
+            INNER JOIN subcategoria
+            ON productos.id_categoria_producto = subcategoria.id
+            INNER JOIN categorias_productos
+            ON subcategoria.id_categoria = categorias_productos.id";
+  $result = DB::query($sql);
+  ?>
+    <div class="row justify-content-around">
+      <?php
+      
+      while ($mostrar = mysqli_fetch_array($result)) : ?>
 
+        <div class="contenedor  sm-12 md-4">
+          <figure>
 
-
-  <div class="container ">
-    <h2 class="animated infinite pulse delay">Mis productos</h2> <br>
-
-    <div class="container ">
-
-      <div class="row sm-12">
-        <?php
-<<<<<<< HEAD
-        $sql = "SELECT productos.id AS id_producto,nombre_producto,descripcion_producto,precio,id_categoria_producto
-        ,imagen_producto,id_usuarios,estado,subcategoria.id AS id_subcategoria,nombre_sub_categoria,categorias_productos.id 
-        AS id_categoria,nombre_cat_producto
-        FROM productos 
-                INNER JOIN subcategoria
-                ON productos.id_categoria_producto = subcategoria.id
-                INNER JOIN categorias_productos
-                ON subcategoria.id_categoria = categorias_productos.id";
-=======
-        $sql = "SELECT * FROM productos 
-        INNER JOIN subcategoria
-        ON productos.id_categoria_producto = subcategoria.id
-        INNER JOIN categorias_productos
-        ON subcategoria.id_categoria = categorias_productos.id";
->>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
-        $result = DB::query($sql);
-        ?>
-        <?php
-        while ($mostrar = mysqli_fetch_array($result)) {
-        ?>
-
-          <?php
-          if ($ides == $mostrar['id_usuarios']) {
-          ?>
-
-            <div class="contenedor sm-12 mb-4">
-              <figure>
-
-<<<<<<< HEAD
-                <div class="card btn-light  " style="max-width: 240px; max-height: 400px; position: relative">
-=======
-                <div class="card btn-light  " style="max-width: 260px; max-height: 400px; position: relative">
->>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
-                  <div class="color">
-                    <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="120px" class="card-img-top" alt="OO">
-                    <div class="card-body">
-
-                      <h5><?php echo $mostrar['nombre_producto']; ?> </h5>
-                      </div>
-                      
-<<<<<<< HEAD
-                      <small> <p>Valor Unitario :<br>  <?php echo $mostrar['precio'] ?></p></small>
-                      <small> <p>Categoria : <br><?php echo $mostrar['nombre_cat_producto'] ?></p></small>
-                      
-                    
-                      
-                    <div class="capa">
+            <div class="card mr-2" style="width: 240px; height: 340px; ">
+              <div class="color">
+                <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
+                <br><br>
+                
+                <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
+                <p style="height: 50px"><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
+                <div class="capa">
+                  
+                  
                     <form action="editar_producto.php" method="GET">
-                      
-                        <p><button class="btn btn-primary" id="id_form_editar" name="id_form_editar" value="<?php echo $mostrar['id_producto'] ?>" type="submit">Editar</button>
-                        <button class="btn btn-danger" onClick=" window.location.href='#' " >Eliminar</button></p>
-                      </form>
-                       
-                </div>
-                    
-=======
-                      <small> <p>Valor Unitario : <?php echo $mostrar['precio'] ?></p></small>
-                      <small> <p>Categoria : <?php echo $mostrar['nombre_cat_producto'] ?></p></small>
-                    
 
-                    <form action="editar_producto.php" method="get">
-                    <div class="capa">
-                      <p><button class="btn btn-primary" type="submit" name="id_form_editar" value="<?php  $mostrar['id'] ?>" >Editar</button>
-                       <button class="btn btn-danger" onClick=" window.location.href='##.php' " >Eliminar</button></p>
-                </div>
+                      <p><button class="btn btn-primary" id="id_form_editar" name="id_form_editar" value="<?php echo $mostrar['id_producto'] ?>" type="submit">Editar</button>
+                        <button class="btn btn-danger" onClick=" window.location.href='#' ">Eliminar</button></p>
                     </form>
->>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
+
                   </div>
-                </div>
-
-              </figure>
-
+              </div>
             </div>
-
-            <!------------------------------- ESTADO - EDITAR -ELIMINAR --------------------------------------->
-
-
-        <?php
-          }
-        }
-        ?>
-      </div>
-      <td class="<?= $mostrar['estado'] ?>"><?= $mostrar['estado'] ?></td>
-      <input type="hidden" name="estado" value="<?= $mostrar['estado'] ?>">
-
-      <?php if ($mostrar['estado'] == "activo") {  ?>
-        <th>
-          <a class="btn btn-secondary" href="crear_producto.php?estado=<?= $mostrar['estado'] ?>&id=<?= $mostrar['id'] ?>" class="ini">Inactivar</a>
-        </th>
-
-      <?php } else {  ?>
-
-        <th>
-          <a class="btn btn-success" href="crear_producto.php?estado=<?= $mostrar['estado'] ?>&id=<?= $mostrar['id'] ?>">Activar</a>
-        </th>
-
-      <?php  }  ?>
-      <th>
-        <a class="btn btn-primary" href="editar_producto.php?id=<?= $mostrar['id'] ?>" class="xd">Editar</a>
-      </th>
-      <th>
-        <a class="btn btn-danger" href="eliminar_producto.php?id=<?= $mostrar['id'] ?>" class="delet">Eliminar</a>
-      </th>
+          </figure>
+        </div>
+      <?php
+      endwhile
+      ?>
     </div>
-
   </div>
+
+
+  
 
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
