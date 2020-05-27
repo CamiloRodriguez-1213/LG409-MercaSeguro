@@ -113,11 +113,3 @@ include('../includes/db.php');
 </body>
 
 </html>
-<!-- 
-  
-
-  
-
-  <input class="form-input2" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="40">
-
-	 -->

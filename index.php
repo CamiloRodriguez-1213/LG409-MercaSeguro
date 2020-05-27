@@ -36,6 +36,8 @@ if ($_GET['pagina'] == null) {
 <body>
   <?php include 'accesorios/carrusel.php' 
   ?>
+
+
   <div class="container ">
     <h1 class="my-5">Paginacion</h1>
 
