@@ -87,4 +87,8 @@ if (isset($_SESSION['id'])) {
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 8db31b5cc3ec0718536917510072d58f6fb0e2a5

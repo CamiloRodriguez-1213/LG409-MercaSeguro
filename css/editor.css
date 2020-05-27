@@ -1,0 +1,67 @@
+
+	@import url('https://fonts.googleapis.com/css?family=Hammersmith+One|Roboto:300,400,500,700,900');
+		
+		
+/*******EDITOR******************/
+#con-editor{
+    width: 60%;
+    position: relative;
+    left: 20%;
+    margin-top: 50px;
+}
+
+#editor{
+    display: flex;
+    flex-direction: column;
+
+    background: #eee;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: rgba(31, 3, 70, 1) 0px 0px 20px;
+}
+
+/*CAJA DE TEXTO*/
+#cajaTexto{
+    background: #fff;
+    width: 100%;
+    height: 50vh;
+    outline: none;
+    border: solid 1px #ccc;
+    border-radius: 5px 5px 0px 0px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    font-family: 'Roboto';
+}
+
+/*MENU*/
+#menu{
+    background: #ddd;
+    width: 100%;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.comando{
+    padding: 5px 10px;
+    background: white;
+    border: solid 1px #ccc;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.comando:active{
+    border: solid 1px #555;
+    background: #eee;
+}
+
+#btnUnderline > span{
+    text-decoration: underline;
+}
+
+#btnColor > span{
+    color: #35037F;
+}
+
