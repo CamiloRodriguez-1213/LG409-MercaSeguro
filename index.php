@@ -14,6 +14,7 @@ if ($_GET['pagina'] == null) {
   header('Location:index.php?pagina=1');
 }
 ?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -29,9 +30,8 @@ if ($_GET['pagina'] == null) {
 
   <title>MercaSeguro</title>
 
-  <?php 
+  <?php include 'accesorios/navbar.php' ?>
 
-  include 'accesorios/navbar.php' ?>
 </head>
 <body>
   <?php include 'accesorios/carrusel.php' 

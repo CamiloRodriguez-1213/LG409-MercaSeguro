@@ -1,4 +1,4 @@
-
+	
 	@import url('https://fonts.googleapis.com/css?family=Hammersmith+One|Roboto:300,400,500,700,900');
 		
 		
@@ -15,11 +15,10 @@
     flex-direction: column;
 
     background: #eee;
-    padding: 5px;
+    padding: 1px;
     border-radius: 10px;
-    box-shadow: rgba(31, 3, 70, 1) 0px 0px 20px;
+    
 }
-
 /*CAJA DE TEXTO*/
 #cajaTexto{
     background: #fff;
@@ -29,39 +28,6 @@
     border: solid 1px #ccc;
     border-radius: 5px 5px 0px 0px;
     padding: 10px;
-    margin-bottom: 10px;
 
     font-family: 'Roboto';
 }
-
-/*MENU*/
-#menu{
-    background: #ddd;
-    width: 100%;
-    border: solid 1px #ccc;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.comando{
-    padding: 5px 10px;
-    background: white;
-    border: solid 1px #ccc;
-
-    outline: none;
-    cursor: pointer;
-}
-
-.comando:active{
-    border: solid 1px #555;
-    background: #eee;
-}
-
-#btnUnderline > span{
-    text-decoration: underline;
-}
-
-#btnColor > span{
-    color: #35037F;
-}
-
