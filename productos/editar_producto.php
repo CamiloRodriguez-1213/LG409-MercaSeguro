@@ -1,7 +1,6 @@
 <?php
 include "../includes/verify_install.php";
 
-
 ?>
 
 
@@ -12,6 +11,7 @@ include "../includes/verify_install.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDITA TUS PRODUCTOS</title>
+
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@ include "../includes/verify_install.php";
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
-
+<link rel="stylesheet" type="text/css" href="../css/editor.css"><!---PARA EDITOR DE DESCRIPCION-->
 
     <?php include "../accesorios/navbar_plus.php" ?>
 
@@ -115,7 +115,7 @@ include "../includes/verify_install.php";
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-6 mt-4">
                 <small><h6><b>Categoria</b></h6></small>
                     <div class="form-group ">
                         <div class="row justify-content-center align-items-center">
@@ -165,13 +165,23 @@ include "../includes/verify_install.php";
 
                 </div>
                 <div class="col-12">
-                <small><h6><b>Descripción</b></h6></small>
+                    <small><h6><b>Descripción</b></h6></small>
 
-                    <div class="form-group"><br>
+                    <div class="form-group">
 
-                        <textarea class="form-input" name="descripcion" style="width: 14rem; height:55px" placeholder="Describe tu producto"> <?php echo $descripcion_producto ?> </textarea>
+                            <!--EDITOR DE TEXTO EN EDITAR PRODUCTOS-->
+                            <div id="con-editor">
+                            		<div id="editor">
+                            			<div name="descripcion" id="cajaTexto" contenteditable placeholder="Describe tu producto"><!--texto de editor-->
+                                            <?php echo $descripcion_producto ?>
+                            			</div>
+                            		</div>
+                             </div>
+                            <!------>
+
                     </div>
                 </div>
+
                 <div class="col 12">
                     <input type="submit" name="submit" class="submit btn btn-primary" value=" Publicar " id="regt" />
                 </div>
@@ -182,7 +192,7 @@ include "../includes/verify_install.php";
 
 
 
-
+    <?php include '../js/texeditor.js' ?><!--complemento para editar descripcion-->
 </body>
 
 </html>
