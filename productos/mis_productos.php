@@ -44,6 +44,7 @@ if (isset($_SESSION['id'])) {
 
       <div class="row sm-12">
         <?php
+<<<<<<< HEAD
         $sql = "SELECT productos.id AS id_producto,nombre_producto,descripcion_producto,precio,id_categoria_producto
         ,imagen_producto,id_usuarios,estado,subcategoria.id AS id_subcategoria,nombre_sub_categoria,categorias_productos.id 
         AS id_categoria,nombre_cat_producto
@@ -52,6 +53,13 @@ if (isset($_SESSION['id'])) {
                 ON productos.id_categoria_producto = subcategoria.id
                 INNER JOIN categorias_productos
                 ON subcategoria.id_categoria = categorias_productos.id";
+=======
+        $sql = "SELECT * FROM productos 
+        INNER JOIN subcategoria
+        ON productos.id_categoria_producto = subcategoria.id
+        INNER JOIN categorias_productos
+        ON subcategoria.id_categoria = categorias_productos.id";
+>>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
         $result = DB::query($sql);
         ?>
         <?php
@@ -65,7 +73,11 @@ if (isset($_SESSION['id'])) {
             <div class="contenedor sm-12 mb-4">
               <figure>
 
+<<<<<<< HEAD
                 <div class="card btn-light  " style="max-width: 240px; max-height: 400px; position: relative">
+=======
+                <div class="card btn-light  " style="max-width: 260px; max-height: 400px; position: relative">
+>>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
                   <div class="color">
                     <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="120px" class="card-img-top" alt="OO">
                     <div class="card-body">
@@ -73,6 +85,7 @@ if (isset($_SESSION['id'])) {
                       <h5><?php echo $mostrar['nombre_producto']; ?> </h5>
                       </div>
                       
+<<<<<<< HEAD
                       <small> <p>Valor Unitario :<br>  <?php echo $mostrar['precio'] ?></p></small>
                       <small> <p>Categoria : <br><?php echo $mostrar['nombre_cat_producto'] ?></p></small>
                       
@@ -87,6 +100,18 @@ if (isset($_SESSION['id'])) {
                        
                 </div>
                     
+=======
+                      <small> <p>Valor Unitario : <?php echo $mostrar['precio'] ?></p></small>
+                      <small> <p>Categoria : <?php echo $mostrar['nombre_cat_producto'] ?></p></small>
+                    
+
+                    <form action="editar_producto.php" method="get">
+                    <div class="capa">
+                      <p><button class="btn btn-primary" type="submit" name="id_form_editar" value="<?php  $mostrar['id'] ?>" >Editar</button>
+                       <button class="btn btn-danger" onClick=" window.location.href='##.php' " >Eliminar</button></p>
+                </div>
+                    </form>
+>>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
                   </div>
                 </div>
 
@@ -129,4 +154,8 @@ if (isset($_SESSION['id'])) {
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> e53d6b35540eb83900fbe50752afe4fa5dec91b2
