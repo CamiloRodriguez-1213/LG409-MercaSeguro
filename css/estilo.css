@@ -7,8 +7,20 @@
       
   }
   body{
-      background-color: #e4e4e4;
+    background-color: #e4e4e4 !important;
   }
+  
+  .navn a{
+    color: #333;
+}
+
+ .collapse:hover
+ {
+    display: block;
+ }
+.dropdown:hover>.dropdown-menu{
+    display: inline-table;
+}
   /*Quitar borde azul del input*/
   input:focus, input.form-control:focus {
     outline:none !important;
@@ -17,6 +29,37 @@
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+  /*Cuadro de busqueda*/
+  .form-inline{
+          
+    max-width: 600px;
+    padding: 8px 1px;
+    position: relative;
+
+    
+}
+
+/*Fin quitar borde azul del input*/
+.search-input-index{
+    padding: 7px 60px 9px 15px;
+    background-color: #fff;
+    border: 0 rgba(0,0,0,.2);
+    width: 480px;
+    color: #333;
+    font-size: 16px;
+    
+    margin: 0;
+    font-family: inherit;
+    
+}
+/*Fin cuadro de busqueda*/
+
+/* Ancho de botones fijo */
+.custom {
+  width: 100px !important;
+}
+
+/* Diseño de input subir archivo */
 input[type="file"] {
   display: none;
 }
@@ -28,14 +71,14 @@ input[type="file"] {
 }
 #img-prev{
   max-width: 20px;
-  height: auto;
+  
 }
 
   
 
   /*Logo*/
   .nav-logo {
-      background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png);
+      /* background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png); */
       height: 34px;
       top: 11px;
       width: 134px;
@@ -57,23 +100,25 @@ input[type="file"] {
       /*font-family: "Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;*/
       
   }
+  /* Formulario Crear Usuario */
   .crear_usuario {
     padding: 70px 10px;
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     margin-top: 50px;
       padding-top: 28px;
       margin-bottom: 30px;
   }
+  /* Formulario ingresar usuario */
   .ingresar_usuario {
     padding: 70px 10px;
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     margin-top: 50px;
       padding-top: 28px;
       margin-bottom: 30px;
   }
   .login_db {
       padding: 70px 70px;
-      background-color: #ffffff;
+      background-color: #ffffff !important;
       margin: calc(22% + 100px);
       margin-top: 40px;
       padding-top: 28px;
@@ -86,15 +131,16 @@ input[type="file"] {
  
   .vender_producto {
     
-    
-    padding: 70px 10px;
-    background-color: #ffffff !important;
+   padding: 70px 10px;
+    background-color: #ffffff;
     margin-top: 50px;
       padding-top: 28px;
       margin-bottom: 30px;
   }
-  ul, li{
+  .list-group-item{
     list-style: none !important;
+    
+    
    }
   h1 {
       text-align: center;
@@ -102,25 +148,11 @@ input[type="file"] {
       color: rgb(27, 27, 27)
   }
   
-  .form-input {
-      display: inline-block;
-      vertical-align: top;
-      
-      
-      padding: 0px 0px;
-      background: transparent;
-      border: 2px;
-      border-bottom: 1.2px solid #435160;
-      outline: none;
-      color: #6D7781;
-      font-size: 16px;
-    }
+ /* Modificar textarea */
+
+/* Fin modificar textarea */
   .form-input2 {
-      display: inline-block;
-      vertical-align: top;
-      
-      
-      padding: 20px 0px;
+     padding: 15px 0px;
       background: transparent;
       border: 2px;
       border-bottom: 1.2px solid #435160;
@@ -129,11 +161,11 @@ input[type="file"] {
       font-size: 16px;
     }
     
-    input:hover{
+    .infor:hover{
       border-bottom: 2px solid #0a0a0a;
     }
-    input:focus{
-      border-bottom: 1.8px solid #ff0000a8;
+    .infor:focus{
+      border-bottom: 1.5px solid #ff0000a8;
     }
     .select-cat{
       -webkit-appearance: none;
@@ -170,3 +202,61 @@ input[type="file"] {
         border-color: #7bbaff;
         box-shadow: 0 0 0 3px rgba(0, 121, 250, .3);
       }
+
+
+/* /------------------------------------------------------/ */
+
+/* Mostrando los productos enfoque */
+
+/* Mostrando los productos enfoque */
+
+.contenedor figure{
+  text-align: center;
+ position:relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 6px;
+  
+  
+ 
+}
+.zoom:hover{
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transition: all 500ms ease-out;
+}
+
+
+
+.contenedor figure .color:hover{
+  
+  width: 100%;
+  height: 100%;
+  opacity: 8;
+  visibility: visible;
+  background: rgb(255, 255, 255);
+  filter: blur(0.5px);
+  transition: all 500ms ease-out;
+  
+  
+}
+.capa{
+  
+  top: 50%;
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.2);
+  
+
+}
+
+
+.contenedor :hover > .capa {
+  
+  top: 50%;
+  opacity: 1;
+  visibility: visible;
+  transition: all 800ms ease-out;
+  
+}
+

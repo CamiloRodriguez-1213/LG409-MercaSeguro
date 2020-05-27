@@ -1,5 +1,5 @@
 <?php 
-    include('includes/db.php');
+    include('../includes/db.php');
     SESSION_START();
         if(isset($_SESSION['id'])){
           $id_sesion=$_SESSION['id'];
@@ -15,7 +15,7 @@
         $sql = "UPDATE productos set estado='$es' WHERE id='$id_sesion'";
     }else
     {
-        
+      
         $producto = $_POST["nombre"];
         $descripcion=$_POST['descripcion'];
         $precio=$_POST['precio'];
@@ -35,5 +35,5 @@
         }
     }
     DB::query($sql);
-    header('Location: mis_productos.php');
+    header('Location: ../productos/mis_productos.php');
     ?>
