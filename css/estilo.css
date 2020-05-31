@@ -286,3 +286,21 @@ input[type="file"] {
   background-color: rgb(224, 224, 224);
   
 }
+
+
+
+/* IMAGEN CIRCULAR PARA CONFIRMACION DE COMPRAS */
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--landscape img {
+  width: auto;
+  height: 100%;
+  
+}
