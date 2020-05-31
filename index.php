@@ -87,7 +87,7 @@ if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
      </div>
    <?php
    endwhile;
-   include 'procedimientos_externos/barra_paginar_buscar.php';
+   
   
       }
       /* Cuando no se hace una busqueda */
@@ -116,7 +116,7 @@ if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
           </div>
         <?php
         endwhile;
-        include 'procedimientos_externos/barra_paginar.php';
+        
       ?>
       
       <?php
@@ -125,7 +125,14 @@ if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
     </div>
   </div>
   <br><br>
-
+<?php
+if (isset($_GET['busqueda'])) {
+  include 'procedimientos_externos/barra_paginar_buscar.php';
+}
+if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
+  include 'procedimientos_externos/barra_paginar.php';
+}
+   ?>
   
 
   <div style="float: right">
