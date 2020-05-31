@@ -1,125 +1,153 @@
 <?php
-include('../includes/verify_install.php');
-include('../includes/db.php');
-
+    include('includes/verify_install.php');
+    include('includes/db.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Last-Modified" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Last-Modified" content="0">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/estilo.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/estilo_inicio.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-  <title>Inicio</title>
-  <?php
-
-  $busqueda = '';
-  include '../accesorios/navbar_buscar.php';
-  
-
-  ?>
-</head>
-
-<body>
-
-
-  <?php
-  $busqueda = strtolower($_REQUEST['busqueda']);
-  if ($busqueda != null || $busqueda != '') { ?>
-
-    <h3>Resultado
-    </h3>
-
-
-    <?php
-
-    $sql = "SELECT * FROM productos";
-    $result = DB::query($sql);
-    $result_consulta = $result->num_rows;
-    $num_x_pag = 8;
-    $mostrar_paginas = ($result_consulta / $num_x_pag);
-    $mostrar_paginas = $result_consulta = ceil($mostrar_paginas);
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="complementos/inicio.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
-    $sql_paginas = "SELECT * FROM productos WHERE
-    nombre_producto LIKE '%$busqueda%' OR
-    descripcion_producto LIKE '%$busqueda% LIMIT 1,4";
-    $result_paginas = DB::query($sql_paginas);
+    
+  <title>Inicio</title>
+   
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
+    <nav class="navbar navbar-expand navbar-light bg-warning sticky-top">
+      <h1><a class="navbar-brand " href="index.php">MercaSeguro</a></h1>
+      <?php  
+ 
+      // SESSION_UNSET();
+        SESSION_START();
+        if(isset($_SESSION['id'])){
+          $ides=$_SESSION['id'];
+        }else{      
+        $ides=0;
+       }
+       $busqueda = strtolower( $_REQUEST['busqueda']);
     ?>
-    <div class="container ">
-    <h1 class="my-5">Paginacion</h1>
-
-    <div class="row justify-content-around">
-      <?php
-      
-      while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
-
-        <div class="contenedor  sm-12 md-4">
-          <figure>
-
-            <div class="card btn-light mr-2" style="width: 240px; height: 280px; ">
-              <div class="color">
-                <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
-                <br><br>
-                <small>39% descuento</small>
-                <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
-                <div class="capa">
-                  <p><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
-                </div>
-              </div>
-            </div>
-          </figure>
+    
+      <ul class="navbar-nav  mr-auto">
+        <form action="buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control py-2" type="text" name="busqueda" id="busqueda" value="<?php echo $busqueda; ?>" placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
         </div>
+          
+        </form>
+      </ul>
+        </nav>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+  <ul class="navbar-nav  mr-auto">
+          
+          <li class="nav-item dropdown" id='dmenu'>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categorias
+        </a>
+        <div class="dropdown-menu" style="padding: 22px 0;" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Vehículos</a>
+          <a class="dropdown-item" href="#">Tecnología</a>
+          
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="#">Historial</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Oferta Semanal</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Mis ventas</a>
+          </li>
+        
+        </ul>
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="crear_usuario.php">Crea tu cuenta</a>
+        </li>
+        
+        <li class="nav-item">
+        
+          <a class="nav-link" href="ingresar_usuario.php">Iniciar sesión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mis compras</a>
+        </li>
+        </ul>
+    
+  </div>
+</nav>
+  <table>
+    <?php
+    if ($busqueda!= null || $busqueda!='') {?>
+      <tr>
+          <td><h3>Resultado</th></h3>
+          
+      </tr>
+      <tr>
+          <td>
       <?php
-      endwhile
-      ?>
+        
+          $sql= "SELECT * FROM productos WHERE
+          nombre_producto LIKE '%$busqueda%' OR
+          descripcion_producto LIKE '%$busqueda%' 
+          
+          ";
+        $result= DB::query($sql);
+        while($mostrar= mysqli_fetch_array($result)){
+            ?>
+            <br>
+            
+
+          <div class="container-sm-12 mb-4">
+    <div class="card btn-light ml-4" style="width: 14.3rem; ">
+      <div class="card-body">
+      <img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="135px" class="card-img-top" alt="OO">
+      <h6 class="card-title "><?php echo $mostrar['nombre_producto']; ?> </h6>  
+      <p class="card-text-success">$ <?php echo $mostrar['precio']; ?> </p>
+        
+      </div>
     </div>
   </div>
-  <?php
-  }else {
-    echo "No se encontraron resultados";
-  }
+            <?php
+        }
+        }else
+        {
+          echo "<h4>No se ha encontrado ningún resultado</h4>";
+        }
+        
+       
+      ?>
+      
+      </td>
+     </tr>
+  </table>
 
 
-  ?>
-
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <!-- Cuando el numero de pagina sea menor a 1 se desactivara la opcion de anterior -->
-      <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
-        <!-- Cuando seleccione el boton de siguiente se restara uno al numero de pagina -->
-        <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" tabindex="-1" aria-disabled="true">
-          Anterior
-        </a>
-      </li>
-      <!-- Imprimimos el numero de paginas -->
-      <?php for ($i = 0; $i < $mostrar_paginas; $i++) : ?>
-        <!-- Dependiendo de la pagina que seleccione se marcara como activado -->
-        <li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?>">
-          <!-- Mostramos el numero de paginas -->
-          <a class="page-link" href="index.php?pagina=<?php echo $i + 1 ?>">
-            <?php echo $i + 1 ?>
-          </a>
-        </li>
-      <?php endfor ?>
-      <!-- Cuando el numero de pagina sea mayor a el numero de paginas se desactivara la opcion de siguiente -->
-      <li class="page-item <?php echo $_GET['pagina'] >= $mostrar_paginas ? 'disabled' : '' ?>">
-        <!-- Cuando seleccione el boton de siguiente se sumara uno al numero de pagina -->
-        <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a>
-      </li>
-    </ul>
-  </nav>
+    <script src="js/jquery-3.5.0.min.js">  </script>
+    <script src="js/bootstrap.min.js">  </script>
 </body>
-
 </html>

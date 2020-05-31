@@ -10,7 +10,7 @@ include "../includes/verify_install.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Productos</title>
+    <title>EDITA TUS PRODUCTOS</title>
 
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -22,23 +22,24 @@ include "../includes/verify_install.php";
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
-<link rel="stylesheet" type="text/css" href="../css/editor.css"><!---PARA EDITOR DE DESCRIPCION-->
+    <link rel="stylesheet" type="text/css" href="../css/editor.css">
+    <!---PARA EDITOR DE DESCRIPCION-->
 
     <?php include "../accesorios/navbar_plus.php" ?>
 
 
     <script languaje="javascript">
         $(document).ready(function() {
-            $("#cbx_categoria").change(function() {
+            $("#categoria_producto").change(function() {
                 /* Reinicia el select */
 
 
-                $("#cbx_categoria option:selected").each(function() {
+                $("#categoria_producto option:selected").each(function() {
                     id_categoria = $(this).val();
-                    $.post("getSubcategoria.php", {
+                    $.post("subcategorias.php", {
                         id_categoria: id_categoria
                     }, function(data) {
-                        $("#cbx_subcategoria").html(data);
+                        $("#subcategoria_producto").html(data);
                     });
                 });
             })
@@ -50,20 +51,19 @@ include "../includes/verify_install.php";
 
 <body>
     <?php
-    $id_form_producto = $_REQUEST['id_form_editar'];
+    $id_form_producto = $_POST['id_form_editar'];
 
     include "../includes/db.php";
-    $sql = "SELECT productos.nombre_producto,productos.descripcion_producto,productos.precio,
-    productos.imagen_producto,productos.estado,subcategoria.nombre_sub_categoria,
-    categorias_productos.nombre_cat_producto,productos.id AS id_producto,
-    categorias_productos.id AS id_categoria, subcategoria.id AS id_subcategoria
-    FROM productos
-    INNER JOIN subcategoria
-    ON
-    subcategoria.id=productos.id_categoria_producto
-    INNER JOIN categorias_productos
-    ON subcategoria.id_categoria=categorias_productos.id
-    WHERE productos.id='$id_form_producto'";
+    $sql = "SELECT productos.nombre_producto,productos.descripcion_producto,productos.precio,productos.id_categoria_producto,
+    productos.imagen_producto,productos.estado, sub_cat_productos.nombre_sub_producto,cat_productos.nombre_cat_producto,
+	 productos.id AS id_producto,cat_productos.id AS id_categoria,sub_cat_productos.id AS id_subcategoria
+FROM productos
+INNER JOIN sub_cat_productos
+ON 
+sub_cat_productos.id= productos.id_categoria_producto
+INNER JOIN cat_productos
+ON sub_cat_productos.id_cat_producto = cat_productos.id
+WHERE productos.id='$id_form_producto'";
 
     $result = DB::query($sql);
     while ($mostrar = mysqli_fetch_array($result)) {
@@ -76,123 +76,128 @@ include "../includes/verify_install.php";
         $imagen_producto = $mostrar['imagen_producto'];
         $estado = $mostrar['estado'];
         $nombre_cat_producto = $mostrar['nombre_cat_producto'];
-        $nombre_sub_categoria = $mostrar['nombre_sub_categoria'];
+        $nombre_sub_categoria = $mostrar['nombre_sub_producto'];
         $id_subcategoria = $mostrar['id_subcategoria'];
         $id_producto = $mostrar['id_producto'];
 
-        /*  echo $id_subcategoria; */
+        
     }
+
+    $sql = "SELECT id, nombre_cat_producto FROM cat_productos";
+
+    $result = DB::query($sql);
 
     ?>
 
-    <!--- Editar Form paso a paso -->
-    <div class="container ">
-        <form class="vender_producto" id="regiration_form" action="../crear_producto.php" method="post" enctype="multipart/form-data">
-            <h2> EDITANDO MIS PRODUCTOS </h2><br><br>
-            <div class="row md-2">
 
-                <div class="col-6">
-                    <small><h6><b>Nombre de tu producto</b></h6></small>
-                    <div class="form-group"><br>
-                        <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>">
-                    </div>
+    <div class="container">
+        <form action="../procesos_productos/actualizar_producto.php" method="post" id="regiration_form" enctype="multipart/form-data">
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-auto my-4">
+
+                <div class="form-group"><br>
+                    <small>
+                        <h6><b>Nombre de tu producto</b></h6>
+                    </small>
+                    <input type="text" class="form-input2 infor" name="nombre_producto" style="width: 14rem;" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>">
                 </div>
+            </div>
+            <div class="col col-lg-2">
+                
+            </div>
+            <div class="col-md-auto my-4">
+                <div class="form-group"><br>
+                    <small>
+                        <h6><b>Precio</b></h6>
+                    </small>
+                    <b>$ </b><input type="text" class="form-input2 infor" name="precio_producto" style="width: 14rem;" placeholder="Valor del producto" value="<?php echo $precio ?>">
 
-
-                <?php
-                $sql = "SELECT id, nombre_cat_producto FROM categorias_productos";
-
-                $result = DB::query($sql);
-
-                ?>
-
-                <div class="col-6">
-                <small><h6><b>Precio</b></h6></small>
-                    <div class="form-group ml-3">
-
-                        <label><b>$ </b><input type="text" class="form-input2 infor" name="precio" style="width: 14rem;" placeholder="Valor del producto" value="<?php echo $precio ?>"></label><br><br>
-
-                    </div>
                 </div>
+            </div>
 
-                <div class="col-6 mt-4">
-                <small><h6><b>Categoria</b></h6></small>
-                    <div class="form-group ">
-                        <div class="row justify-content-center align-items-center">
-                            <div class="form-group">
-                                
-                                <select class="form-control " name="cbx_categoria" id="cbx_categoria">
+        </div>
+        <div class="row justify-content-md-center">
 
-                                    <option value="">Seleccionar Categoria</option>
+            <div class="col-md-auto ">
+                <div class="form-group">
+                    <small>
+                        <h6><b>Categoria</b></h6><br><br>
+                    </small>
+                    <select class="form-control" name="categoria_producto" id="categoria_producto">
 
-                                    <?php while ($mostrar = $result->fetch_assoc()) { ?>
-                                        <option value="<?php echo $id_categoria_producto  ?>" hidden selected><?php echo $nombre_cat_producto; ?></option>
-                                        <option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat_producto']; ?></option>
-                                    <?php }
-                                    ?>
+                        <option value="">Seleccionar Categoria</option>
+
+                        <?php while ($mostrar = $result->fetch_assoc()) { ?>
+                            <option value="<?php echo $id_categoria_producto  ?>" hidden selected><?php echo $nombre_cat_producto; ?></option>
+                            <option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat_producto']; ?></option>
+                        <?php }
+                        ?>
 
 
-                                </select>
-                                <br>
-                                <select class="form-control" name="cbx_subcategoria" id="cbx_subcategoria">
-                                    <option value="<?php echo $id_subcategoria ?>" hidden selected><?php echo $nombre_sub_categoria; ?></option>
+                    </select>
+                    <br>
+                    <select class="form-control" name="subcategoria_producto" id="subcategoria_producto">
+                        <option value="<?php echo $id_subcategoria ?>" hidden selected><?php echo $nombre_sub_categoria; ?></option>
 
-                                </select>
-                            </div>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col col-lg-2">
+                
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <small>
+                        <h6><b>Foto de tu producto</b></h6>
+                    </small>
+                    <div class="imge">
+                        <div id="imagePreview">
                         </div>
-                    </div>
-                </div>
+                        <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($imagen_producto) ?>" height="120px" class="card-img-top" alt="OO">
+                        <br><br>
+                        <label for="file-upload" class="custom-file-upload">
 
-                <div class="col-6">
-                <small><h6><b>Foto de tu producto</b></h6></small>
-
-                    <div class="form-group">
-                        <div class="imge justify-content-center">
-                            <div id="imagePreview"><img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($imagen_producto) ?>" height="120px" class="card-img-top" alt="OO"></div>
-                            <br><br>
-                            <label for="file-upload" class="custom-file-upload">
-
-                                <i class="fa fa-cloud-upload"></i> Subir archivo
-                            </label>
-
-                            <input type="file" aling name="imagen" id="file-upload" accept="image/*" />
-
-                        </div><br>
+                            <i class="fa fa-cloud-upload"></i> Subir archivo
+                        </label>
+                        <input type="file" hidden name="imagen_producto" value="<?php echo base64_encode($imagen_producto) ?>">
+                        <input type="file" aling name="imagen_prodcto" id="file-upload" accept="image/*" />
 
                     </div>
 
-
-
                 </div>
-                <div class="col-12">
+
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-12">
+
+            <div class="form-group">
                     <small><h6><b>Descripción</b></h6></small>
-
-                    <div class="form-group">
 
                             <!--EDITOR DE TEXTO EN EDITAR PRODUCTOS-->
                             <div id="con-editor">
                             		<div id="editor">
-                            			<div name="descripcion" id="cajaTexto" contenteditable placeholder="Describe tu producto"><!--texto de editor-->
-                                            <?php echo $descripcion_producto ?>
+                            			<div id="cajaTexto" contenteditable placeholder="Describe tu producto"><!--texto de editor-->
+                                        <textarea class="text_editar" style="width: 100%;height: 100%" name="descripcion_producto">
+                                        <?php echo $descripcion_producto ?>
+                                        </textarea>
+                                        
                             			</div>
                             		</div>
                              </div>
-                            <!------>
-
                     </div>
                 </div>
-
-                <div class="col 12">
-                    <input type="submit" name="submit" class="submit btn btn-primary" value=" Publicar " id="regt" />
-                </div>
             </div>
-        </form>
-    </div>
+            <input type="submit" name="submit" class=" btn btn-primary" value="Publicar" id="regt" />
+            <input type="text" name="id_producto" hidden value="<?php echo $id_producto ?>">
+            </form>
+        </div>
 
-
-
-
-    <?php include '../js/texeditor.js' ?><!--complemento para editar descripcion-->
+        <?php include '../js/texeditor.js' ?>
+        <!--complemento para editar descripcion-->
 </body>
 
 </html>
