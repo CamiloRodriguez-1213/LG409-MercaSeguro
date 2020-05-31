@@ -5,9 +5,9 @@ include('login_logout/login.php');
 if (!$_GET) {
   header('Location:index.php?pagina=1');
 }
-if ($_GET['pagina']==null || $_GET['pagina']==0 ||) {
+/* if ($_GET['pagina']==null || $_GET['pagina']==0 ||) {
   header('Location:index.php?pagina=1');
-}
+} */
 
 
 ?>
@@ -72,7 +72,6 @@ if ($_GET['pagina']==null || $_GET['pagina']==0 ||) {
       <div class="d-none d-sm-none d-md-none d-lg-block">
         <div class="col" style="width: 150px">
           <div class="d-flex flex-column">
-
             <div class="p-2">
               <h5><small>Vendidos</small></h5>
             </div>
