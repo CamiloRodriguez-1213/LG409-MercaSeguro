@@ -1,11 +1,9 @@
-<nav class="nav justify-content-center navbar-light bg-warning sticky-top ">
-  <nav class="navbar navbar-light bg-warning mt-2 mb-1">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+  
 
 
-    <a class="navbar-brand " href="../index.php">
-      <FONT size=6> MercaSeguro </font>
-    </a>
-
-  </nav>
+<h5><a class="navbar-brand ml-5" href="../index.php">MercaSeguro </a></h5>
+  
+  
 
 </nav>

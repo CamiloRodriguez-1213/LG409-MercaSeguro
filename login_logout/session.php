@@ -5,11 +5,10 @@ class SE{
 //Contienen las variables, el servidor, usuario, contraseña y nombre  de la base de datos
 
 public static function my_sesion(){
-    
-    
+   
 session_start();// Iniciando Sesion
 // Guardando la sesion
-$user_check=$_SESSION['login_user_sys'];
+$user_check=$_SESSION['id'];
 
 // SQL Query para completar la informacion del usuario
 

@@ -5,9 +5,7 @@ include('login_logout/login.php');
 if (!$_GET) {
   header('Location:index.php?pagina=1');
 }
-if ($_GET['pagina']==null || $_GET['pagina']==0 ||) {
-  header('Location:index.php?pagina=1');
-}
+
 
 
 ?>

@@ -1,5 +1,5 @@
 <!-- CARUSSEL AUTOMATICO -->
-<div class="bg-light  ">
+<div class="bg-light ">
       <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="10000">

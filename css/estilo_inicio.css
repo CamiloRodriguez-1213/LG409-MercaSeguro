@@ -5,10 +5,10 @@
       
 }
 body{
-    background-color: #e4e4e4;
+    background-color: #f0f0f0 !important;
 }
 .dropdown-item{
-    display: flexbox;  
+    display: flexbox;
 }
 /*Inicio Header*/
 /*Logo*/
@@ -106,31 +106,18 @@ body{
    
 }
 .zoom:hover{
-    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     transition: all 500ms ease-out;
 }
 
 
-
-.contenedor figure .color:hover{
-    
-    width: 100%;
-    height: 100%;
-    opacity: 8;
-    visibility: visible;
-    background: rgba(51, 47, 47, 0.11);
-    filter: blur(0.5px);
-    transition: all 500ms ease-out;
-    
-    
-}
  .capa{
     
-    top: 50%;
+    
     
     opacity: 0;
     visibility: hidden;
-    transform: scale(1.2);
+    
     
 
 }
@@ -138,7 +125,7 @@ body{
 
 .contenedor :hover > .capa {
     
-    top: 50%;
+    
     opacity: 1;
     visibility: visible;
     transition: all 800ms ease-out;
