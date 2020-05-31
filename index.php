@@ -2,17 +2,14 @@
 include('includes/db.php');
 include('includes/verify_install.php');
 include('login_logout/login.php');
-
-include('procedimientos_externos/paginacion.php');
 if (!$_GET) {
   header('Location:index.php?pagina=1');
 }
-if ($_GET['pagina'] > $mostrar_paginas || $_GET['pagina'] <= 0) {
+if ($_GET['pagina']==null || $_GET['pagina']==0 ||) {
   header('Location:index.php?pagina=1');
 }
-if ($_GET['pagina'] == null) {
-  header('Location:index.php?pagina=1');
-}
+
+
 ?>
 
 <!doctype html>
