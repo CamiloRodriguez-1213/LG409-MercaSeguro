@@ -6,7 +6,9 @@ if (!$_GET) {
   header('Location:index.php?pagina=1');
 }
 
-
+if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
+  header('Location:index.php?pagina=1');
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -53,11 +55,9 @@ if (!$_GET) {
   </nav>
 </head>
 <body>
-  <?php
-if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
-  include 'accesorios/carrusel.php';
-}
-?>
+  <?php include 'accesorios/carrusel.php' 
+  ?>
+
  
   <div class="container">
     <h1 class="my-5">Paginacion</h1>
@@ -68,8 +68,14 @@ if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
    
    while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 
-     <div class="contenedor  sm-12 md-4">
+     <div class="contenedor sm-12 md-4">
+
+      
+
        <figure>
+       
+       <form action="ventas/ver_productos.php" method="POST">
+                        <button class="sinborde" type="submit">
 
          <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
            <div class="color">
@@ -78,10 +84,13 @@ if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
              <small>39% descuento</small>
              <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
              <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
-             <div class="capa">
              
-             </div>
            </div>
+           </button>
+              <input type="text" hidden id="id_verproducto" name="id_verproducto" value="<?php echo $mostrar['id'] ?>">
+              </form>
+
+           
          </div>
        </figure>
      </div>
@@ -92,8 +101,6 @@ if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
       }
       /* Cuando no se hace una busqueda */
       if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
-        
-  
         include 'procedimientos_externos/paginacion.php';
         while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 

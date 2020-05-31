@@ -10,7 +10,7 @@ include "../includes/verify_install.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Previa</title>
+    <title>Confirmacion Compra</title>
 
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -22,9 +22,9 @@ include "../includes/verify_install.php";
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
-<link rel="stylesheet" type="text/css" href="../css/editor.css"><!-- PARA EDITOR DE DESCRIPCION -->
+<link rel="stylesheet" type="text/css" href="../css/editor.css"><!---PARA EDITOR DE DESCRIPCION-->
 
-<?php include '../accesorios/navbar_global.php' ?>
+<?php include('../accesorios/navbar_plus.php') ?>
 
 
     <script languaje="javascript">
@@ -53,16 +53,16 @@ include "../includes/verify_install.php";
     $id_form_producto = $_REQUEST['id_form_editar'];
 
     include "../includes/db.php";
-    $sql = "SELECT productos.id AS id_producto,nombre_producto,descripcion_producto,
-    precio,imagen_producto,estado,sub_cat_productos.id AS id_sub_cat_producto,nombre_sub_producto,
-    cat_productos.id AS id_cat_producto,nombre_cat_producto, 
-    usuarios.id AS id_usuarios,nombre_usuario,apellido_usuario,email,celular,whatsapp,ciudad,direccion 
-    from productos INNER JOIN sub_cat_productos 
-    ON id_categoria_producto=sub_cat_productos.id 
-     INNER JOIN cat_productos ON id_cat_producto=cat_productos.id
-     INNER JOIN usuarios ON id_usuarios=usuarios.id
-    
-    
+    $sql = "SELECT productos.nombre_producto,productos.descripcion_producto,productos.precio,
+    productos.imagen_producto,productos.estado,subcategoria.nombre_sub_categoria,
+    categorias_productos.nombre_cat_producto,productos.id AS id_producto,
+    categorias_productos.id AS id_categoria, subcategoria.id AS id_subcategoria
+    FROM productos
+    INNER JOIN subcategoria
+    ON
+    subcategoria.id=productos.id_categoria_producto
+    INNER JOIN categorias_productos
+    ON subcategoria.id_categoria=categorias_productos.id
     WHERE productos.id='$id_form_producto'";
 
     $result = DB::query($sql);
@@ -94,62 +94,106 @@ include "../includes/verify_install.php";
 
     <div class="row "><!--inicio row 1-->
         
-            <div class="col-md-6 ">
-              <!--Foto de Producto-->
-              <div class="col-12 ml-5">
+        <div class="col-md-7  "> <!-- Primera MITAD de (7 columnas) PARA COLOCAR CAMPOS de Informacion -->
+              <!-- Foto de Producto -->
+              <div class="col-12  "> <br>
+              <div class="col-12">  
+                    <small><h6><b>AQUI NOMBRE DEL PRODUCTO </b></h6></small>
+                    <!-- <div class="form-group"><br>
+                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
+                    </div> -->
+                </div>
+              <br>  
+                </div><br>
 
-              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div><br>
 
-                        <!-- <small><h6><b>Foto de tu producto</b></h6></small>
-
-                        <div class="form-group">
-                            <div class="imge justify-content-center ml-5">
-                                <div id="imagePreview"><img class="zoom mt-3" src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="card-img-top" alt="OO"></div>
-                                <br>
-                                <input type="file" aling name="imagen" id="file-upload" accept="image/*" />
-
-                            </div><br>
-
-                        </div> -->
-                      </div>
-            </div>
+                <div class="col-md-12  ">
+              <!-- Foto de Producto -->
+              <div class="col-12 ">
+              <div class="col-12">
+                    <small><h6><b>Aqui Medios de pago (Efecty) </b></h6></small>
+                    <!-- <div class="form-group"><br>
+                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
+                    </div> -->
+                </div>
+              <br>  
+                </div>
+            </div><br>
 
 
 
-      <div class="col-md-6"><!-- SEGUNDA MITAD DE PARA COLOCAR CAMPOS -->
+
+            <div class="col-md-12  ">
+              <!-- Foto de Producto -->
+              <div class="col-12 ">
+              <div class="col-12">
+                    <small><h6><b>Aqui Datos para tu factura</b></h6></small>
+                    <!-- <div class="form-group"><br>
+                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
+                    </div> -->
+                </div>
+              <br>  
+                </div>
+            </div><br>
+
+
+
+
+            <div class="col-md-12 ">
+              <!-- Foto de Producto -->
+              <div class="col-12 ">
+              <div class="col-12">
+                    <small><h6><b>Aqui datos del vendedor </b></h6></small>
+                    <!-- <div class="form-group"><br>
+                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
+                    </div> -->
+                </div>
+              <br>  
+                </div>
+            </div><br>
+
+
+
+            
+
+
+            <div class="col-md-12 ">
+              <!-- Foto de Producto -->
+              <div class="col-12 ">
+              <div class="col-12">
+                    <small><h6><b>Aqui Otro medio de pago (Targeta dev) </b></h6></small>
+                    <!-- <div class="form-group"><br>
+                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
+                    </div> -->
+                </div>
+              <br>  
+                </div>
+            </div><br>
+
+
+
+
+        </div>
+
+
+
+            
+
+
+
+      <div class="col-md-5 "><!-- SEGUNDA MITAD de (5 columnas) PARA COLOCAR CAMPOS de imagen -->
          
 
 
           <div class="row"><!--inicio row 2-->
+
                <div class="col-md-12 ">
                  <!--Nombre Producto-->
-                <div class="col-12">
-                    <small><h6><b>Nombre del producto</b></h6></small>
+                <div class="col-12 "><br>
+                    <!-- <small><h6><b>Imagen circular del producto</b></h6></small> -->
+                    <div class="circular--landscape bg-primary">
+                        <img src="../img/img-6.jpg" />
+                                </div>
                     <div class="form-group"><br>
                         <!-- <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> -->
                     </div>
@@ -161,12 +205,12 @@ include "../includes/verify_install.php";
 
 
                         
-              <div class="col-md-12 "><br><br>
+              <div class="col-md-12 ">
                   <!--Precio Producto-->
                   <div class="col-12" >
                 
                 <small><h6><b>Precio</b></h6></small>
-                    <div class="form-group ">
+                    <div class="form-group">
 
                         <label><b>$ </b><!-- <input type="text" class="form-input2 infor" name="precio" style="width: 14rem;" placeholder="Valor del producto" value="<?php echo $precio ?>"> --></label>
 
@@ -181,9 +225,9 @@ include "../includes/verify_install.php";
             
                 <div class="col-md-12 ">
                   <!---boton comprar--->
-                  <br><br>
+                  
                     <div class="row-12">
-                    <input type="submit" name="submit" class="submit btn btn-primary" value=" COMPRAR AHORA " id="regt" />
+                    <input type="submit" name="submit" class="submit btn btn-primary" value="CONFIRMAR COMPRA " id="regt" />
                     </div>
                 </div>
 
@@ -200,23 +244,9 @@ include "../includes/verify_install.php";
                 
 
     <div class="row ml-4"> <!--Bloque debajo de division 1 y 2 -->
-          <div class="col-md-7 ">
-            <!-- Descripcion -->
-            <p align="justify">
-            Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
-            Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
-            
-            </p>
-          </div>
+          
 
 
-          <div class="col-md-4 mt-5">
-            <!-- alado de descripcion -->
-            <p align="justify">
-            Donec sed odio dui. t. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
-            </p>
-
-          </div>
     </div>
               
             
