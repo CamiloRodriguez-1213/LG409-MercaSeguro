@@ -53,8 +53,11 @@ if (!$_GET) {
   </nav>
 </head>
 <body>
-  
-
+  <?php
+if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
+  include 'accesorios/carrusel.php';
+}
+?>
  
   <div class="container">
     <h1 class="my-5">Paginacion</h1>
@@ -89,7 +92,7 @@ if (!$_GET) {
       }
       /* Cuando no se hace una busqueda */
       if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
-        include 'accesorios/carrusel.php';
+        
   
         include 'procedimientos_externos/paginacion.php';
         while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
