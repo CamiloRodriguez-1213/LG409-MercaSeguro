@@ -28,73 +28,109 @@ if ($_GET['pagina'] == null) {
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-  <title>MercaSeguro</title>
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+  
+  <h5><a class="navbar-brand ml-5" href="index.php">MercaSeguro </a></h5>
+    
+    
+    <ul class="navbar-nav ml-4 mr-2">
+    
+    
+    <form action="index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
+          <div class="row">
+            <div class="input-group">
+                <input class="form-control" type="text" name="busqueda" id="busqueda"  placeholder="Busca tus productos">
+                <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" >
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+          </div>
+            
+          </form>
+          
+    </ul>
+  <?php 
+  
+  
 
-  <?php include 'accesorios/navbar.php' ?>
-
+  include 'accesorios/navbar.php' ?>
+  </nav>
 </head>
 <body>
-  <?php include 'accesorios/carrusel.php' 
-  ?>
+  
 
-
-  <div class="container ">
+ 
+<div class="container">
     <h1 class="my-5">Paginacion</h1>
-
     <div class="row justify-content-around">
       <?php
-      
-      while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
+      if (isset($_GET['busqueda'])) {
+        include 'procedimientos_externos/paginacion_buscar.php';
+   
+   while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 
-        <div class="contenedor  sm-12 md-4">
-          <figure>
+     <div class="contenedor  sm-12 md-4">
+       <figure>
 
-            <div class="card btn-light mr-2" style="width: 240px; height: 280px; ">
-              <div class="color">
-                <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
-                <br><br>
-                <small>39% descuento</small>
-                <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
-                <div class="capa">
-                  <p><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
+         <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
+           <div class="color">
+             <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
+             <br><br>
+             <small>39% descuento</small>
+             <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
+             <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
+             <div class="capa">
+             
+             </div>
+           </div>
+         </div>
+       </figure>
+     </div>
+   <?php
+   endwhile;
+   include 'procedimientos_externos/barra_paginar_buscar.php';
+  
+      }
+      /* Cuando no se hace una busqueda */
+      if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
+        include 'accesorios/carrusel.php';
+  
+        include 'procedimientos_externos/paginacion.php';
+        while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
+
+          <div class="contenedor  sm-12 md-4">
+            <figure>
+     
+              <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
+                <div class="color">
+                  <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
+                  <br><br>
+                  <small>39% descuento</small>
+                  <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
+                  <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
+                  <div class="capa">
+                  
+                  </div>
                 </div>
               </div>
-            </div>
-          </figure>
-        </div>
+            </figure>
+          </div>
+        <?php
+        endwhile;
+        include 'procedimientos_externos/barra_paginar.php';
+      ?>
+      
       <?php
-      endwhile
+    }
       ?>
     </div>
   </div>
   <br><br>
 
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <!-- Cuando el numero de pagina sea menor a 1 se desactivara la opcion de anterior -->
-      <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
-        <!-- Cuando seleccione el boton de siguiente se restara uno al numero de pagina -->
-        <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" tabindex="-1" aria-disabled="true">
-          Anterior
-        </a>
-      </li>
-      <!-- Imprimimos el numero de paginas -->
-      <?php for ($i = 0; $i < $mostrar_paginas; $i++) : ?>
-        <!-- Dependiendo de la pagina que seleccione se marcara como activado -->
-        <li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?>">
-          <!-- Mostramos el numero de paginas -->
-          <a class="page-link" href="index.php?pagina=<?php echo $i + 1 ?>">
-            <?php echo $i + 1 ?>
-          </a>
-        </li>
-      <?php endfor ?>
-      <!-- Cuando el numero de pagina sea mayor a el numero de paginas se desactivara la opcion de siguiente -->
-      <li class="page-item <?php echo $_GET['pagina'] >= $mostrar_paginas ? 'disabled' : '' ?>">
-        <!-- Cuando seleccione el boton de siguiente se sumara uno al numero de pagina -->
-        <a class="page-link" href="index.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a>
-      </li>
-    </ul>
-  </nav>
+  
 
   <div style="float: right">
     <p>© <?php echo date("Y"); ?> <a href="" target="_blank">MercaSeguro</a> Todos los derechos reservados | Diseñado por <a href="" target="_blank">MercaSeguro</a> </p>

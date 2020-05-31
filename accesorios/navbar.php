@@ -1,23 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row sm-12 md-4">
 
-  <h1><a class="navbar-brand ml-5" href="index.php">MercaSeguro </a></h1>
-  <div class="d-block d-sm-block d-md-none">
-
-  </div>
-  <ul class="navbar-nav ml-4 mr-2">
-    <form action="productos/buscar_producto.php" class="form-inline my-2 my-lg-0" method="GET">
-      <div class="row">
-        <div class="input-group">
-          <input class="form-control py-2" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos">
-          <span class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit">
-              <i class="fa fa-search"></i>
-            </button>
-          </span>
-        </div>
-      </div>
-    </form>
-  </ul>
   <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,7 +54,7 @@
           <a class="nav-link" href="#">Historial</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Ofertas de la semana</a>
+          <a class="nav-link" href="productos/mis_productos.php">Mis Productos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="productos/vender_producto.php">Vender</a>
@@ -126,8 +107,8 @@
 
 
             <a class="dropdown-item" href="#"><i class='far fa-credit-card'></i> Compras</a>
-            <a class="dropdown-item" href="productos/mis_productos.php">Mis Ventas</a>
-            <a class="dropdown-item" href="#">Mis Datos</a>
+            <a class="dropdown-item" href="productos/mis_productos.php">Mis Productos</a>
+            <a class="dropdown-item" href="user/mis_datos.php">Mis Datos</a>
             <a class="dropdown-item" href="#">Seguridad</a>
 
             <a class="dropdown-item" href="login_logout/logout.php">Cerrar Sesion</a>
@@ -147,4 +128,3 @@
       
     </div>
 <!-- Fin solo se va a mostrar en computador -->
-</nav>
