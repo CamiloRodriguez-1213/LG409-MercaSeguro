@@ -245,7 +245,12 @@ input[type="file"] {
   transform: scale(1.1); 
   transition: all 500ms ease-out;
 }
-/* Aparecer menu de mis productos */
+
+.zoom_vistaprevia:hover{
+  transform: scale(1.4); 
+  transition: all 500ms ease-out;
+}
+
 .capa{
   
   top: 50%;
