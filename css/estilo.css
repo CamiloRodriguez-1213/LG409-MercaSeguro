@@ -245,7 +245,7 @@ input[type="file"] {
   transform: scale(1.1); 
   transition: all 500ms ease-out;
 }
-
+/* Aparecer menu de mis productos */
 .capa{
   
   top: 50%;
@@ -253,15 +253,6 @@ input[type="file"] {
   opacity: 0;
   visibility: hidden;
   transform: scale(1.2);
-  
-
-}
-
-.producto_inactivo{
-  background-color: rgba(148, 148, 148, 0.062) !important;
-}
-.cursor{
-  cursor: pointer;
 }
 .contenedor :hover > .capa {
   
@@ -271,6 +262,13 @@ input[type="file"] {
   transition: all 800ms ease-out;
   
 }
+.producto_inactivo{
+  background-color: rgba(148, 148, 148, 0.062) !important;
+}
+.cursor{
+  cursor: pointer;
+}
+
 .resalta{
   display: flexbox;
 }

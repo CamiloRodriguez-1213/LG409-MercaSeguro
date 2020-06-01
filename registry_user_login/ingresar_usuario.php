@@ -1,6 +1,5 @@
 <?php
 include('../includes/verify_install.php');
-$counter = 0;
 include '../login_logout/login.php'; // Includes Login Script
 include('../includes/db.php');
 
