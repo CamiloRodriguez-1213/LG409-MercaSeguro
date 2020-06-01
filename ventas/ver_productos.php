@@ -41,6 +41,7 @@ if (!$_GET ) {
   <?php
   $id_form_producto = $_REQUEST['ver_producto'];
   $nombre_producto_form=$_REQUEST['nombre'];
+
 include "../includes/db.php";
 $sql = "SELECT * FROM productos where nombre_producto='$nombre_producto_form' AND id='$id_form_producto'";
            
@@ -75,7 +76,7 @@ if ($result_consulta!=0) {
   while ($mostrar = mysqli_fetch_array($result)) {
     $id_producto = $mostrar['id_producto'];
     $nombre_producto = $mostrar['nombre_producto'];
-    $descripcion_producto = $mostrar['descripcion_producto'];
+    $descripcion_producto = nl2br($mostrar['descripcion_producto']);
     $precio = $mostrar['precio'];
 
     $imagen_producto = base64_encode($mostrar['imagen_producto']);
@@ -83,6 +84,7 @@ if ($result_consulta!=0) {
     $nombre_cat_producto = $mostrar['nombre_cat'];
     $nombre_sub_categoria = $mostrar['nombre_subcat'];
     $nombre_usuario = $mostrar['nombre_usuario'];
+    $whatsapp = $mostrar['whatsapp'];
     
   }
 
@@ -107,7 +109,7 @@ if ($result_consulta!=0) {
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo $imagen_producto ?>" height="300px" class="d-block w-100" alt="...">
+                  <img class="zoom_vistaprevia mt-3" src="data:image/jpg;base64,<?php echo $imagen_producto ?>" height="300px" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                   <img src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="d-block w-100" alt="...">
@@ -142,7 +144,7 @@ if ($result_consulta!=0) {
                 </div>
               </div>
             </div>
-            <div class="col-md-12 "><br><br>
+            <div class="col-md-12 "><br>
               <!--Precio Producto-->
               <div class="col-12">
 
@@ -155,7 +157,24 @@ if ($result_consulta!=0) {
 
                 </div>
               </div>
+            </div><br><br>
+
+            <div class="col-md-12 ">
+              <!--Compra protegida-->
+              <div class="col-12">
+                <small>
+                  <!-- <h6><b>Compra protegida</b></h6> -->
+                </small>
+                <div class="form-group "><br>
+                  
+                <i style="font-size:24px" class="fa">&#xf132;</i> Compra-protegida<br>
+                <i style="font-size:24px" class="fa">&#xf091;</i> Sin Mercado Puntos<br>
+                <!-- <i class="material-icons">&#xe558;</i> ddd<br> -->
+
+                </div>
+              </div>
             </div>
+
             <div class="col-md-12 ">
               <!---boton comprar--->
               <br><br>
@@ -174,6 +193,7 @@ if ($result_consulta!=0) {
         <!--Bloque debajo de division 1 y 2 -->
         <div class="col-md-7 ">
           <!-- Descripcion -->
+          <h4><b>Descripción </b></h4>
           <p align="justify">
             <?php echo $descripcion_producto; ?>
           </p>
@@ -183,12 +203,15 @@ if ($result_consulta!=0) {
         <div class="col-md-4 mt-5">
           <!-- alado de descripcion -->
           <p align="justify">
-            <?php echo $nombre_usuario;
-
-
-            echo $nombre_cat_producto;
-            echo $nombre_sub_categoria;
+            <?php echo $nombre_usuario;?>
+                <br>
+            <?php echo $nombre_cat_producto; ?>
+                <br>
+            <?php echo $nombre_sub_categoria; ?>
+              <br>
+              <i class="fab fa-whatsapp" style="font-size:20px"></i>  <?php echo $whatsapp;
             ?>
+            
           </p>
 
         </div>

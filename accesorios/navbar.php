@@ -82,11 +82,13 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Historial</a>
         </li>
+        
         <li class="nav-item d-md-none d-xl-block">
-          <a class="nav-link" href="#">Ofertas de la semana</a>
-        </li>
-        <li class="nav-item mr-5">
           <a class="nav-link" href="productos/vender_producto.php">Vender</a>
+        </li>
+
+        <li class="nav-item mr-5">
+          <a class="nav-link" href="ayuda/ayuda_soporte.php"> Ayuda </a>
         </li>
        
 

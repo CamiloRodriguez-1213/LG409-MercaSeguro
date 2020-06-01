@@ -246,6 +246,11 @@ input[type="file"] {
   transition: all 500ms ease-out;
 }
 
+.zoom_vistaprevia:hover{
+  transform: scale(1.4); 
+  transition: all 500ms ease-out;
+}
+
 .capa{
   
   top: 50%;

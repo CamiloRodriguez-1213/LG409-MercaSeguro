@@ -63,7 +63,9 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
 
  
   <div class="container">
-    <h1 class="my-5">Paginacion</h1>
+  <h3 class="mt-5 mb-2">Aprovecha ahora y has tus compras ya </h3>
+
+  
     <div class="row justify-content-around">
       <?php
       if (isset($_GET['busqueda'])) {
@@ -151,12 +153,29 @@ if (isset($_GET['busqueda'])) {
 if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
   include 'procedimientos_externos/barra_paginar.php';
 }
-   ?>
+  ?>
   
+  
+<br>
 
-  <div style="float: right">
-    <p>© <?php echo date("Y"); ?> <a href="" target="_blank">MercaSeguro</a> Todos los derechos reservados | Diseñado por <a href="" target="_blank">MercaSeguro</a> </p>
-  </div>
+
+
+  <small class="nav-footer-copyright">
+				Copyright © <?php echo date("Y"); ?> <a href="" target="_blank">MercaSeguro</a> Todos los derechos reservados | Diseñado por <a href="" target="_blank">MercaSeguro</a>
+      </small><br>
+      
+<div class="nav-footer-tertiary-info nav-bounds mt-3">
+				<a class="nav-footer-sic-logo mr-5" href="http://www.sic.gov.co/" target="_blank" rel="nofollow">
+					<img class="pum-lazy" src="https://http2.mlstatic.com/ui/navigation/5.6.0/mercadolibre/sic.png" width="141" height="30" alt="SIC - Industria y comercio" srcset="https://http2.mlstatic.com/ui/navigation/5.6.0/mercadolibre/sic@2x.png 2x">
+				</a>
+				<a class="nav-footer-sic-logo" href="http://www.sic.gov.co/pare-y-compare" target="_blank" rel="nofollow">
+					<img class="pum-lazy" src="https://http2.mlstatic.com/ui/navigation/5.6.0/mercadolibre/pum.png" width="200" height="34" alt="Precio por unidad de medida" srcset="https://http2.mlstatic.com/ui/navigation/5.6.0/mercadolibre/pum@2x.png 2x">
+				</a>
+				
+      </div>
+   
+      
+<br>
 </body>
 
 </html>
