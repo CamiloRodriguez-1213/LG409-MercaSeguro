@@ -36,7 +36,7 @@ include "../includes/verify_install.php";
 
                 $("#categoria_producto option:selected").each(function() {
                     id_categoria = $(this).val();
-                    $.post("subcategorias.php", {
+                    $.post("formularios_productos/subcategoria_producto.php", {
                         id_categoria: id_categoria
                     }, function(data) {
                         $("#subcategoria_producto").html(data);
@@ -54,38 +54,43 @@ include "../includes/verify_install.php";
     $id_form_producto = $_POST['id_form_editar'];
 
     include "../includes/db.php";
-    $sql = "SELECT productos.nombre_producto,productos.descripcion_producto,productos.precio,productos.id_categoria_producto,
-    productos.imagen_producto,productos.estado, sub_cat_productos.nombre_sub_producto,cat_productos.nombre_cat_producto,
-	 productos.id AS id_producto,cat_productos.id AS id_categoria,sub_cat_productos.id AS id_subcategoria
-FROM productos
-INNER JOIN sub_cat_productos
-ON 
-sub_cat_productos.id= productos.id_categoria_producto
-INNER JOIN cat_productos
-ON sub_cat_productos.id_cat_producto = cat_productos.id
-WHERE productos.id='$id_form_producto'";
+    $sql = "SELECT 
+    productos.id AS id_producto, nombre_producto, descripcion_producto,precio,imagen_producto,estado,
+    subcategorias_productos.id AS id_subcategoria,nombre_subcat,
+    categorias_productos.id AS id_categoria,nombre_cat,id_clase_producto,
+    usuarios.id AS id_usuario,nombre_usuario,apellido_usuario,email,celular,whatsapp,ciudad,direccion,
+    clase_producto.id AS id_clase_producto, nombre_clase
+    
+    FROM productos
+    INNER JOIN subcategorias_productos
+    ON productos.id_categoria_producto=subcategorias_productos.id
+    INNER JOIN categorias_productos
+    ON subcategorias_productos.id_categoria= categorias_productos.id
+    INNER JOIN usuarios
+    ON productos.id_usuarios = usuarios.id
+    INNER JOIN clase_producto
+    ON categorias_productos.id_clase_producto=clase_producto.id
+    WHERE productos.id='$id_form_producto'";
 
     $result = DB::query($sql);
     while ($mostrar = mysqli_fetch_array($result)) {
-        /* echo $mostrar['nombre_producto']; */
-
+        $id_producto = $mostrar['id_producto'];
         $nombre_producto = $mostrar['nombre_producto'];
         $descripcion_producto = $mostrar['descripcion_producto'];
         $precio = $mostrar['precio'];
-        $id_categoria_producto = $mostrar['id_categoria'];
         $imagen_producto = $mostrar['imagen_producto'];
         $estado = $mostrar['estado'];
-        $nombre_cat_producto = $mostrar['nombre_cat_producto'];
-        $nombre_sub_categoria = $mostrar['nombre_sub_producto'];
         $id_subcategoria = $mostrar['id_subcategoria'];
-        $id_producto = $mostrar['id_producto'];
+        $nombre_cat_producto = $mostrar['nombre_subcat'];
+        $id_categoria = $mostrar['id_categoria'];
+        $nombre_sub_categoria = $mostrar['nombre_cat'];
+        
+        
 
         
     }
 
-    $sql = "SELECT id, nombre_cat_producto FROM cat_productos";
-
-    $result = DB::query($sql);
+    
 
     ?>
 
@@ -125,12 +130,14 @@ WHERE productos.id='$id_form_producto'";
                         <h6><b>Categoria</b></h6><br><br>
                     </small>
                     <select class="form-control" name="categoria_producto" id="categoria_producto">
-
+                        <?php 
+                        $sql = "SELECT id, nombre_cat FROM categorias_productos";
+                        $result = DB::query($sql); ?>
                         <option value="">Seleccionar Categoria</option>
 
                         <?php while ($mostrar = $result->fetch_assoc()) { ?>
                             <option value="<?php echo $id_categoria_producto  ?>" hidden selected><?php echo $nombre_cat_producto; ?></option>
-                            <option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat_producto']; ?></option>
+                            <option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat']; ?></option>
                         <?php }
                         ?>
 

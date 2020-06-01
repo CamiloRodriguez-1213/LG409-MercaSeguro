@@ -26,13 +26,13 @@ include('../includes/db.php');
   <div class="container my-5 justify-content-around" style="max-width: 100%">
     <?php
     $sql = "SELECT productos.id AS id_producto,estado,nombre_producto,descripcion_producto,precio,id_categoria_producto
-    ,imagen_producto,id_usuarios,estado,sub_cat_productos.id AS id_subcategoria,nombre_sub_producto,cat_productos.id 
-    AS id_categoria,nombre_cat_producto
+    ,imagen_producto,id_usuarios,estado,subcategorias_productos.id AS id_subcategoria,nombre_subcat,categorias_productos.id 
+    AS id_categoria,nombre_cat
     FROM productos 
-            INNER JOIN sub_cat_productos
-            ON productos.id_categoria_producto = sub_cat_productos.id
-            INNER JOIN cat_productos
-            ON sub_cat_productos.id_cat_producto = cat_productos.id WHERE estado='activo'";
+            INNER JOIN subcategorias_productos
+            ON productos.id_categoria_producto = subcategorias_productos.id
+            INNER JOIN categorias_productos
+            ON subcategorias_productos.id_categoria = categorias_productos.id WHERE estado='activo'";
     $result = DB::query($sql);
     ?>
     <div class="row row-12 justify-content-around">

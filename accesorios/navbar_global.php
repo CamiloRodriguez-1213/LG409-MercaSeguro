@@ -1,4 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+  
+  <h5><a class="navbar-brand ml-5" href="../index.php">MercaSeguro </a></h5>
+    
+    
+    <ul class="navbar-nav ml-4 mr-2">
+    
+    
+    <form action="index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
+          <div class="row">
+            <div class="input-group">
+                <input class="form-control" type="text" name="busqueda" id="busqueda" value="<?php if (isset($_GET['busqueda'])) { echo $_REQUEST['busqueda']; }?>"  placeholder="Busca tus productos">
+                <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" >
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+          </div>
+            
+          </form>
+          
+    </ul>
+
+  </nav>
   <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,8 +54,6 @@
         if (isset($_SESSION['login_user_sys'])) {
           $username = $_SESSION['login_user_sys'];
         ?>
-
-
 
           <li class="nav-item">
 
@@ -99,8 +123,6 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
             <i class="fas fa-user-circle " style='font-size:24px'></i> <?php echo $username; ?>
-
-
           </a>
           <div class="dropdown-menu" style="padding: 22px 0;" aria-labelledby="navbarDropdown">
 

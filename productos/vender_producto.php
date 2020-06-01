@@ -34,7 +34,6 @@ $result = DB::query($sql);
             <h1>Seleccione Categoria</h1>
             <br><br><br><br>
             <div class="row justify-content-center" >
-
                 <button class="card btn-light justify-content-center" onclick="location='formularios_productos/form_productos.php'" style="width: 13rem; height:220px">
                     <div class="card-body ml-2">
                     <i class='fas fa-tshirt' style='font-size:120px'></i>

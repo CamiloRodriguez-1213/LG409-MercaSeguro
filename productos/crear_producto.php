@@ -15,7 +15,6 @@
         $sql = "UPDATE productos set estado='$es' WHERE id='$id_sesion'";
     }else
     {
-      
         $producto = $_POST["nombre"];
         $descripcion=$_POST['descripcion'];
         $precio=$_POST['precio'];

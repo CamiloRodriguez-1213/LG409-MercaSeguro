@@ -34,7 +34,7 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
     <form action="index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
           <div class="row">
             <div class="input-group">
-                <input class="form-control" type="text" name="busqueda" id="busqueda"  placeholder="Busca tus productos">
+                <input class="form-control" type="text" name="busqueda" id="busqueda" value="<?php if (isset($_GET['busqueda'])) { echo $_REQUEST['busqueda']; }?>"  placeholder="Busca tus productos">
                 <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
                 <span class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit" >
@@ -55,7 +55,10 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
   </nav>
 </head>
 <body>
-  <?php include 'accesorios/carrusel.php' 
+  
+  <?php
+  
+  if (!isset($_GET['busqueda'])) { include 'accesorios/carrusel.php'; }
   ?>
 
  
@@ -65,48 +68,16 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
       <?php
       if (isset($_GET['busqueda'])) {
         include 'procedimientos_externos/paginacion_buscar.php';
-   
+        if ($result_consulta!=0) {
+          # code...
+        
    while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
-
-     <div class="contenedor sm-12 md-4">
-
-      
-
-       <figure>
-       
-       <form action="ventas/ver_productos.php" method="POST">
-                        <button class="sinborde" type="submit">
-
-         <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
-           <div class="color">
-             <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
-             <br><br>
-             <small>39% descuento</small>
-             <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
-             <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
-             
-           </div>
-           </button>
-              <input type="text" hidden id="id_verproducto" name="id_verproducto" value="<?php echo $mostrar['id'] ?>">
-              </form>
-
-           
-         </div>
-       </figure>
-     </div>
-   <?php
-   endwhile;
-   
-  
-      }
-      /* Cuando no se hace una busqueda */
-      if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
-        include 'procedimientos_externos/paginacion.php';
-        while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
-
-          <div class="contenedor  sm-12 md-4">
+      <div class="contenedor  sm-12 md-4">
+        
             <figure>
-     
+            <form action="ventas/ver_productos.php" method="GET">
+            
+            <button class="btn btn-flex" type="submit">
               <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
                 <div class="color">
                   <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
@@ -114,13 +85,54 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
                   <small>39% descuento</small>
                   <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
                   <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
-                  <div class="capa">
-                  
-                  </div>
+                  <input type="text" hidden id="ver_producto" name="ver_producto" value="<?php echo $mostrar['id'] ?>">
+                  <input type="text" hidden id="nombre" name="nombre" value="<?php echo $mostrar['nombre_producto'] ?>">
+
                 </div>
               </div>
+            </button>
+            </form>
             </figure>
-          </div>
+       </figure>
+       </div>
+   <?php
+   endwhile;
+  }else {
+
+    ?>
+    
+    <?php
+  }
+        
+      }
+      /* Cuando no se hace una busqueda */
+      elseif (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
+        include 'procedimientos_externos/paginacion.php';
+        while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
+
+<div class="contenedor  sm-12 md-4">
+        
+            <figure>
+            <form action="ventas/ver_productos.php" method="GET">
+            
+            <button class="btn btn-flex" type="submit">
+              <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
+                <div class="color">
+                  <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
+                  <br><br>
+                  <small>39% descuento</small>
+                  <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
+                  <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
+                  <input type="text" hidden id="ver_producto" name="ver_producto" value="<?php echo $mostrar['id'] ?>">
+                  <input type="text" hidden id="nombre" name="nombre" value="<?php echo $mostrar['nombre_producto'] ?>">
+
+                </div>
+              </div>
+            </button>
+            </form>
+            </figure>
+       </figure>
+       </div>
         <?php
         endwhile;
         
@@ -130,7 +142,7 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
     }
       ?>
     </div>
-  </div>
+  
   <br><br>
 <?php
 if (isset($_GET['busqueda'])) {

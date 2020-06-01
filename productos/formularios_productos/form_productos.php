@@ -47,7 +47,15 @@ include('../../includes/db.php');
 		
 		
 	</script>
-<?php  ?>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+  
+
+
+  <h5><a class="navbar-brand ml-5" href="../../index.php">MercaSeguro </a></h5>
+	
+	
+  
+  </nav>
 </head>
 
 <body>
@@ -74,7 +82,7 @@ include('../../includes/db.php');
 
 			<fieldset><br>
 				<?php
-				$sql = "SELECT id, nombre_cat_producto FROM cat_productos";
+				$sql = "SELECT id, nombre_cat FROM categorias_productos";
 
 				$result = DB::query($sql);		
 
@@ -93,7 +101,7 @@ include('../../includes/db.php');
 
 								<option value="">Seleccionar Categoria</option>
 								<?php while ($mostrar = $result->fetch_assoc()) { ?>
-									<option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat_producto']; ?></option>
+									<option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat']; ?></option>
 								<?php } ?>
 
 								
