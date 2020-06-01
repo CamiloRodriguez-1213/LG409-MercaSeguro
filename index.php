@@ -60,8 +60,6 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
   
   if (!isset($_GET['busqueda'])) { include 'accesorios/carrusel.php'; }
   ?>
-
- 
   <div class="container">
   <h3 class="mt-5 mb-2">Aprovecha ahora y has tus compras ya </h3>
 
@@ -69,7 +67,7 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
     <div class="row justify-content-around">
       <?php
       if (isset($_GET['busqueda'])) {
-        include 'procedimientos_externos/paginacion_buscar.php';
+        include 'procedimientos_externos/paginacion_buscar_index.php';
         if ($result_consulta!=0) {
           # code...
         
@@ -109,7 +107,7 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
       }
       /* Cuando no se hace una busqueda */
       elseif (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
-        include 'procedimientos_externos/paginacion.php';
+        include 'procedimientos_externos/paginacion_index.php';
         while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 
 <div class="contenedor  sm-12 md-4">
@@ -148,10 +146,10 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
   <br><br>
 <?php
 if (isset($_GET['busqueda'])) {
-  include 'procedimientos_externos/barra_paginar_buscar.php';
+  include 'procedimientos_externos/barra_paginar_buscar_index.php';
 }
 if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))) {
-  include 'procedimientos_externos/barra_paginar.php';
+  include 'procedimientos_externos/barra_paginar_index.php';
 }
   ?>
   

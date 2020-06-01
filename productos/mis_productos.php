@@ -1,7 +1,18 @@
 <?php
 include('../includes/verify_install.php');
 include('../includes/db.php');
-   
+include('../login_logout/login.php');
+if (isset($_SESSION['login_user_sys'])) {
+  $id_sesion=$_SESSION['id'];
+  
+} else {
+  header("location: ../index.php");
+  session_destroy();
+}
+if (!$_GET) {
+  header('Location:mis_productos.php?estado=activo&pagina=1');
+}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -19,23 +30,13 @@ include('../includes/db.php');
 
 
   <title>Mis Productos</title>
-  <?php include '../accesorios/navbar_plus.php' ?>
+  <?php include '../accesorios/navbar_plus.php'; ?>
+  
 </head>
 
 <body>
-  <div class="container my-5 justify-content-around" style="max-width: 100%">
-    <?php
-    $sql = "SELECT productos.id AS id_producto,estado,nombre_producto,descripcion_producto,precio,id_categoria_producto
-    ,imagen_producto,id_usuarios,estado,subcategorias_productos.id AS id_subcategoria,nombre_subcat,categorias_productos.id 
-    AS id_categoria,nombre_cat
-    FROM productos 
-            INNER JOIN subcategorias_productos
-            ON productos.id_categoria_producto = subcategorias_productos.id
-            INNER JOIN categorias_productos
-            ON subcategorias_productos.id_categoria = categorias_productos.id WHERE estado='activo'";
-    $result = DB::query($sql);
-    ?>
-    <div class="row row-12 justify-content-around">
+  <div class="container my-5 justify-content-around ">
+  <div class="row justify-content-around">
       <div class="d-flex flex-row">
 
         <div class="p-2">
@@ -46,49 +47,52 @@ include('../includes/db.php');
 
           </div>
         </div>
-        <div class="p-2">
-          <h5><small><a href="">Activos</a></small></h5>
+        <div class="d-none d-sm-none d-md-none d-lg-block">
+        <div class="row">
+
+          <h5 class="mr-2 ml-5"><small><a href="mis_productos.php?estado=activo&pagina=1" style="text-decoration:none">Activos</a></small></h5>
+        
+          <h5 class="mr-2 ml-2"><small><a href="mis_productos.php?estado=inactivo&pagina=1" style="text-decoration:none">Inactivos</a></small></h5>
         </div>
-        <div class="p-2">
-          <h5><small><a href="">Inactivos</a></small></h5>
         </div>
-        <div class="p-2">
-          <h5><small><a href="">Todos</a></small></h5>
         </div>
       </div>
 
     </div>
-
-    <div class="row ">
-      <!-- Solo se mirará en computador -->
-      <div class="d-none d-sm-none d-md-none d-lg-block">
-        <div class="col" style="width: 150px">
-          <div class="d-flex flex-column">
-
-            <div class="p-2">
-              <h5><small>Vendidos</small></h5>
-            </div>
-            <div class="p-2">
-              <h5><small>En espera</small></h5>
-            </div>
-            <div class="p-2">
-              <h5><small>Reclamos</small></h5>
-            </div>
-          </div>
+    <!-- Solo se va a mostrar en celular -->
+    <div class="d-block d-sm-block d-md-block d-lg-none">
+    <div class="row justify-content-around">
+          <h5><small><a href="mis_productos.php?estado=activo&pagina=1" style="text-decoration:none">Activos</a></small></h5>
+          <h5><small><a href="mis_productos.php?estado=inactivo&pagina=1" style="text-decoration:none">Inactivos</a></small></h5>
         </div>
-      </div>
+    </div>
+      <!-- Solo se mirará en computador -->
+      
+      
+  
+  <?php
 
-      <div class="col sm-12 justify-content-around">
-        <div class="row">
+  if (isset($_GET['estado'])) {
+    $estado=$_REQUEST['estado'];
+  if ($estado=='activo' || $estado=='inactivo'){
+    include '../procedimientos_externos/paginacion_mis_productos.php';
+  }else {
+    header('Location:mis_productos.php?estado=activo');
+  }
 
+    
+  ?>
+
+
+  <div class="col">
+  <div class="row -12 justify-content-around">
           <?php
+          while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 
-          while ($mostrar = mysqli_fetch_array($result)) : ?>
+            <div class="contenedor ml-3 mr-3">
+            
 
-            <div class="contenedor">
-
-
-              <div class="card my-3 ml-5 producto-hover <?php if ($mostrar['estado'] == "inactivo") { ?> producto_inactivo <?php } ?>" style="width: 240px; height: 360px;">
+              <div class="card my-3  producto-hover <?php if ($mostrar['estado'] == "inactivo") { ?> producto_inactivo <?php } ?>" style="width: 240px; height: 360px;">
 
                 <div class="container ">
                   <div class="capa btn-group navn dropleft my-3" style="float: right">
@@ -112,7 +116,7 @@ include('../includes/db.php');
                         <?php  }  ?>
 
                       </form>
-                      <form action="../procesos_productos/" method="post">
+                      <form action="../procesos_productos/actua" method="post">
                         <button class="dropdown-item" id="id_form_editar" name="id_form_editar" value="<?php echo $mostrar['id_producto'] ?>" type="submit">Eliminar</button>
                       </form>
 
@@ -126,17 +130,21 @@ include('../includes/db.php');
                 </div>
               </div>
 
-
-            </div>
+              </div>
+              
           <?php
           endwhile
           ?>
+          
         </div>
-      </div>
-    </div>
-
+</div>
 
   </div>
+      
+  <?php 
+  include '../procedimientos_externos/barra_paginar_mis_productos.php';
+  } 
+  ?>
 
 </body>
 
