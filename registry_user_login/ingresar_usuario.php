@@ -29,16 +29,7 @@ if (isset($_SESSION['login_user_sys'])) {
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     <title>Inicio</title>
-    <script type="text/javascript">
-        function Habilitar() {
-            var email = document.getElementById("email");
-            var pasword = document.getElementById("password");
-
-            if (email.value != null && email.value != '' && pasword.value != null && pasword.value != '' && pasword.value == "[A-Z]{3}[0-9]{4}") {
-                document.location.href = index.php;
-            };
-        }
-    </script>
+    
 
     <?php include '../accesorios/navbar_plus.php' ?>
 </head>

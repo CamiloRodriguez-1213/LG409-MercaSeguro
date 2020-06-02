@@ -1,7 +1,7 @@
 * {
 	padding: 0px;
 	margin: 0px;
-	font-family: century gothic;
+	font-family: century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       
 }
 body{
@@ -17,7 +17,7 @@ body{
     height: 34px;
     top: 11px;
     width: 134px;
-    display: inline-block;
+    
 }
 .nav-logo {
     background-repeat: no-repeat;

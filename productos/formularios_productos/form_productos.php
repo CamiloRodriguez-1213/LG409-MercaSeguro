@@ -1,8 +1,13 @@
 <?php
 include('../../includes/verify_install.php');
 include('../../includes/db.php');
-
-
+include('../../login_logout/login.php');
+if (isset($_SESSION['id'])) {
+	$id_sesion=$_SESSION['id'];
+  } else {
+	header("location: ../index.php");
+	session_destroy();
+  }
 ?>
 
 
@@ -23,6 +28,7 @@ include('../../includes/db.php');
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../../css/estilo.css">
+	<link rel="stylesheet" type="text/css" href=".././css/editor.css">
 	<style type="text/css">
 		#regiration_form fieldset:not(:first-of-type) {
 			display: none;
@@ -43,61 +49,67 @@ include('../../includes/db.php');
 					});
 				});
 			})
-		});
-		
-		
+		});		
 	</script>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
-  
-
-
+<img src="LG409-MercaSeguro/css/Logo.png" alt="Girl in a jacket">
   <h5><a class="navbar-brand ml-5" href="../../index.php">MercaSeguro </a></h5>
-	
-	
-  
   </nav>
 </head>
 
 <body>
 	
 	<div class="container " style="max-width: 500px">
-		<form class="vender_producto" id="regiration_form" action="../crear_producto.php" method="post" enctype="multipart/form-data">
-
-			<fieldset><br>
-				<h2>Paso 1: Text</h2>
+		<form class="vender_producto" id="regiration_form" action="../crear_editar_producto.php" method="post" enctype="multipart/form-data">
+		<input type="text" name="crear_producto" hidden>
+			<fieldset>
+				<h2>Registra tu producto</h2>
 				<div class="container ">
-					<div class="form-group mt-3"><br><br>
-						<input type="text" class="form-input" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre del producto">
+					<div class="form-group mt-3"><br>
+					<small><h6><b>Nombre Producto <a style="color: red;">*</a></b></h6></small>
+						<input type="text" required class="form-input3" name="nombre" style="width: 14rem; height:35px" required placeholder="Producto ejemplo">
 						
 						
 					</div>
-					<div class="form-group"><br><br>
+					<div class="form-group"><br>
+					<div class="form-group">
+                    <small><h6><b>Descripción <a style="color: red;">*</a></b></h6></small>
+
+                            <!--EDITOR DE TEXTO EN EDITAR PRODUCTOS-->
+                            <div id="con-editor">
+                            		<div id="editor">
+                            			<div id="cajaTexto" contenteditable ><!--texto de editor-->
+                                        <textarea required style="width: 100%;height: 200px;background-color: #fcfcfc;justify-content: start;"  placeholder="Describe tu producto" name="descripcion"  ></textarea>
+                                        
+                            			</div>
+                            		</div>
+                             </div>
+                    </div>
 						
-						<textarea class="form-input" name="descripcion"  style="width: 14rem; height:55px" placeholder="Describe tu producto"></textarea>
 					</div>
-				</div><br>
+				</div>
 				<input type="button" class="next btn btn-primary" value="Siguiente" id="regt" />
 			</fieldset>
 
 
-			<fieldset><br>
+			<fieldset>
 				<?php
-				$sql = "SELECT id, nombre_cat FROM categorias_productos";
+				$sql = "SELECT id, nombre_cat FROM categorias_productos where id_clase_producto=1";
 
 				$result = DB::query($sql);		
 
 				?>
-				<h2> Paso 2: Text</h2>
+				<h2>Precio y categoria</h2>
 				<div class="form-group"><br>
-				
-				<label>$<input type="text" class="form-input" name="precio" style="width: 14rem;" placeholder="Valor del producto"></label><br><br>
+				<small><h6><b>Valor de tu Producto <a style="color: red;">*</a></b></h6></small>
+				<label>$<input type="text" class="form-input3" name="precio" style="width: 14rem;" placeholder="ej. 13.000"></label><br><br>
 				
 				</div>
 				<div class="form-group ">
 					<div class="row justify-content-center align-items-center">
 						<div class="form-group">
-							<label for="exampleFormControlSelect1">Categoria Del Producto</label> <br>
-							<select class="form-control " name="cbx_categoria" id="cbx_categoria">
+						<small><h6><b>Categoria Producto <a style="color: red;">*</a></b></h6></small>
+							<select class="form-control " required name="cbx_categoria" id="cbx_categoria">
 
 								<option value="">Seleccionar Categoria</option>
 								<?php while ($mostrar = $result->fetch_assoc()) { ?>
@@ -107,7 +119,7 @@ include('../../includes/db.php');
 								
 							</select>
 							<br>
-							<select class="form-control" name="cbx_subcategoria" id="cbx_subcategoria">
+							<select required class="form-control" name="cbx_subcategoria" id="cbx_subcategoria">
 							<option value="">Seleccionar Categoria</option>
 							</select>
 						</div>
@@ -118,17 +130,17 @@ include('../../includes/db.php');
 			</fieldset>
 
 			<fieldset><br><br>
-				<h2>Paso 3: Text</h2>
+				<h2>Foto del producto</h2>
 				
 				<div class="form-group">
 					<div class="imge justify-content-center"><br>
-					<div id="imagePreview" ></div><br>
+					<div id="imagePreview"></div><br>
 					<label for="file-upload" class="custom-file-upload">
 					
 						<i class="fa fa-cloud-upload"></i> Subir archivo
 					</label>
 					
-					<input  type="file" aling name="imagen" id="file-upload" accept="image/*"/>
+					<input  type="file" required aling name="imagen" id="file-upload" accept="image/*"/>
 					
 					</div>
 					
@@ -154,7 +166,7 @@ include('../../includes/db.php');
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e){
-				$('#imagePreview').html("<img  src='"+e.target.result+"' height='135px' class='img-prev' />");
+				$('#imagePreview').html("<img  src='"+e.target.result+"' height='135px' style='border:1px solid #435160'; class='img-prev'/>");
 			}
 			reader.readAsDataURL(input.files[0]);
 		}

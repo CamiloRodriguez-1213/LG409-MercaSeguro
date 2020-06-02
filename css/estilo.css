@@ -2,7 +2,7 @@
     * {
       padding: 0;
       margin: 0;
-      font-family: century gothic;
+      font-family: century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       text-align: center;
       
   }
@@ -92,18 +92,18 @@ input[type="file"] {
   
 
   /*Logo*/
-  .nav-logo {
-      /* background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png); */
+ /*  .nav-logo {
+      background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png);
       height: 34px;
       top: 11px;
       width: 134px;
       display: inline-block;
-  }
+  } */
   .nav-logo {
       background-repeat: no-repeat;
       overflow: hidden;
       text-indent: -999px;
-      position: absolute;
+      position: relative;
       left: 180px;
       outline: 0;
   }
@@ -146,7 +146,7 @@ input[type="file"] {
  
   .vender_producto {
     
-   padding: 70px 10px;
+   
     background-color: #ffffff;
     margin-top: 50px;
       padding-top: 28px;

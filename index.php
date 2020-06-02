@@ -25,7 +25,8 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
   <title>MercaSeguro</title>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
   
-  <h5><a class="navbar-brand ml-5" href="index.php">MercaSeguro </a></h5>
+<h5><img src="css/Logo.png" class="nav-logo"><a class="navbar-brand" href="index.php">MercaSeguro  </a></h5>
+  
     
     
     <ul class="navbar-nav ml-4 mr-2">
@@ -48,9 +49,6 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
           
     </ul>
   <?php 
-  
-  
-
   include 'accesorios/navbar.php' ?>
   </nav>
 </head>
@@ -62,15 +60,11 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
   ?>
   <div class="container">
   <h3 class="mt-5 mb-2">Aprovecha ahora y has tus compras ya </h3>
-
-  
-    <div class="row justify-content-around">
+  <div class="row justify-content-around">
       <?php
       if (isset($_GET['busqueda'])) {
         include 'procedimientos_externos/paginacion_buscar_index.php';
-        if ($result_consulta!=0) {
-          # code...
-        
+        if ($result_consulta!=0) {        
    while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
       <div class="contenedor  sm-12 md-4">
         

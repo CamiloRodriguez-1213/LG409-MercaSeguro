@@ -1,8 +1,6 @@
 <?php
-
 /* Procedimiento para paginacion */
 $sql = "SELECT * FROM productos WHERE estado='$estado' AND id_usuarios='$id_sesion'";
-
 $result = DB::query($sql);
 /* Contamos numero de registros o filas */
 $result_consulta = $result->num_rows;
@@ -24,6 +22,6 @@ $sql_paginas = "SELECT productos.id AS id_producto,estado,nombre_producto,descri
                    INNER JOIN subcategorias_productos
                    ON productos.id_categoria_producto = subcategorias_productos.id
                    INNER JOIN categorias_productos
-                   ON subcategorias_productos.id_categoria = categorias_productos.id WHERE estado='$estado' AND id_usuarios='$id_sesion' LIMIT $inicio_res,$num_x_pag";
+                   ON subcategorias_productos.id_categoria = categorias_productos.id WHERE estado='$estado' AND id_usuarios='$id_sesion' ORDER BY id_producto DESC LIMIT $inicio_res,$num_x_pag ";
 $result_paginas = DB::query($sql_paginas);
 ?>

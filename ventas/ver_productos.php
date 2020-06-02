@@ -5,10 +5,6 @@ if (!$_GET ) {
   header('Location:../index.php');
 }
 
-
-
-
-
 ?>
 
 
@@ -49,18 +45,14 @@ $sql = "SELECT * FROM productos where nombre_producto='$nombre_producto_form' AN
            /* Contamos numero de registros o filas */
            $result_consulta = $result->num_rows;
 if ($result_consulta!=0) {
-  
-
   if (isset ($_REQUEST['ver_producto'])&& isset($_REQUEST['nombre'])){
 
     
-  $sql = "SELECT 
-  productos.id AS id_producto, nombre_producto, descripcion_producto,precio,imagen_producto,estado,
+  $sql = "SELECT productos.id AS id_producto, nombre_producto, descripcion_producto,precio,imagen_producto,estado,
   subcategorias_productos.id AS id_subcategoria,nombre_subcat,
   categorias_productos.id AS id_categoria,nombre_cat,id_clase_producto,
   usuarios.id AS id_usuario,nombre_usuario,apellido_usuario,email,celular,whatsapp,ciudad,direccion,
   clase_producto.id AS id_clase_producto, nombre_clase
-  
   FROM productos
   INNER JOIN subcategorias_productos
   ON productos.id_categoria_producto=subcategorias_productos.id
@@ -78,7 +70,6 @@ if ($result_consulta!=0) {
     $nombre_producto = $mostrar['nombre_producto'];
     $descripcion_producto = nl2br($mostrar['descripcion_producto']);
     $precio = $mostrar['precio'];
-
     $imagen_producto = base64_encode($mostrar['imagen_producto']);
     $estado = $mostrar['estado'];
     $nombre_cat_producto = $mostrar['nombre_cat'];
@@ -89,6 +80,7 @@ if ($result_consulta!=0) {
   }
 
   ?>
+  
   <!--- Editar Form paso a paso -->
   <div class="container ">
     <form class="vender_producto " id="regiration_form" action="../crear_producto.php" method="post" enctype="multipart/form-data">
@@ -112,10 +104,10 @@ if ($result_consulta!=0) {
                   <img class="zoom_vistaprevia mt-3" src="data:image/jpg;base64,<?php echo $imagen_producto ?>" height="300px" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="d-block w-100" alt="...">
+                <img class="zoom_vistaprevia mt-3" src="data:image/jpg;base64,<?php echo $imagen_producto ?>" height="300px" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="https://sites.google.com/site/imagenesdecarrosgratis/_/rsrc/1421516636272/home/carros-deportivos-lamborghini-aventador-tron_aventador.jpg" height="300px" class="d-block w-100" alt="...">
+                <img class="zoom_vistaprevia mt-3" src="data:image/jpg;base64,<?php echo $imagen_producto ?>" height="300px" class="d-block w-100" alt="...">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -179,7 +171,10 @@ if ($result_consulta!=0) {
               <!---boton comprar--->
               <br><br>
               <div class="row-12">
+                
+                <a href="confirmacion_compras.php?producto=<?php echo $id_producto;?>">
                 <input type="button" name="submit" class="submit btn btn-primary" value=" COMPRAR AHORA " id="regt" />
+                </a>
               </div>
             </div>
           </div>

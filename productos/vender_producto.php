@@ -49,7 +49,7 @@ $result = DB::query($sql);
                     </div>
                 </button>
 
-                <button class="card btn-light justify-content-center" onclick="location='formularios_productos/form_veiculos.php'" style="width: 13rem; height:220px">
+                <button class="card btn-light justify-content-center" onclick="location='formularios_productos/form_vehiculos.php'" style="width: 13rem; height:220px">
                     <div class="card-body ml-4">
                     <i class='fas fa-car' style='font-size:120px'></i>
                     <br><br><h6 class="card-title "><b>VEHICULOS</b></h6>

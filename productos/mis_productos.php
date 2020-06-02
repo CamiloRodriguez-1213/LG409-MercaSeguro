@@ -2,9 +2,9 @@
 include('../includes/verify_install.php');
 include('../includes/db.php');
 include('../login_logout/login.php');
-if (isset($_SESSION['login_user_sys'])) {
+if (isset($_SESSION['id'])) {
+  /* echo ($_SESSION['id']); */
   $id_sesion=$_SESSION['id'];
-  
 } else {
   header("location: ../index.php");
   session_destroy();
@@ -47,6 +47,7 @@ if (!$_GET) {
 
           </div>
         </div>
+        <!-- Solo se va a mostrar en computador -->
         <div class="d-none d-sm-none d-md-none d-lg-block">
         <div class="row">
 
@@ -77,24 +78,24 @@ if (!$_GET) {
   if ($estado=='activo' || $estado=='inactivo'){
     include '../procedimientos_externos/paginacion_mis_productos.php';
   }else {
-    header('Location:mis_productos.php?estado=activo');
+    header('Location:mis_productos.php?estado=activo&pagina=1');
   }
 
     
   ?>
 
-
   <div class="col">
-  <div class="row -12 justify-content-around">
+  <div class="row justify-content-center">
           <?php
           while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 
-            <div class="contenedor ml-3 mr-3">
+            <div class="contenedor mr-2 ml-2">
             
 
               <div class="card my-3  producto-hover <?php if ($mostrar['estado'] == "inactivo") { ?> producto_inactivo <?php } ?>" style="width: 240px; height: 360px;">
 
                 <div class="container ">
+                  <!-- Menu activar eliminar editar -->
                   <div class="capa btn-group navn dropleft my-3" style="float: right">
 
                     <i class="fas fa-ellipsis-v resalta" style="width: 20px; height: 18px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button"></i>
@@ -104,7 +105,7 @@ if (!$_GET) {
                         <button class="dropdown-item" type="submit">Editar</button>
                         <input type="text" hidden id="id_form_editar" name="id_form_editar" value="<?php echo $mostrar['id_producto'] ?>">
                       </form>
-                      <form action="../procesos_productos/actualizar_producto.php" method="POST">
+                      <form action="crear_editar_producto.php" method="POST">
                         <?php if ($mostrar['estado'] == "activo") {  ?>
                           <button class="dropdown-item" type="submit">Inactivar</button>
                           <input hidden id="id_producto" name="id_producto" value="<?php echo $mostrar['id_producto'] ?>">
@@ -116,8 +117,9 @@ if (!$_GET) {
                         <?php  }  ?>
 
                       </form>
-                      <form action="../procesos_productos/actua" method="post">
+                      <form action="crear_editar_producto.php" method="POST">
                         <button class="dropdown-item" id="id_form_editar" name="id_form_editar" value="<?php echo $mostrar['id_producto'] ?>" type="submit">Eliminar</button>
+                        <input type="text" hidden name="eliminar_producto">
                       </form>
 
                     </div>

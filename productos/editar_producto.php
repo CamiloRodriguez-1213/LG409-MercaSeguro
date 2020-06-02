@@ -1,8 +1,13 @@
 <?php
 include "../includes/verify_install.php";
-
+include('../login_logout/login.php');
+if (isset($_SESSION['id'])) {
+  $id_sesion=$_SESSION['id'];
+} else {
+  header("location: ../index.php");
+  session_destroy();
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -50,7 +55,8 @@ include "../includes/verify_install.php";
 </head>
 
 <body>
-    <?php
+  <div class="container mt-5" style="background-color: white; max-width: 800px;">
+  <?php
     $id_form_producto = $_POST['id_form_editar'];
 
     include "../includes/db.php";
@@ -84,19 +90,12 @@ include "../includes/verify_install.php";
         $nombre_cat_producto = $mostrar['nombre_subcat'];
         $id_categoria = $mostrar['id_categoria'];
         $nombre_sub_categoria = $mostrar['nombre_cat'];
-        
-        
-
-        
+        $id_clase_producto= $mostrar['id_clase_producto'];
+        $nombre_clase= $mostrar['nombre_clase'];
     }
-
-    
-
     ?>
-
-
     <div class="container">
-        <form action="../procesos_productos/actualizar_producto.php" method="post" id="regiration_form" enctype="multipart/form-data">
+        <form action="crear_editar_producto.php" method="post" id="regiration_form" enctype="multipart/form-data">
         <div class="row justify-content-md-center">
 
             <div class="col-md-auto my-4">
@@ -124,14 +123,15 @@ include "../includes/verify_install.php";
         </div>
         <div class="row justify-content-md-center">
 
-            <div class="col-md-auto ">
+            <div class="col-md-auto my-4">
                 <div class="form-group">
                     <small>
-                        <h6><b>Categoria</b></h6><br><br>
+                        
+                        <small><h6><b>Categoria<a style="color: red;">* </a></b><small>(<?php echo $nombre_clase ?>)</small></h6></small><br>
                     </small>
                     <select class="form-control" name="categoria_producto" id="categoria_producto">
                         <?php 
-                        $sql = "SELECT id, nombre_cat FROM categorias_productos";
+                        $sql = "SELECT id, nombre_cat FROM categorias_productos wHERE id_clase_producto= '$id_clase_producto' ";
                         $result = DB::query($sql); ?>
                         <option value="">Seleccionar Categoria</option>
 
@@ -140,8 +140,6 @@ include "../includes/verify_install.php";
                             <option value="<?php echo $mostrar['id']; ?>"><?php echo $mostrar['nombre_cat']; ?></option>
                         <?php }
                         ?>
-
-
                     </select>
                     <br>
                     <select class="form-control" name="subcategoria_producto" id="subcategoria_producto">
@@ -154,57 +152,62 @@ include "../includes/verify_install.php";
             <div class="col col-lg-2">
                 
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-auto my-4">
                 <div class="form-group">
                     <small>
-                        <h6><b>Foto de tu producto</b></h6>
+                        
+                        <small><h6><b>Foto de tu producto<a style="color: red;">*</a></b></h6></small>
                     </small>
                     <div class="imge">
                         <div id="imagePreview">
                         </div>
-                        <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($imagen_producto) ?>" height="120px" class="card-img-top" alt="OO">
+                        <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($imagen_producto) ?>" style='border:1px solid #435160'; height="120px" class="card-img-top" alt="OO">
                         <br><br>
                         <label for="file-upload" class="custom-file-upload">
 
                             <i class="fa fa-cloud-upload"></i> Subir archivo
                         </label>
-                        <input type="file" hidden name="imagen_producto" value="<?php echo base64_encode($imagen_producto) ?>">
-                        <input type="file" aling name="imagen_prodcto" id="file-upload" accept="image/*" />
+                        
+                        <input type="file" hidden name="imagen_producto_bd" value="<?php $imagen_producto ?>">
+                        <input type="file" aling name="imagen_producto" id="file-upload" accept="image/*" />
 
                     </div>
 
                 </div>
-
+                
             </div>
         </div>
-        <div class="row justify-content-md-center">
+        
 
             <div class="col-md-12">
-
-            <div class="form-group">
-                    <small><h6><b>Descripción</b></h6></small>
+            <div class="form-group"><br>
+					<div class="form-group">
+                    <small><h6><b>Descripción <a style="color: red;">*</a></b></h6></small>
 
                             <!--EDITOR DE TEXTO EN EDITAR PRODUCTOS-->
-                            <div id="con-editor">
+                            <div id=" row con-editor">
                             		<div id="editor">
-                            			<div id="cajaTexto" contenteditable placeholder="Describe tu producto"><!--texto de editor-->
-                                        <textarea class="text_editar" style="width: 100%;height: 100%" name="descripcion_producto">
-                                        <?php echo $descripcion_producto ?>
-                                        </textarea>
+                            			<div id="cajaTexto" contenteditable ><!--texto de editor-->
+                                        <textarea  style="width: 100%;height: 100%;background-color: #fcfcfc;justify-content: start;"  placeholder="Describe tu producto" name="descripcion_producto" ><?php echo $descripcion_producto; ?></textarea>
                                         
                             			</div>
                             		</div>
                              </div>
                     </div>
+						
+					</div>
+            
                 </div>
-            </div>
+            
             <input type="submit" name="submit" class=" btn btn-primary" value="Publicar" id="regt" />
             <input type="text" name="id_producto" hidden value="<?php echo $id_producto ?>">
+            <input type="text" name="actualizar_producto" hidden>
+            
             </form>
         </div>
 
-        <?php include '../js/texeditor.js' ?>
-        <!--complemento para editar descripcion-->
+  </div>
+        
 </body>
 
 </html>
