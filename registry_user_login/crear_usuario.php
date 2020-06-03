@@ -77,7 +77,7 @@
             <div class="col "><br>
             <h6><b>Apellido<a style="color: red;"> * </a></b></h6>
               <input class="form-input3 infor" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="30">
-            </div>
+            </div> 
 
 
           </div>
