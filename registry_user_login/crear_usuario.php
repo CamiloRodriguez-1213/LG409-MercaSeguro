@@ -70,22 +70,26 @@
 
         <div class="container">
           <div class="row">
-            <div class="col ">
-              <input class="form-input2 infor" type="text" name="nombre" autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="30">
+            <div class="col "><br>
+            <h6><b>Nombre<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3 infor" type="text" name="nombre" autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="30">
             </div>
-            <div class="col ">
-              <input class="form-input2 infor" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="30">
+            <div class="col "><br>
+            <h6><b>Apellido<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3 infor" type="text" name="apellido" value="" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="30">
             </div>
 
 
           </div>
           <div class="row">
 
-            <div class="col ">
-              <input class="form-input2" type="email" name="email" id="email" required autocomplete="on" placeholder="Email" tabindex="3" size="30">
+            <div class="col "><br>
+            <h6><b>Correo electronico<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3" type="email" name="email" id="email" required autocomplete="on" placeholder="Ingrese su correo" tabindex="3" size="30">
             </div>
-            <div class="col ">
-              <input class="form-input2" type="password" id="password" name="password" required autocomplete="on" tabindex="4" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="El campo contraseña debe contener un mínimo 
+            <div class="col "><br>
+            <h6><b>Contraseña<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3" type="password" id="password" name="password" required autocomplete="on" tabindex="4" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="El campo contraseña debe contener un mínimo 
     de 8 caracteres, un máximo de 20, letras, (minúsculas y MAYÚSCULAS) y Números " placeholder="Contraseña" size="30">
             </div>
 
@@ -93,22 +97,26 @@
           </div>
           <div class="row">
 
-            <div class="col ">
-              <input class="form-input2" type="tel" name="celular" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="30">
+            <div class="col "><br>
+            <h6><b>Numero Celular<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3" type="tel" name="celular" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="30">
             </div>
-            <div class="col ">
-              <input class="form-input2" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="30">
+            <div class="col "><br>
+            <h6><b>Nombre Whatsapp<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3" type="tel" name="whatsapp" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="30">
             </div>
 
 
           </div>
           <div class="row">
 
-            <div class="col ">
-              <input class="form-input2" type="text" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="30">
+            <div class="col "><br>
+            <h6><b>Ciudad<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3" type="text" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="30">
             </div>
-            <div class="col ">
-              <input class="form-input2" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="30">
+            <div class="col "><br>
+            <h6><b>Dirección<a style="color: red;"> * </a></b></h6>
+              <input class="form-input3" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="30">
             </div>
 
 
