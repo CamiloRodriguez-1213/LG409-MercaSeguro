@@ -4,7 +4,6 @@ include('../login_logout/login.php');
 if (!$_GET ) {
   header('Location:../index.php');
 }
-
 ?>
 
 
@@ -27,7 +26,29 @@ if (!$_GET ) {
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
   <link rel="stylesheet" type="text/css" href="../css/editor.css"><!-- PARA EDITOR DE DESCRIPCION -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
 
+  
+<h5><a class="navbar-brand ml-5" href="../index.php">MercaSeguro </a></h5>
+  <ul class="navbar-nav ml-4 mr-2">
+  
+  
+  <form action="../index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control" type="text" name="busqueda" id="busqueda" value="<?php if (isset($_GET['busqueda'])) { echo $_REQUEST['busqueda']; }?>"  placeholder="Busca tus productos">
+              <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary"  type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
+        </div>
+          
+        </form>
+        
+  </ul>
   <?php include '../accesorios/navbar_global.php' ?>
 
 
@@ -75,6 +96,7 @@ if ($result_consulta!=0) {
     $nombre_cat_producto = $mostrar['nombre_cat'];
     $nombre_sub_categoria = $mostrar['nombre_subcat'];
     $nombre_usuario = $mostrar['nombre_usuario'];
+    $apellido_usuario =$mostrar['apellido_usuario'];
     $whatsapp = $mostrar['whatsapp'];
     
   }
@@ -91,8 +113,11 @@ if ($result_consulta!=0) {
         <!--inicio row 1-->
         <div class="col-md-6 ">
           <!--Foto de Producto-->
-          <div class="col-12 ml-5">
+          <div class="col-12 ">
+<?php
 
+?>
+          
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -118,7 +143,9 @@ if ($result_consulta!=0) {
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
-            </div><br>
+            </div><br><!-- final carrusel -->
+            
+
           </div>
         </div>
         <div class="col-md-6">
@@ -162,7 +189,6 @@ if ($result_consulta!=0) {
                 <i style="font-size:24px" class="fa">&#xf132;</i> Compra-protegida<br>
                 <i style="font-size:24px" class="fa">&#xf091;</i> Sin Mercado Puntos<br>
                 <!-- <i class="material-icons">&#xe558;</i> ddd<br> -->
-
                 </div>
               </div>
             </div>
@@ -172,8 +198,8 @@ if ($result_consulta!=0) {
               <br><br>
               <div class="row-12">
                 
-                <a href="confirmacion_compras.php?producto=<?php echo $id_producto;?>">
-                <input type="button" name="submit" class="submit btn btn-primary" value=" COMPRAR AHORA " id="regt" />
+                <a href="confirmacion_compras.php?producto=<?php echo $id_producto;?>&nombre_producto=<?php echo $nombre_producto ?>">
+                <input type="button" name="submit" class="submit btn btn-primary" value=" Comprar ahora " id="regt" />
                 </a>
               </div>
             </div>
@@ -184,7 +210,7 @@ if ($result_consulta!=0) {
       </div>
       <!--fin row 1-->
 
-      <div class="row ml-4">
+      <div class="row">
         <!--Bloque debajo de division 1 y 2 -->
         <div class="col-md-7 ">
           <!-- Descripcion -->
@@ -194,11 +220,10 @@ if ($result_consulta!=0) {
           </p>
         </div>
 
-
-        <div class="col-md-4 mt-5">
+ <div class="col-md-4 mt-5">
           <!-- alado de descripcion -->
           <p align="justify">
-            <?php echo $nombre_usuario;?>
+            <?php echo $nombre_usuario.' '.$apellido_usuario;?>
                 <br>
             <?php echo $nombre_cat_producto; ?>
                 <br>
@@ -210,6 +235,7 @@ if ($result_consulta!=0) {
           </p>
 
         </div>
+         
       </div>
 <?php 
 } 

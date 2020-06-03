@@ -6,9 +6,9 @@ if (!$_GET) {
   header('Location:index.php?pagina=1');
 }
 
-if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
+/* if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
   header('Location:index.php?pagina=1');
-}
+} */
 ?>
 <!doctype html>
 <html lang="es">
@@ -55,13 +55,11 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
 <body>
 
 
-  <!-- Solo se va a mostrar en computador -->
-  <div class="d-none d-sm-none d-md-none d-lg-block">
+  
   <?php
   
   if (!isset($_GET['busqueda']) && !isset($_GET['categoria'])) { include 'accesorios/carrusel.php'; }
   ?>
-  </div>
   <div class="container" style="max-height: 800px;">
   
   <div class="row justify-content-around">
@@ -80,7 +78,7 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
                 <div class="color">
                   <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
                   <br><br>
-                  
+                  <small>39% descuento</small>
                   <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
                   <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
                   <input type="text" hidden id="ver_producto" name="ver_producto" value="<?php echo $mostrar['id'] ?>">
@@ -108,88 +106,14 @@ if ($_GET['pagina'] == null || $_GET['pagina'] <= 0) {
         
       }
       
-      
-      if (isset($_GET['categoria'])) {
-        include 'procedimientos_externos/paginacion_por_cat.php';
-        if ($result_consulta!=0) {        
-   while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
-      <div class="contenedor  sm-12 md-4">
-        
-            <figure>
-            <form action="ventas/ver_productos.php" method="GET">
-            
-            <button class="btn btn-flex" type="submit">
-              <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
-                <div class="color">
-                  <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
-                  <br><br>
-                  
-                  <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
-                  <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
-                  <input type="text" hidden id="ver_producto" name="ver_producto" value="<?php echo $mostrar['id'] ?>">
-                  <input type="text" hidden id="nombre" name="nombre" value="<?php echo $mostrar['nombre_producto'] ?>">
-
-                </div>
-              </div>
-            </button>
-            </form>
-            </figure>
-       </figure>
-       </div>
-   <?php
-   endwhile;
-  }else {
-    ?>
-    <div class="container" align="center">
-    <div class="alert alert-danger" role="alert">
-      No se ha encontrado ningún resultado
-</div>
-    </div>
-    
-    <?php
-  }
-        
-      }
-
 
       
       /* Cuando no se hace una busqueda */
       if (!isset($_GET['busqueda'])&&(isset($_GET['pagina']))
        && !isset($_GET['categoria'])) {
         ?>
-        <?php
-        include 'procedimientos_externos/paginacion_index.php';
-        while ($mostrar = mysqli_fetch_array($result_paginas)) : ?>
 
-<div class="contenedor  sm-12 md-4">
-        
-            <figure>
-            <form action="ventas/ver_productos.php" method="GET">
-            
-            <button class="btn btn-flex" type="submit">
-              <div class="card btn-light mr-2" style="width: 230px; height: 310px; ">
-                <div class="color">
-                  <img class="zoom mt-3" src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen_producto']) ?>" height="108rem" class="card-img-top" alt="OO">
-                  <br><br>
-                  
-                  <h3 class="card-text-success">$ <?php echo $mostrar['precio']; ?> </h3>
-                  <p style="height: 50px; "><small> <?php echo $mostrar['nombre_producto']; ?> </small> </p>
-                  <input type="text" hidden id="ver_producto" name="ver_producto" value="<?php echo $mostrar['id'] ?>">
-                  <input type="text" hidden id="nombre" name="nombre" value="<?php echo $mostrar['nombre_producto'] ?>">
-
-                </div>
-              </div>
-            </button>
-            </form>
-            </figure>
-       </figure>
-       </div>
         <?php
-        endwhile;
-        
-      ?>
-      
-      <?php
     }
       ?>
     </div>

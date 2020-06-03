@@ -28,10 +28,33 @@ if (isset($_SESSION['login_user_sys'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
-    <title>Inicio</title>
+    <title>Ingreso</title>
     
 
-    <?php include '../accesorios/navbar_plus.php' ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+
+  
+<h5><a class="navbar-brand ml-5" href="../index.php">MercaSeguro </a></h5>
+  <ul class="navbar-nav ml-4 mr-2">
+  
+  
+  <form action="../index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control" type="text" name="busqueda" id="busqueda" value="<?php if (isset($_GET['busqueda'])) { echo $_REQUEST['busqueda']; }?>"  placeholder="Busca tus productos">
+              <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary"  type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
+        </div>
+          
+        </form>
+        
+  </ul>
+  <?php include '../accesorios/navbar_global.php' ?>
 </head>
 
 <body>

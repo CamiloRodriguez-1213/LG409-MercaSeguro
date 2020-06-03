@@ -30,7 +30,29 @@ if (!$_GET) {
 
 
   <title>Mis Productos</title>
-  <?php include '../accesorios/navbar_plus.php'; ?>
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+
+  
+<h5><a class="navbar-brand ml-5" href="../index.php">MercaSeguro </a></h5>
+  <ul class="navbar-nav ml-4 mr-2">
+  
+  <form action="../index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control" type="text" name="busqueda" id="busqueda" value="<?php if (isset($_GET['busqueda'])) { echo $_REQUEST['busqueda']; }?>"  placeholder="Busca tus productos">
+              <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
+        </div>
+          
+        </form>
+        
+  </ul>
+  <?php include '../accesorios/navbar_global.php' ?>
   
 </head>
 
@@ -38,15 +60,14 @@ if (!$_GET) {
   <div class="container my-5 justify-content-around ">
   <div class="row justify-content-around">
       <div class="d-flex flex-row">
-
-        <div class="p-2">
+        <!-- <div class="p-2">
           <div class="input-group">
             <input class="form-input3" type="text" name="busqueda" id="busqueda" placeholder="Busca tus productos">
             
               <i class="fa fa-search resalta" style="cursor: pointer"></i>
 
           </div>
-        </div>
+        </div> -->
         <!-- Solo se va a mostrar en computador -->
         <div class="d-none d-sm-none d-md-none d-lg-block">
         <div class="row">
@@ -119,7 +140,9 @@ if (!$_GET) {
                       </form>
                       <form action="crear_editar_producto.php" method="POST">
                         <button class="dropdown-item" id="id_form_editar" name="id_form_editar" value="<?php echo $mostrar['id_producto'] ?>" type="submit">Eliminar</button>
-                        <input type="text" hidden name="eliminar_producto">
+                        <input type="text" hidden name="eliminar_producto">  
+                        <input type="text" hidden name="id_producto" value="<?php echo $mostrar['id_producto'] ?>">  
+
                       </form>
 
                     </div>

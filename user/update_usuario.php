@@ -1,0 +1,183 @@
+<?php
+include('../includes/verify_install.php');
+include('../includes/db.php');
+include('../login_logout/login.php');
+if (isset($_SESSION['id'])) {
+    $id_sesion = $_SESSION['id'];
+} else {
+    header("location: ../index.php");
+    session_destroy();
+}   
+?>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Last-Modified" content="0">
+  <title>Mostrar Ventane Modal de forma Automático</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  <style>
+
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
+
+  
+<h5><a class="navbar-brand ml-5" href="../index.php">MercaSeguro </a></h5>
+  <ul class="navbar-nav ml-4 mr-2">
+  
+  
+  <form action="../index.php?pagina=1" class="form-inline my-2 my-lg-0" method="GET">
+        <div class="row">
+          <div class="input-group">
+              <input class="form-control" type="text" name="busqueda" id="busqueda" value="<?php if (isset($_GET['busqueda'])) { echo $_REQUEST['busqueda']; }?>"  placeholder="Busca tus productos">
+              <input class="form-control" hidden type="text" name="pagina" id="pagina" value="1"  placeholder="Busca tus productos">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit" >
+                      <i class="fa fa-search"></i>
+                  </button>
+              </span>
+          </div>
+        </div>
+          
+        </form>
+        
+  </ul>
+  <?php include '../accesorios/navbar_global.php' ?>
+  <script>
+      $(document).ready(function() {
+  $('#staticBackdrop').on('shown.bs.modal', function() {
+    $('#password_old').trigger('focus');
+  });
+});
+  </script>
+</head>
+
+<body>
+<?php
+    $sql = "SELECT * FROM usuarios WHERE id='$id_sesion'";
+    $result = DB::query($sql);
+    while ($mostrar = mysqli_fetch_array($result)) {
+        $nombre_usuario = $mostrar['nombre_usuario'];
+        $apellido_usuario = $mostrar['apellido_usuario'];
+        $email = $mostrar['email'];
+        $password = $mostrar['password'];
+        $numero_celular = $mostrar['celular'];
+        $numero_whatsapp = $mostrar['whatsapp'];
+        $ciudad = $mostrar['ciudad'];
+        $direccion = $mostrar['direccion'];
+    };
+    ?>
+  <!-- Inicio formulario Crear usuario -->
+  <div class="container" style="max-width: 700px;">
+    <form class="crear_usuario " action="actualizar_usuario.php" method="post">
+      <input type="text" hidden name="actualizar_usuario">
+      <h1>Editar datos personales</h1>
+
+      <div class="container">
+        <div class="row">
+          <div class="col ">
+          <small><h6><b>Nombre <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3 infor" maxlength="20" type="text" name="nombre" value="<?php echo $nombre_usuario ?>" autofocus id="nombre" required autocomplete="on" placeholder="Nombre" tabindex="1" size="30">
+          </div>
+          <div class="col ">
+          <small><h6><b>Apellido <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3 infor" maxlength="20" type="text" name="apellido" value="<?php echo $apellido_usuario ?>" id="apellido" required autocomplete="on" placeholder="Apellido" tabindex="2" size="30">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col "><br>
+          <small><h6><b>Email </b></h6></small>
+            <input class="form-input3" type="email" disabled name="email" id="email" value="<?php echo $email ?>" required autocomplete="on" placeholder="Email" tabindex="3" size="30">
+          </div>
+          <div class="col "><br>
+          <small><h6><b>Contraseña <a style="color: red;">*</a></b><a href="" tabindex="4" data-toggle="modal" data-target="#staticBackdrop"><small> Cambiar</small></a></h6></small>
+            <input class="form-input3" type="password" id="password" value="" name="password" required autocomplete="on" tabindex="4" placeholder="Ingrese contraseña actual" size="30">
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col "><br>
+          <small><h6><b>Número celular <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3" type="tel" name="celular" value="<?php echo $numero_celular ?>" required autocomplete="on" placeholder="Número de Celular" tabindex="5" size="30">
+          </div>
+          <div class="col "><br>
+          <small><h6><b>Número Whatsapp <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3" type="tel" name="whatsapp" value="<?php echo $numero_whatsapp ?>" required autocomplete="on" placeholder="Número de Whatsapp" tabindex="6" size="30">
+          </div>
+
+
+        </div>
+        <div class="row">
+
+          <div class="col "><br>
+          <small><h6><b>Ciudad <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3" type="text" value="<?php echo $ciudad ?>" name="ciudad" required autocomplete="on" placeholder="Ciudad Actual" tabindex="7" size="30">
+          </div>
+          <div class="col "><br>
+          <small><h6><b>Dirección <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3" value="<?php echo $direccion ?>" type="text" name="direccion" required autocomplete="on" placeholder="Dirección" tabindex="8" size="30">
+          </div>
+
+
+        </div>
+        <div class="row mt-3"><br>
+
+          <div class="col ">
+
+            <button class="btn btn-primary custom" name="login" type="button" onclick="window.location.href = document.referrer; return false;" tabindex="9" ;>Regresar</button>
+            <button class="btn btn-primary custom" name="login" type="submit" tabindex="10" ;>Guardar</button>
+          </div>
+          
+
+
+
+
+        </div>
+
+      </div>
+
+    </form>
+    
+  </div>
+  
+  <form action="actualizar_usuario.php" method="post">
+    <input type="text" hidden name="cambiar_password">
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Cambiar contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col "><br>
+          <small><h6><b>Contraseña anterior <a style="color: red;">*</a></b></h6></small>
+            <input class="form-input3" required autofocus type="password" name="password_old" id="password_old" placeholder="Ingrese contraseña anterior" tabindex="1" size="30">
+          </div>
+          <div class="col "><br>
+          <small><h6><b>Nueva contraseña <a style="color: red;">*</a></b><a href="" data-toggle="modal" data-target="#staticBackdrop"></a></h6></small>
+            <input class="form-input3" type="password" id="password_new" value="" name="password_new" required tabindex="2" placeholder="Ingrese contraseña nueva" size="30">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Cambiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </form>
+
+
+</body>
+
+</html>

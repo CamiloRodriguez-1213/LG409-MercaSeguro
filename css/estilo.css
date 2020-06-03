@@ -91,30 +91,21 @@ input[type="file"] {
 
   
 
-  /*Logo*/
- /*  .nav-logo {
-      background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.5.1/mercadolibre/logo__large_plus.png);
-      height: 34px;
-      top: 11px;
-      width: 134px;
-      display: inline-block;
-  } */
-  .nav-logo {
-      background-repeat: no-repeat;
-      overflow: hidden;
-      text-indent: -999px;
-      position: relative;
-      left: 180px;
-      outline: 0;
-  }
-  /*Fin logo*/
-  #header-index {
-      background-color: #ffc107;
-      font-size: 13px;
-      height: 80px;
-      /*font-family: "Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;*/
-      
-  }
+.nav-logo {
+    
+  height: 34px;
+  top: 11px;
+  width: 134px;
+  
+}
+.nav-logo {
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-indent: -999px;
+  
+  left: 10px;
+  outline: 0;
+}
   /* Formulario Crear Usuario */
   .crear_usuario {
     padding: 70px 10px;

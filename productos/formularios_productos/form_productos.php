@@ -18,7 +18,7 @@ if (isset($_SESSION['id'])) {
 <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Last-Modified" content="0">
-	
+	<title>Productos</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@ if (isset($_SESSION['id'])) {
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../../css/estilo.css">
-	<link rel="stylesheet" type="text/css" href=".././css/editor.css">
+	
 	<style type="text/css">
 		#regiration_form fieldset:not(:first-of-type) {
 			display: none;
@@ -52,7 +52,7 @@ if (isset($_SESSION['id'])) {
 		});		
 	</script>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top row-12 sm-12 md-4">
-<img src="LG409-MercaSeguro/css/Logo.png" alt="Girl in a jacket">
+
   <h5><a class="navbar-brand ml-5" href="../../index.php">MercaSeguro </a></h5>
   </nav>
 </head>
@@ -88,6 +88,7 @@ if (isset($_SESSION['id'])) {
 						
 					</div>
 				</div>
+				<button class="btn btn-primary custom" name="login" type="button" onclick="window.location.href = document.referrer; return false;" tabindex="" ;>Regresar</button>
 				<input type="button" class="next btn btn-primary" value="Siguiente" id="regt" />
 			</fieldset>
 

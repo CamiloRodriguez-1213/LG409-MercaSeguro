@@ -87,6 +87,7 @@ if (isset($_SESSION['id'])) {
 						
 					</div>
 				</div>
+				<button class="btn btn-primary custom" name="login" type="button" onclick="window.location.href = document.referrer; return false;" tabindex="" ;>Regresar</button>
 				<input type="button" class="next btn btn-primary" value="Siguiente" id="regt" />
 			</fieldset>
 

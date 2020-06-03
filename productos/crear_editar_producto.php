@@ -31,7 +31,7 @@
         $sql = "UPDATE productos set nombre_producto='$nombre_producto',descripcion_producto='$descripcion_producto',id_categoria_producto='$subcategoria_producto',imagen_producto='$imagen_producto',precio='$precio_producto'
          WHERE id='$id_producto_editar'";
         DB::query($sql);
-        /* header('Location: ../productos/mis_productos.php'); */
+        header('Location: ../productos/mis_productos.php');
     }
     /* Si se envia un POST de crear producto hacer lo siguiente */
     if (isset($_POST['crear_producto'])) {
@@ -48,9 +48,9 @@
     
 }
     if (isset($_POST['eliminar_producto'])) {
+      $id_producto=$_POST['id_producto'];
       
-      
-       $sql="DELETE FROM productos where id='$id_sesion' ";
+       $sql="DELETE FROM productos where id='$id_producto' ";
        
         DB::query($sql);
       

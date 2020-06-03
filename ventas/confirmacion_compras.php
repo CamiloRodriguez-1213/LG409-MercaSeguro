@@ -40,18 +40,17 @@ include "../includes/verify_install.php";
   <div class="container ">
 
   <?php
-  $id_form_producto = $_REQUEST['confirmacion_compras.php'];
-  $nombre_producto_form=$_REQUEST['nombre'];
+  $id_form_producto = $_REQUEST['producto'];
+  $nombre_producto_form=$_REQUEST['nombre_producto'];
 
 include "../includes/db.php";
 
   
 
-  if (isset ($_REQUEST['confirmacion_compras.php']) && isset($_REQUEST['nombre'])){
+  if (isset ($_REQUEST['producto']) && isset($_REQUEST['nombre_producto'])){
 
     
-  $sql = "SELECT 
-  productos.id AS id_producto, nombre_producto, precio,imagen_producto,
+  $sql = "SELECT productos.id AS id_producto, nombre_producto, precio,imagen_producto,
   nombre_usuario,email,whatsapp,ciudad
   FROM productos
   INNER JOIN subcategorias_productos
@@ -81,56 +80,24 @@ include "../includes/db.php";
     <div class="row ">
       <!--inicio row 1-->
 
-      <div class="col-md-7  ">
+      <div class="col-md-6" >
         <!-- Primera MITAD de (7 columnas) PARA COLOCAR CAMPOS de Informacion -->
-        <!-- Foto de Producto -->
-        <div class="col-12  "> <br>
-          <div class="col-12">
+        
+       <div style="background-color: white; max-width: 500px; max-height: 600;">
+       <div class="col-12  "> 
+          <div class="col-12  ">
+            
+            <div class="form-group mt-5 ">
+              <br>
+            <h6> <b>Nombre del Produto a Comprar</b> </h6><br>
+
             <small>
-              <h6><b>AQUI NOMBRE DEL PRODUCTO </b></h6>
+              <h3> <?php echo $nombre_producto ?> </h3>
             </small>
-            <div class="form-group"><br>
-              <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>">
             </div>
           </div>
           <br>
-        </div><br>
-
-
-        <div class="col-md-12  ">
-          <!-- Foto de Producto -->
-          <div class="col-12 ">
-            <div class="col-12">
-              <small>
-                <h6><b>Aqui Medios de pago (Efecty) </b></h6>
-              </small>
-              <!-- <div class="form-group"><br>
-                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
-                    </div> -->
-            </div>
-            <br>
-          </div>
-        </div><br>
-
-
-
-
-        <div class="col-md-12  ">
-          <!-- Foto de Producto -->
-          <div class="col-12 ">
-            <div class="col-12">
-              <small>
-                <h6><b>Aqui Datos para tu factura</b></h6>
-              </small>
-              <!-- <div class="form-group"><br>
-                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
-                    </div> -->
-            </div>
-            <br>
-          </div>
-        </div><br>
-
-
+        </div>
 
 
         <div class="col-md-12 ">
@@ -138,11 +105,15 @@ include "../includes/db.php";
           <div class="col-12 ">
             <div class="col-12">
               <small>
-                <h6><b>Aqui datos del vendedor </b></h6>
+                <h6><b>Datos del vendedor </b></h6>
               </small>
-              <!-- <div class="form-group"><br>
-                         <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> 
-                    </div> -->
+
+              <i class='far fa-user' style='font-size:17px'></i> <?php echo $nombre_usuario?><br>
+              <?php echo $email ?><br>
+              <i class="fab fa-whatsapp" style="font-size:17px"></i> <?php echo $whatsapp ?><br>
+              <i class="material-icons" style="font-size:17px">&#xe0c8;</i><?php echo $ciudad ?><br>
+              
+
             </div>
             <br>
           </div>
@@ -156,15 +127,15 @@ include "../includes/db.php";
         <div class="col-md-12 ">
           <!-- Foto de Producto -->
           <div class="col-12 ">
-            <div class="col-12">
+            <div class="col-12 ">
               <small>
-                <h6><b>Aqui Otro medio de pago (Targeta dev) </b></h6>
+                <h6><b>Empresa de envios y puntos de pago Ofilciales</b></h6>
               </small>
-              <br>
+              
 
-              <a style="text-decoration:none" href="https://www.servientrega.com/wps/portal/Colombia/personas/inicio" target="_blank"> <img class="mr-2" src="../img/servientrega.png" style="height:40px; width: 190px;"> </a>
+              <a style="text-decoration:none" href="https://www.servientrega.com/wps/portal/Colombia/personas/inicio" target="_blank"> <img class="mr-2 mb-4 mt-2" src="../img/servientrega.jpeg" style="height:40px; width: 190px;"> </a>
 
-              <a href="https://www.efecty.com.co/" target="_blank"> <img class="ml-2" src="../img/efecty.png" style="height:42px; width: 150px;"> </a>
+              <a href="https://www.efecty.com.co/" target="_blank"> <img class="ml-2 mb-4 mt-2" src="../img/efecty.jpeg" style="height:42px; width: 150px;"> </a>
 
             </div>
 
@@ -172,6 +143,8 @@ include "../includes/db.php";
         </div>
 
 
+
+       </div>
 
 
       </div>
@@ -192,10 +165,10 @@ include "../includes/db.php";
 
           <div class="col-md-12 ">
             <!--Nombre Producto-->
-            <div class="col-12 "><br>
+            <div class="col-12 "><br><br><br>
               <!-- <small><h6><b>Imagen circular del producto</b></h6></small> -->
               <div class="circular--landscape bg-primary">
-                <img src="../img/img-6.jpg" />
+              <img src="data:image/jpg;base64,<?php echo $imagen_producto ?>"  class="d-block w-100" alt="...">
               </div>
               <div class="form-group"><br>
                 <!-- <input type="text" class="form-input2 infor" name="nombre" style="width: 14rem; height:35px" required placeholder="Nombre Producto" value="<?php echo $nombre_producto ?>"> -->
@@ -211,13 +184,12 @@ include "../includes/db.php";
           <div class="col-md-12 ">
             <!--Precio Producto-->
             <div class="col-12">
-
               <small>
-                <h6><b>Precio</b></h6>
+              <h6><b> Valor Total a Cancelar </b></h6>
               </small>
-              <div class="form-group">
+              <div class="form-group mb-4 mt-3">
 
-                <label><b>$ </b><!-- <input type="text" class="form-input2 infor" name="precio" style="width: 14rem;" placeholder="Valor del producto" value="<?php echo $precio ?>"> --></label>
+                <h4><b>$ </b> <?php echo $precio ?></h4>
 
               </div>
             </div>
@@ -232,13 +204,11 @@ include "../includes/db.php";
             <!---boton comprar--->
 
             <div class="row-12">
+              <b>
               <input type="submit" name="submit" class="submit btn btn-primary" value="CONFIRMAR COMPRA " id="regt" />
+              </b>
             </div>
           </div>
-
-
-
-
 
 
         </div>
