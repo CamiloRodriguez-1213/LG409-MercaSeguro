@@ -67,7 +67,7 @@
         }
         ?>
         <li class="nav-item">
-          <a class="nav-link" href="#">Historial</a>
+          <!-- <a class="nav-link" href="#">Historial</a> -->
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../productos/mis_productos.php">Mis Productos</a>
@@ -104,7 +104,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Historial</a>
+          <!-- <a class="nav-link" href="#">Historial</a> -->
         </li>
         
         <li class="nav-item d-md-none d-xl-block">

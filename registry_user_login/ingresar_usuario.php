@@ -87,8 +87,8 @@ if (isset($_SESSION['login_user_sys'])) {
 
 
 
-                <button class="btn btn-primary btn-lg my-4" name="submit" type="submit" onclick="Habilitar()" ;>Ingresar</button>
-
+                <button class="btn btn-primary btn-lg my-4" name="submit" type="submit" onclick="Habilitar()" ;>Ingresar</button><br>
+                <a href="crear_usuario.php" style="text-decoration: none;">Crea tu cuenta</a>
             </div>
 
             <!-- FIN de botones Enviar y Regresar -->

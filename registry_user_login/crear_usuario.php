@@ -118,7 +118,7 @@
             <div class="col ">
 
               <button class="btn btn-primary custom" name="login" type="button" onclick="window.location.href = document.referrer; return false;" tabindex="" ;>Regresar</button>
-              <button class="btn btn-primary custom" name="login" type="submit" onclick="Habilitar()" tabindex="" ;>Ingresar</button>
+              <button class="btn btn-primary custom" name="login" type="submit" onclick="Habilitar()" tabindex="" ;>Crear</button>
             </div>
 
 

@@ -14,5 +14,5 @@
         $sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,email,password,celular,whatsapp,ciudad,direccion) values('$nombre_usuario','$apellido_usuario','$email','$password','$celular','$whatsapp','$ciudad','$direccion')"; 
     
     DB::query($sql);
-    header('Location: ../index.php');
+    header('Location: ingresar_usuario.php');
     ?>

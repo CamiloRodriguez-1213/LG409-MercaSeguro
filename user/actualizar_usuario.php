@@ -10,7 +10,6 @@ include('../login_logout/login.php');
 if (isset($_POST['actualizar_usuario'])) {
     $nombre=$_POST['nombre'];
     $apellido=$_POST['apellido'];
-    $email=$_POST['email'];
     $password=sha1($_POST['password']);
     $celular=$_POST['celular'];
     $whatsapp=$_POST['whatsapp'];
@@ -52,7 +51,7 @@ if (isset($_POST['cambiar_password'])) {
     
     DB::query($sql);
     session_destroy();
-    header('Location: ../registry_user_login.php');
+    header('Location: ../registry_user_login/ingresar_usuario.php');
     
     }elseif($result_consulta!=1)
     {
